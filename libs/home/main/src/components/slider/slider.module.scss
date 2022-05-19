@@ -1,0 +1,80 @@
+@import "libs/utils/src/utils";
+
+.root {
+  width: 100%;
+
+  :global .swiper {
+    &-slide {
+      transition: .9s;
+      opacity: .2;
+
+      &-active, &-visible {
+        opacity: 1;
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    &-pagination-bullet {
+      background-color: #C0FF59;
+    }
+  }
+
+  @include desktop {
+    :global .swiper {
+      width: dvw(517);
+
+      &-pagination {
+        bottom: dvw(-10);
+      }
+
+      &-slide {
+        img {
+          border-radius: dvw(20);
+          height: dvw(329);
+        }
+      }
+    }
+  }
+
+  @include tablet {
+    margin-top: tvw(95);
+    margin-bottom: tvw(20);
+
+    :global .swiper {
+      width: tvw(620);
+
+      &-pagination {
+        bottom: dvw(-20);
+      }
+
+      &-slide img {
+        border-radius: tvw(20);
+        height: tvw(329);
+      }
+    }
+  }
+
+  @include mobile {
+    margin-top: mvw(72);
+    margin-bottom: mvw(50);
+
+    :global .swiper {
+      width: mvw(280);
+
+      &-pagination {
+        bottom: mvw(-15);
+      }
+
+      &-slide img {
+        border-radius: mvw(20);
+        height: mvw(160);
+      }
+    }
+  }
+}
+
+

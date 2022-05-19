@@ -1,0 +1,68 @@
+@import "libs/utils/src/utils";
+.root {
+  display: flex;
+
+  @include media('desktop') {
+    margin-left: dvw(154);
+  }
+
+  @include media('tablet') {
+    margin-left: tvw(61);
+  }
+
+  .item {
+    background: #FFFDF7;
+    border-radius: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    @include media('desktop') {
+      width: dvw(24);
+      height: dvw(24);
+      margin-right: dvw(5);
+    }
+
+    @include media('tablet') {
+      width: tvw(18);
+      height: tvw(18);
+      margin-right: tvw(3);
+    }
+
+    @include media('mobile') {
+      background: #999999;
+    }
+  }
+
+
+  .twitter {
+    @include media('desktop') {
+      width: dvw(13.97);
+      height: dvw(11.34);
+    }
+
+    @include media('tablet') {
+      width: tvw(10.48);
+      height: tvw(8.51);
+    }
+  }
+
+  .discord {
+    @include media('desktop') {
+      width: dvw(13.92);
+      height: dvw(10.61);
+    }
+
+    @include media('tablet') {
+      width: tvw(10.44);
+      height: tvw(7.96);
+    }
+  }
+}

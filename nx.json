@@ -15,9 +15,10 @@
   },
   "tasksRunnerOptions": {
     "default": {
-      "runner": "nx/tasks-runners/default",
+      "runner": "@nrwl/nx-cloud",
       "options": {
-        "cacheableOperations": ["build", "lint", "test", "e2e"]
+        "cacheableOperations": ["build", "lint", "test", "e2e"],
+        "accessToken": "YTVkOThiMDMtNzBlMy00ZDlkLTlkODUtNmQxNWQxOGIyOTM1fHJlYWQtd3JpdGU="
       }
     }
   },
@@ -37,10 +38,10 @@
     },
     "@nrwl/next": {
       "application": {
-        "style": "styled-components",
+        "style": "scss",
         "linter": "eslint"
       }
     }
   },
-  "defaultProject": "apps"
+  "defaultProject": "launchpad"
 }

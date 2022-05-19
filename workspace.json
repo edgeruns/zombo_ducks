@@ -1,7 +1,12 @@
 {
   "version": 2,
   "projects": {
-    "apps": "apps/apps",
-    "apps-e2e": "apps/apps-e2e"
+    "home-layout": "libs/home/layout",
+    "home-main": "libs/home/main",
+    "home-overview": "libs/home/overview",
+    "home-uikit": "libs/home/uikit",
+    "home-whyus": "libs/home/whyus",
+    "launchpad": "apps/launchpad",
+    "utils": "libs/utils"
   }
 }
