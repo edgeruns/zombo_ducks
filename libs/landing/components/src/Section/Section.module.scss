@@ -1,0 +1,27 @@
+@import 'libs/landing/styles/src/mixins';
+
+.title {
+    font-weight: 700;
+    line-height: 130%;
+}
+
+@include desktop {
+    .title {
+        font-size: 46px;
+        margin-bottom: 50px;
+    }
+}
+
+@include tablet {
+    .title {
+        font-size: pxvw_t(46);
+        margin-bottom: pxvw_t(50);
+    }
+}
+
+@include mobile {
+    .title {
+        font-size: pxvw_m(25);
+        margin-bottom: pxvw_m(30);
+    }
+}

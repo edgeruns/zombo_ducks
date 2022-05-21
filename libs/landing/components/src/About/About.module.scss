@@ -47,13 +47,6 @@
 .ducks {
     display: flex;
     align-items: center;
-    justify-content: center;
-}
-
-.duck {
-    &:last-of-type {
-        margin-right: 0;
-    }
 }
 
 @include desktop {
@@ -90,6 +83,7 @@
     }
 
     .ducks {
+        justify-content: space-between;
         margin-top: 140px;
     }
 
@@ -130,13 +124,13 @@
     }
 
     .ducks {
+        justify-content: space-between;
         margin-top: pxvw_t(120);
     }
 
     .duck {
         width: pxvw_t(200);
         height: pxvw_t(200);
-        margin-right: pxvw_t(5);
     }
 }
 
@@ -170,6 +164,7 @@
     }
 
     .ducks {
+        justify-content: center;
         margin: pxvw_m(100) pxvw_m(-$layout-padding-m) 0;
         overflow: hidden;
     }
@@ -178,5 +173,9 @@
         width: pxvw_m(160);
         height: pxvw_m(160);
         margin-right: pxvw_m(5);
+
+        &:last-of-type {
+            margin-right: 0;
+        }
     }
 }

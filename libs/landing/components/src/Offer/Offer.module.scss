@@ -1,0 +1,86 @@
+@import 'libs/landing/styles/src/mixins';
+
+.points {
+    display: grid;
+}
+
+.point {
+    position: relative;
+    font-weight: 600;
+    line-height: 130%;
+
+    &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        width: 100%;
+        background: linear-gradient(90deg, #9644FF 0%, #595FFE 46.88%, #00D488 100%);
+    }
+}
+
+@include desktop {
+    .wrapper {
+        margin-top: 124px;
+    }
+
+    .points {
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 40px;
+    }
+
+    .point {
+        padding-bottom: 29px;
+        font-size: 16px;
+
+        &::before {
+            bottom: 0;
+            height: 2px;
+        }
+    }
+}
+
+@include tablet {
+    .wrapper {
+        margin-top: pxvw_t(124);
+    }
+
+    .points {
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: pxvw_t(40) pxvw_t(20);
+    }
+
+    .point {
+        padding-bottom: pxvw_t(29);
+        font-size: pxvw_t(16);
+
+        &:first-of-type {
+            grid-column: span 2;
+        }
+
+        &::before {
+            bottom: 0;
+            height: pxvw_t(2);
+        }
+    }
+}
+
+@include mobile {
+    .wrapper {
+        margin-top: pxvw_m(80);
+    }
+
+    .points {
+        grid-template-columns: 1fr;
+        grid-gap: pxvw_m(20) 0;
+    }
+
+    .point {
+        padding-top: pxvw_m(12);
+        font-size: pxvw_m(10);
+
+        &::before {
+            top: 0;
+            height: pxvw_m(2);
+        }
+    }
+}
