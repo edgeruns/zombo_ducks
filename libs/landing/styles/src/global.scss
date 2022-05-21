@@ -8,10 +8,20 @@
 html {
     color: #FFFDF7;
     font-family: 'Epilogue', Arial, sans-serif;
+    letter-spacing: -0.01em;
     background-color: #000000;
 }
 
 body {
+    margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     margin: 0;
 }
 
@@ -24,6 +34,18 @@ ul {
 a {
     color: #FFFDF7;
     text-decoration: none;
+}
+
+p {
+    margin: 0;
+}
+
+button {
+    padding: 0;
+    color: #FFFDF7;
+    outline: none;
+    border: none;
+    background-color: transparent;
 }
 
 @include desktop {

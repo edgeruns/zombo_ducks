@@ -1,9 +1,13 @@
-import { Header } from '@apps/landing/components'
+import {
+    Header,
+    About
+} from '@apps/landing/components'
 
 export function IndexPage() {
     return (
         <>
             <Header />
+            <About />
         </>
     )
 }
