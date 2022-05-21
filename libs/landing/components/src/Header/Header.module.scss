@@ -1,0 +1,160 @@
+@import 'libs/landing/styles/src/mixins';
+
+.wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: calc((100vw - 100%) / 2 * -1);
+        width: 100vw;
+        height: 100%;
+        background-color: #000000;
+        z-index: -1;
+    }
+}
+
+.logo {
+    display: block;
+    font-size: 0;
+    background-image: url('/header/logo.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+
+    &-list {
+        display: flex;
+        align-items: center;
+    }
+
+    &-item {
+        &:last-of-type {
+            margin-right: 0;
+        }
+    }
+
+    &-link {
+        font-weight: 600;
+        letter-spacing: -0.01em;
+    }
+}
+
+.socials {
+    display: flex;
+    align-items: center;
+}
+
+.social {
+    display: block;
+    font-size: 0;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+
+    &:last-of-type {
+        margin-right: 0;
+    }
+
+    &_twitter {
+        background-image: url('/header/twitter.svg');
+    }
+
+    &_discord {
+        background-image: url('/header/discord.svg');
+    }
+}
+
+@include desktop {
+    .wrapper {
+        height: 70px;
+    }
+
+    .logo {
+        width: 44px;
+        height: 45px;
+    }
+
+    .nav {
+        &-item {
+            margin-right: 30px;
+        }
+
+        &-link {
+            font-size: 14px;
+            transition: opacity 0.2s;
+
+            &:hover {
+                opacity: 0.6;
+            }
+        }
+    }
+
+    .social {
+        width: 30px;
+        height: 30px;
+        margin-right: 10px;
+        transition: opacity 0.2s;
+
+        &:hover {
+            opacity: 0.6;
+        }
+    }
+}
+
+@include tablet {
+    .wrapper {
+        height: pxvw_t(70);
+    }
+
+    .logo {
+        width: pxvw_t(44);
+        height: pxvw_t(45);
+    }
+
+    .nav {
+        &-item {
+            margin-right: pxvw_t(10);
+        }
+
+        &-link {
+            font-size: pxvw_t(12);
+        }
+    }
+
+    .social {
+        width: pxvw_t(25);
+        height: pxvw_t(25);
+        margin-right: pxvw_t(10);
+    }
+}
+
+@include mobile {
+    .wrapper {
+        height: pxvw_m(64);
+    }
+
+    .logo {
+        width: pxvw_m(33);
+        height: pxvw_m(34);
+    }
+
+    .nav {
+        display: none;
+    }
+
+    .social {
+        width: pxvw_m(24);
+        height: pxvw_m(24);
+        margin-right: pxvw_m(5);
+    }
+}
