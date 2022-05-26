@@ -5,7 +5,8 @@ import {
     Mint,
     Roadmap,
     Team,
-    FAQ
+    FAQ,
+    Footer
 } from '@apps/landing/components'
 
 export function IndexPage() {
@@ -18,6 +19,7 @@ export function IndexPage() {
             <Roadmap />
             <Team />
             <FAQ />
+            <Footer />
         </>
     )
 }
