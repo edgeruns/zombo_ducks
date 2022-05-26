@@ -4,7 +4,8 @@ import {
     Offer,
     Mint,
     Roadmap,
-    Team
+    Team,
+    FAQ
 } from '@apps/landing/components'
 
 export function IndexPage() {
@@ -16,6 +17,7 @@ export function IndexPage() {
             <Mint />
             <Roadmap />
             <Team />
+            <FAQ />
         </>
     )
 }
