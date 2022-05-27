@@ -1,12 +1,15 @@
 {
-  "version": 2,
-  "projects": {
-    "home-layout": "libs/home/layout",
-    "home-main": "libs/home/main",
-    "home-overview": "libs/home/overview",
-    "home-uikit": "libs/home/uikit",
-    "home-whyus": "libs/home/whyus",
-    "launchpad": "apps/launchpad",
-    "utils": "libs/utils"
-  }
+    "version": 2,
+    "projects": {
+        "home-layout": "libs/home/layout",
+        "home-main": "libs/home/main",
+        "home-overview": "libs/home/overview",
+        "home-uikit": "libs/home/uikit",
+        "home-whyus": "libs/home/whyus",
+        "landing": "apps/landing",
+        "landing-components": "libs/landing/components",
+        "landing-styles": "libs/landing/styles",
+        "launchpad": "apps/launchpad",
+        "utils": "libs/utils"
+    }
 }

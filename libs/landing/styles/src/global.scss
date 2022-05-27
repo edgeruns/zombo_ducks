@@ -1,0 +1,80 @@
+@import './vars';
+@import './mixins';
+@import './anims';
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    color: #FFFDF7;
+    font-family: 'Epilogue', Arial, sans-serif;
+    letter-spacing: -0.01em;
+    background-color: #000000;
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+}
+
+#__next {
+    position: relative;
+    animation: fadeIn 4s forwards;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+a {
+    color: #FFFDF7;
+    text-decoration: none;
+}
+
+p {
+    margin: 0;
+}
+
+button {
+    padding: 0;
+    color: #FFFDF7;
+    outline: none;
+    border: none;
+    background-color: transparent;
+}
+
+@include desktop {
+    body {
+        overflow-y: overlay;
+    }
+
+    #__next {
+        max-width: calc(#{$layout-width}px + #{$layout-padding * 2}px);
+        margin: 0 auto;
+        padding: 0 #{$layout-padding}px;
+    }
+}
+
+@include tablet {
+    #__next {
+        padding: 0 pxvw_t($layout-padding-t);
+    }
+}
+
+@include mobile {
+    #__next {
+        padding: 0 pxvw_m($layout-padding-m);
+    }
+}

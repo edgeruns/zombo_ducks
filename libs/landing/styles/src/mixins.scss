@@ -1,0 +1,40 @@
+@use "sass:map";
+@use "sass:math";
+
+$breakpoints: (
+    'mobile': 568px,
+    'desktop': 1200px
+);
+
+@mixin desktop() {
+    $desktop-min-width: map.get($breakpoints, 'desktop');
+
+    @media (min-width: $desktop-min-width) {
+        @content;
+    }
+}
+
+@mixin tablet() {
+    $mobile-min-width: map.get($breakpoints, 'mobile') + 1px;
+    $desktop-min-width: map.get($breakpoints, 'desktop') - 1px;
+
+    @media (min-width: $mobile-min-width) and (max-width: $desktop-min-width) {
+        @content;
+    }
+}
+
+@mixin mobile() {
+    $mobile-max-width: map.get($breakpoints, 'mobile');
+
+    @media (max-width: $mobile-max-width) {
+        @content;
+    }
+}
+
+@function pxvw_t($px, $factor: 768) {
+    @return math.div($px, $factor) * 100vw;
+}
+
+@function pxvw_m($px, $factor: 320) {
+    @return math.div($px, $factor) * 100vw;
+}
