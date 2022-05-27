@@ -1,5 +1,9 @@
 @import 'libs/landing/styles/src/mixins';
 
+.wrapper {
+    position: relative;
+}
+
 .points {
     display: grid;
 

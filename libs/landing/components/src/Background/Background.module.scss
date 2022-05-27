@@ -1,0 +1,130 @@
+@import 'libs/landing/styles/src/vars';
+@import 'libs/landing/styles/src/mixins';
+
+.wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    user-select: none;
+}
+
+.item {
+    position: absolute;
+    -webkit-backdrop-filter: blur(1px);
+    background: linear-gradient(90.02deg, #381FCF 15.76%, #18B6A8 80.61%);
+    transform: translateZ(0);
+}
+
+@include desktop {
+    .item {
+        &:nth-of-type(1) {
+            top: 1500px;
+            right: 0;
+            width: 500px;
+            height: 500px;
+            filter: blur(300px);
+        }
+
+        &:nth-of-type(2) {
+            top: 3200px;
+            left: 50%;
+            width: 600px;
+            height: 600px;
+            filter: blur(400px);
+            transform: translateX(-50%);
+        }
+
+        &:nth-of-type(3) {
+            bottom: 650px;
+            left: 250px;
+            width: 250px;
+            height: 100px;
+            filter: blur(200px);
+        }
+
+        &:nth-of-type(4) {
+            bottom: 500px;
+            right: 200px;
+            width: 250px;
+            height: 100px;
+            filter: blur(150px);
+        }
+    }
+}
+
+@include tablet {
+    .item {
+        &:nth-of-type(1) {
+            top: pxvw_t(1800);
+            right: 0;
+            width: pxvw_t(450);
+            height: pxvw_t(450);
+            filter: blur(pxvw_t(250));
+        }
+
+        &:nth-of-type(2) {
+            top: pxvw_t(3600);
+            left: 50%;
+            width: pxvw_t(400);
+            height: pxvw_t(400);
+            filter: blur(pxvw_t(250));
+            transform: translateX(-50%);
+        }
+
+        &:nth-of-type(3) {
+            bottom: pxvw_t(850);
+            left: pxvw_t(200);
+            width: pxvw_t(300);
+            height: pxvw_t(100);
+            filter: blur(pxvw_t(100));
+        }
+
+        &:nth-of-type(4) {
+            bottom: pxvw_t(500);
+            right: pxvw_t(150);
+            width: pxvw_t(300);
+            height: pxvw_t(100);
+            filter: blur(pxvw_t(100));
+        }
+    }
+}
+
+@include mobile {
+    .item {
+        &:nth-of-type(1) {
+            top: pxvw_m(1400);
+            right: 0;
+            width: pxvw_m(300);
+            height: pxvw_m(300);
+            filter: blur(pxvw_m(200));
+        }
+
+        &:nth-of-type(2) {
+            top: pxvw_m(3450);
+            left: 50%;
+            width: pxvw_m(300);
+            height: pxvw_m(250);
+            filter: blur(pxvw_m(150));
+            transform: translateX(-50%);
+        }
+
+        &:nth-of-type(3) {
+            bottom: pxvw_m(1000);
+            left: pxvw_m($layout-padding-m);
+            width: pxvw_m(300);
+            height: pxvw_m(100);
+            filter: blur(pxvw_m(150));
+        }
+
+        &:nth-of-type(4) {
+            bottom: pxvw_m(350);
+            right: pxvw_m($layout-padding-m);
+            width: pxvw_m(300);
+            height: pxvw_m(150);
+            filter: blur(pxvw_m(150));
+        }
+    }
+}

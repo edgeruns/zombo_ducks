@@ -50,13 +50,27 @@ export const Team: FC = () => {
                     <div className={styles['top-content']}>
                         <div className={styles['top-ducks']}>
                             <div className={styles['top-duck']}>
-                                <DuckAvatar name="willy" size="m" />
-                                <div className={topDuckNameClassName}>ZomboWilly</div>
+                                <DuckAvatar
+                                    name="willy"
+                                    size="m"
+                                    className={styles['top-duck-avatar']}
+                                />
+
+                                <div className={topDuckNameClassName}>
+                                    ZomboWilly
+                                </div>
                             </div>
 
                             <div className={styles['top-duck']}>
-                                <DuckAvatar name="donald" size="m" />
-                                <div className={topDuckNameClassName}>ZomboDonald</div>
+                                <DuckAvatar
+                                    name="donald"
+                                    size="m"
+                                    className={styles['top-duck-avatar']}
+                                />
+
+                                <div className={topDuckNameClassName}>
+                                    ZomboDonald
+                                </div>
                             </div>
                         </div>
 

@@ -1,4 +1,5 @@
 import {
+    Background,
     Header,
     About,
     Offer,
@@ -12,6 +13,7 @@ import {
 export function IndexPage() {
     return (
         <>
+            <Background />
             <Header />
             <About />
             <Offer />

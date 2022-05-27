@@ -28,10 +28,11 @@ const Border: FC = () => {
 interface DuckAvatarProps {
     name: string
     size?: 'm'
+    className?: string
 }
 
 export const DuckAvatar: FC<DuckAvatarProps> = props => {
-    const { name, size } = props
+    const { name, size, className } = props
 
     const baseSrc = `/team/${name}`
     const webp = `${baseSrc}.webp`
@@ -39,6 +40,7 @@ export const DuckAvatar: FC<DuckAvatarProps> = props => {
 
     const wrapperClassName = classNames(
         styles.wrapper,
+        className,
         size && styles[`wrapper_${size}`]
     )
 

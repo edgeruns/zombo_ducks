@@ -1,5 +1,9 @@
 @import 'libs/landing/styles/src/mixins';
 
+.wrapper {
+    position: relative;
+}
+
 .content {
     opacity: 0;
     transition: opacity 1.5s ease-in-out;
@@ -97,10 +101,13 @@
                 }
             }
 
+            &-avatar {
+                z-index: 2;
+            }
+
             &-name {
                 position: absolute;
                 padding-bottom: 15px;
-                z-index: -1;
 
                 &::before {
                     content: '';
@@ -197,10 +204,13 @@
                 }
             }
 
+            &-avatar {
+                z-index: 2;
+            }
+
             &-name {
                 position: absolute;
                 padding-bottom: pxvw_t(12);
-                z-index: -1;
 
                 &::before {
                     content: '';
