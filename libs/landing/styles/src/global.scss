@@ -1,5 +1,6 @@
 @import './vars';
 @import './mixins';
+@import './anims';
 
 * {
     box-sizing: border-box;
@@ -15,6 +16,10 @@ html {
 
 body {
     margin: 0;
+}
+
+#__next {
+    animation: fadeIn 4s forwards;
 }
 
 h1,

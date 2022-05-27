@@ -1,5 +1,14 @@
 @import 'libs/landing/styles/src/mixins';
 
+.content {
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
+
+    &_visible {
+        opacity: 1;
+    }
+}
+
 .top {
     display: flex;
     align-items: center;
@@ -39,6 +48,16 @@
         margin-top: 124px;
     }
 
+    .content {
+        &_visible {
+            .top-duck-name {
+                &::before {
+                    width: 100%;
+                }
+            }
+        }
+    }
+
     .name {
         font-size: 20px;
     }
@@ -56,6 +75,10 @@
                     top: 65px;
                     left: -345px;
                     right: 273px;
+
+                    &::before {
+                        left: 0;
+                    }
                 }
             }
 
@@ -67,6 +90,10 @@
                     left: 269px;
                     width: 356px;
                     text-align: end;
+
+                    &::before {
+                        right: 0;
+                    }
                 }
             }
 
@@ -78,10 +105,10 @@
                 &::before {
                     content: '';
                     position: absolute;
-                    left: 0;
                     bottom: 0;
-                    width: 100%;
+                    width: 0;
                     height: 2px;
+                    transition: width 1.4s ease-in-out;
                     background: linear-gradient(90deg, #2CA0DD 0%, #00D488 100%);
                 }
             }
@@ -121,6 +148,16 @@
         margin-top: pxvw_t(124);
     }
 
+    .content {
+        &_visible {
+            .top-duck-name {
+                &::before {
+                    width: 100%;
+                }
+            }
+        }
+    }
+
     .name {
         font-size: pxvw_t(16);
     }
@@ -138,6 +175,10 @@
                     top: pxvw_t(45);
                     left: pxvw_t(-134);
                     right: pxvw_t(196);
+
+                    &::before {
+                        left: 0;
+                    }
                 }
             }
 
@@ -149,6 +190,10 @@
                     left: pxvw_t(187);
                     width: pxvw_t(148);
                     text-align: end;
+
+                    &::before {
+                        right: 0;
+                    }
                 }
             }
 
@@ -160,10 +205,10 @@
                 &::before {
                     content: '';
                     position: absolute;
-                    left: 0;
                     bottom: 0;
-                    width: 100%;
-                    height: 2px;
+                    width: 0;
+                    height: pxvw_t(2);
+                    transition: width 1.4s ease-in-out;
                     background: linear-gradient(90deg, #2CA0DD 0%, #00D488 100%);
                 }
             }

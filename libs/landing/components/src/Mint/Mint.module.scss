@@ -64,6 +64,7 @@
 
     &-duck {
         border-radius: 50%;
+        transition: margin-left 0.4s ease-in;
 
         &:first-of-type {
             margin-left: 0;
@@ -132,10 +133,20 @@
     .mission {
         padding: 40px 40px 50px;
 
+        &-ducks {
+            padding-left: 15px;
+
+            &_expanded {
+                .mission-duck {
+                    margin-left: -15px;
+                }
+            }
+        }
+
         &-duck {
             width: 70px;
             height: 70px;
-            margin-left: -15px;
+            margin-left: -70px;
         }
 
         &-text {
@@ -202,10 +213,20 @@
         margin-top: pxvw_t(20);
         padding: pxvw_t(35);
 
+        &-ducks {
+            padding-left: pxvw_t(15);
+
+            &_expanded {
+                .mission-duck {
+                    margin-left: pxvw_t(-15);
+                }
+            }
+        }
+
         &-duck {
             width: pxvw_t(70);
             height: pxvw_t(70);
-            margin-left: pxvw_t(-15);
+            margin-left: pxvw_t(-70);
         }
 
         &-text {
@@ -264,10 +285,20 @@
         margin-top: pxvw_m(20);
         padding: pxvw_m(20) pxvw_m(25);
 
+        &-ducks {
+            padding-left: pxvw_m(10);
+
+            &_expanded {
+                .mission-duck {
+                    margin-left: pxvw_m(-10);
+                }
+            }
+        }
+
         &-duck {
             width: pxvw_m(50);
             height: pxvw_m(50);
-            margin-left: pxvw_m(-10);
+            margin-left: pxvw_m(-50);
         }
 
         &-text {

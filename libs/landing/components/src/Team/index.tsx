@@ -1,16 +1,40 @@
-import React, { FC } from 'react'
+import React, { FC, useEffect, useRef, useState } from 'react'
 import classNames from 'classnames'
+
+import { useScrollView, useBreakpoint } from '@apps/utils'
 
 import { Section } from '../Section'
 import { DuckAvatar } from './DuckAvatar'
 import styles from './Team.module.scss'
 
 export const Team: FC = () => {
+    const [visible, setVisible] = useState(false)
+
+    const contentRef = useRef<HTMLDivElement>(null)
+
+    const scrollPercent = useScrollView(contentRef, visible)
+    const breakpoint = useBreakpoint()
+
+    const contentClassName = classNames(
+        styles.content,
+        visible && styles['content_visible']
+    )
+
     const topDuckNameClassName = classNames(styles.name, styles['top-duck-name'])
     const topTextClassName = classNames(styles.text, styles['top-text'])
 
     const bottomDuckNameClassName = classNames(styles.name, styles['bottom-duck-name'])
     const bottomDuckTextClassName = classNames(styles.text, styles['bottom-duck-text'])
+
+    useEffect(() => {
+        if (!visible) {
+            const visiblePercent = breakpoint === 'mobile' ? 30 : 50
+
+            if (scrollPercent >= visiblePercent) {
+                setVisible(true)
+            }
+        }
+    }, [visible, scrollPercent, breakpoint])
 
     return (
         <Section
@@ -18,7 +42,10 @@ export const Team: FC = () => {
             title="Meet our team"
             className={styles.wrapper}
         >
-            <div className={styles.content}>
+            <div
+                className={contentClassName}
+                ref={contentRef}
+            >
                 <div className={styles.top}>
                     <div className={styles['top-content']}>
                         <div className={styles['top-ducks']}>

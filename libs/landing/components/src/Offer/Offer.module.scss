@@ -2,6 +2,14 @@
 
 .points {
     display: grid;
+
+    &_underlined {
+        .point {
+            &::before {
+                width: 100%;
+            }
+        }
+    }
 }
 
 .point {
@@ -13,8 +21,9 @@
         content: '';
         position: absolute;
         left: 0;
-        width: 100%;
+        width: 0;
         background: linear-gradient(90deg, #9644FF 0%, #595FFE 46.88%, #00D488 100%);
+        transition: width 1.5s;
     }
 }
 
@@ -66,7 +75,7 @@
 
 @include mobile {
     .wrapper {
-        margin-top: pxvw_m(80);
+        margin-top: pxvw_m(55);
     }
 
     .points {

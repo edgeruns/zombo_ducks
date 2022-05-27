@@ -1,16 +1,44 @@
-import React, { FC } from 'react'
+import React, { FC, useEffect, useRef, useState } from 'react'
+import classNames from 'classnames'
+
+import { useScrollView, useBreakpoint } from '@apps/utils'
 
 import { Section } from '../Section'
 import styles from './Mint.module.scss'
 
 export const Mint: FC = () => {
+    const [ducksExpanded, setDucksExpanded] = useState(false)
+
+    const contentRef = useRef<HTMLDivElement>(null)
+
+    const scrollPercent = useScrollView(contentRef, ducksExpanded)
+    const breakpoint = useBreakpoint()
+
+    const missionDucksClassName = classNames(
+        styles['mission-ducks'],
+        ducksExpanded && styles['mission-ducks_expanded']
+    )
+
+    useEffect(() => {
+        if (!ducksExpanded) {
+            const expandPercent = breakpoint === 'desktop' ? 15 : 55
+
+            if (scrollPercent > expandPercent) {
+                setDucksExpanded(true)
+            }
+        }
+    }, [scrollPercent, breakpoint, ducksExpanded])
+
     return (
         <Section
             id="mint"
             title="Why to mint Ducks?"
             className={styles.wrapper}
         >
-            <div className={styles.content}>
+            <div
+                className={styles.content}
+                ref={contentRef}
+            >
                 <div className={styles.benefits}>
                     <div className={styles.star} />
 
@@ -59,7 +87,7 @@ export const Mint: FC = () => {
                         </defs>
                     </svg>
 
-                    <div className={styles['mission-ducks']}>
+                    <div className={missionDucksClassName}>
                         <img className={styles['mission-duck']} src="/mint/duck-green.png" alt="Duck green" />
                         <img className={styles['mission-duck']} src="/mint/duck-purple.png" alt="Duck purple" />
                         <img className={styles['mission-duck']} src="/mint/duck-blue.png" alt="Duck blue" />
