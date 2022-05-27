@@ -1,11 +1,18 @@
-import React, { FC } from 'react'
+import React, { FC, useCallback } from 'react'
 
 import styles from './Footer.module.scss'
 
 const currentYear = new Date().getFullYear()
+const copyright = `© ${currentYear} ZomboDucks. Powered by NEAR protocol. All rights reserved.`
 
 export const Footer: FC = () => {
-    const copyright = `© ${currentYear} ZomboDucks. Powered by NEAR protocol. All rights reserved.`
+    const handleBacktopClick = useCallback(() => {
+        window.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: 'smooth'
+        })
+    }, [])
 
     return (
         <footer className={styles.wrapper}>
@@ -23,7 +30,10 @@ export const Footer: FC = () => {
                     Near
                 </a>
 
-                <div className={styles.backtop}>
+                <div
+                    className={styles.backtop}
+                    onClick={handleBacktopClick}
+                >
                     <span className={styles['backtop-text']}>Back to the top</span>
                     <div className={styles['backtop-arrow']} />
                 </div>
