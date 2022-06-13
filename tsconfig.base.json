@@ -21,7 +21,8 @@
       "@apps/home/overview": ["libs/home/overview/src/index.ts"],
       "@apps/home/uikit": ["libs/home/uikit/src/index.ts"],
       "@apps/home/whyus": ["libs/home/whyus/src/index.ts"],
-      "@apps/utils": ["libs/utils/src/index.ts"]
+      "@apps/utils": ["libs/utils/src/index.ts"],
+      "@cagames/zombo-fight": ["libs/zombo-fight/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

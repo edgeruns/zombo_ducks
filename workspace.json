@@ -1,12 +1,14 @@
 {
   "version": 2,
   "projects": {
+    "game-sandbox": "apps/game-sandbox",
     "home-layout": "libs/home/layout",
     "home-main": "libs/home/main",
     "home-overview": "libs/home/overview",
     "home-uikit": "libs/home/uikit",
     "home-whyus": "libs/home/whyus",
     "launchpad": "apps/launchpad",
-    "utils": "libs/utils"
+    "utils": "libs/utils",
+    "zombo-fight": "libs/zombo-fight"
   }
 }
