@@ -11,7 +11,7 @@ export const PHASES = [
 
     {
         name: 'Phase 2',
-        date: 'Mid May 2022',
+        date: 'End June 2022',
         items: [
             'Presale and public mint',
             'Listing on the secondary market',
@@ -21,7 +21,7 @@ export const PHASES = [
 
     {
         name: 'Phase 3',
-        date: 'End May 2022',
+        date: 'Early July 2022',
         items: [
             'Presentation of the DEMO version of the game',
             'Development of WhitePaper with a description of platform rules',
@@ -31,7 +31,7 @@ export const PHASES = [
 
     {
         name: 'Phase 4',
-        date: 'Early June 2022',
+        date: 'Mid August 2022',
         items: [
             'P2E gaming platform launch',
             'Attracting NEAR partners to the platform',
@@ -41,7 +41,7 @@ export const PHASES = [
 
     {
         name: 'Phase 5',
-        date: 'End June 2022',
+        date: 'End August 2022',
         items: [
             'Start of reward payments to holders',
             'Creating launchpad for independent game developers with an open API and friendly tool-kit for building',
@@ -51,7 +51,7 @@ export const PHASES = [
 
     {
         name: 'Phase 6',
-        date: 'Early July 2022',
+        date: 'Early September 2022',
         items: [
             'Introducing a DAO where community can vote on futher development and integration moves',
             'Games launchpad launch',
