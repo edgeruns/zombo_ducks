@@ -57,6 +57,7 @@ button {
 
 @include desktop {
     body {
+        overflow-x: hidden;
         overflow-y: overlay;
     }
 
