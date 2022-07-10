@@ -1,0 +1,33 @@
+@import './mixins';
+
+:root {
+    --yellow: #FFC700;
+    --dark-blue: #062C34;
+    --gray-blue: #B2D0DB;
+    --red: #FF5959;
+    --green: #69F278;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+    width: 100%;
+    height: 100%;
+}
+
+html {
+    font-family: 'Anek Tamil', sans-serif;
+    overflow: hidden;
+}
+
+body {
+    margin: 0;
+    @include webpBg('/apps/bar/src/assets/bg', 'png');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}

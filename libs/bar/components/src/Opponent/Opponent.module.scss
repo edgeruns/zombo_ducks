@@ -1,0 +1,37 @@
+@import 'libs/bar/styles/src/mixins';
+
+.root {
+    position: absolute;
+    left: pxvw(117);
+    bottom: pxvw(-9);
+    transform: rotateY(180deg);
+
+    &_arrived {
+        animation: duckArrive 1.5s linear forwards;
+    }
+}
+
+@keyframes duckArrive {
+    from {
+        left: pxvw(60);
+        bottom: pxvw(17);
+        transform: scale(0.69) rotateY(180deg);
+        opacity: 0;
+    }
+
+    25% {
+        opacity: 1;
+    }
+
+    50% {
+        left: pxvw(60);
+        bottom: pxvw(17);
+        transform: scale(0.69) rotateY(180deg);
+    }
+
+    to {
+        left: pxvw(117);
+        bottom: pxvw(-9);
+        transform: scale(1) rotateY(180deg);
+    }
+}

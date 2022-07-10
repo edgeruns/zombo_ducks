@@ -1,0 +1,49 @@
+@import 'libs/bar/styles/src/mixins';
+
+.root {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: pxvw(50);
+    padding: 0 pxvw(54);
+    opacity: 0;
+    pointer-events: none;
+    background: linear-gradient(180deg, #140729 0%, rgba(0, 0, 0, 0) 190%);
+    transition: opacity 0.2s;
+    z-index: 2;
+
+    &_visible {
+        opacity: 1;
+        pointer-events: auto;
+    }
+}
+
+.gamer {
+    display: flex;
+    align-items: center;
+
+    &_opponent {
+        .health,
+        .games {
+            margin-right: pxvw(16);
+        }
+    }
+
+    &_player {
+        .games {
+            margin-right: pxvw(16);
+        }
+
+        .health {
+            margin-left: pxvw(16);
+        }
+    }
+}
+
+.health {
+    min-width: pxvw(87);
+}

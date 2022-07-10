@@ -1,0 +1,17 @@
+@import 'libs/bar/styles/src/mixins';
+
+.root {
+    position: absolute;
+    right: pxvw(117);
+    bottom: pxvw(-9);
+
+    &_turned {
+        .duck {
+            transform: rotateY(0);
+        }
+    }
+}
+
+.duck {
+    transform: rotateY(180deg);
+}

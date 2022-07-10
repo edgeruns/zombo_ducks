@@ -1,0 +1,16 @@
+@import 'libs/bar/styles/src/mixins';
+
+.root {
+    position: absolute;
+    left: 50%;
+    bottom: pxvw(50);
+    pointer-events: none;
+    opacity: 0;
+    transform: translateX(-50%);
+    transition: opacity 0.2s;
+
+    &_visible {
+        opacity: 1;
+        pointer-events: auto;
+    }
+}

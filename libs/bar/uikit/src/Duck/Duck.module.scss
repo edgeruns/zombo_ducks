@@ -1,0 +1,27 @@
+@import 'libs/bar/styles/src/mixins';
+
+.root {
+    width: pxvw(215);
+    height: pxvw(289);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+
+    &_skin {
+        &-default {
+            &.root_status {
+                &-normal {
+                    background-image: url('./assets/skins/default/normal.png');
+                }
+
+                &-lose {
+                    background-image: url('./assets/skins/default/lose.png');
+                }
+
+                &-victory {
+                    background-image: url('./assets/skins/default/victory.png');
+                }
+            }
+        }
+    }
+}

@@ -1,6 +1,12 @@
 {
     "version": 2,
     "projects": {
+        "bar": "apps/bar",
+        "bar-components": "libs/bar/components",
+        "bar-data": "libs/bar/data",
+        "bar-styles": "libs/bar/styles",
+        "bar-uikit": "libs/bar/uikit",
+        "bar-utils": "libs/bar/utils",
         "home-layout": "libs/home/layout",
         "home-main": "libs/home/main",
         "home-overview": "libs/home/overview",
