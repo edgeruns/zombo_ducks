@@ -1,14 +1,16 @@
 import React, { FC, useCallback } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import classNames from 'classnames'
 
-import { selectors } from '@apps/bar/data'
+import { AppDispatch, actions, selectors } from '@apps/bar/data'
 import { Button } from '@apps/bar/uikit'
 import { useFakeActions } from '@apps/bar/utils'
 
 import styles from './StartButton.module.scss'
 
 export const StartButton: FC = () => {
+    const dispatch: AppDispatch = useDispatch()
+
     const { fakeSearch } = useFakeActions()
 
     const isStartScene = useSelector(selectors.isStartScene)
@@ -19,8 +21,9 @@ export const StartButton: FC = () => {
     )
 
     const handleClick = useCallback(() => {
+        dispatch(actions.startSearch())
         fakeSearch()
-    }, [fakeSearch])
+    }, [dispatch, fakeSearch])
 
     return (
         <Button

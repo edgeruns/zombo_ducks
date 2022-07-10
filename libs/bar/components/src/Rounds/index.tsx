@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import classNames from 'classnames'
 
 import { slice, selectors } from '@apps/bar/data'
-import { useFakeActions } from '@apps/bar/utils'
 
 import watchSrc from './assets/watch.svg'
 import watchExpiredSrc from './assets/watch-expired.svg'
@@ -15,18 +14,17 @@ export const Rounds: FC = () => {
 
     const isRoundScene = useSelector(selectors.isRoundScene)
     const isRoundFinishScene = useSelector(selectors.isRoundFinishScene)
+    const isGameFinishScene = useSelector(selectors.isGameFinishScene)
 
     const current = useSelector(selectors.getRoundsNum)
     const count = useSelector(selectors.getRoundsCount)
     const timeLeft = useSelector(selectors.getRoundTimeLeft)
     const isTimeExpired = useSelector(selectors.isRoundTimeExpired)
 
-    const { fakeRoundFinish } = useFakeActions()
-
     const timeIntervalIdRef = useRef<NodeJS.Timer>()
 
     const isVisible = isRoundScene || isRoundFinishScene
-    const stopTimer = isTimeExpired || isRoundFinishScene
+    const stopTimer = isTimeExpired || isRoundFinishScene || isGameFinishScene
 
     const text = `Round ${current}/${count}`
 
@@ -52,12 +50,6 @@ export const Rounds: FC = () => {
             }, 1000)
         }
     }, [dispatch, current, count])
-
-    useEffect(() => {
-        if (isTimeExpired && isRoundScene) {
-            fakeRoundFinish()
-        }
-    }, [isTimeExpired, isRoundScene, fakeRoundFinish])
 
     return (
         <div className={rootClassName}>

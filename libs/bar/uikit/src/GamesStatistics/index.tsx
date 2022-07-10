@@ -3,15 +3,15 @@ import classNames from 'classnames'
 
 import bowlSrc from './assets/bowl.svg'
 
-import styles from './Games.module.scss'
+import styles from './GamesStatistics.module.scss'
 
-type GamesProps = {
+type GamesStatisticsProps = {
     won: number
     all: number
     className?: string
 }
 
-export const Games: FC<GamesProps> = props => {
+export const GamesStatistics: FC<GamesStatisticsProps> = props => {
     const { won, all, className } = props
 
     const rootClassName = classNames(

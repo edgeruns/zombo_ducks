@@ -1,7 +1,7 @@
 import {createSelector} from '@reduxjs/toolkit'
 
-import { AppState, Round, Scene, UserStatus } from './types'
-import { MAX_ATTACK_COUNT, MAX_DEFENDE_COUNT } from './constants'
+import {AppState, GameResultType, Round, Scene, UserStatus} from './types'
+import {MAX_ATTACK_COUNT, MAX_DEFENDE_COUNT} from './constants'
 
 export const getScene = (appState: AppState) => appState.bar.scene
 export const getPlayer = (appState: AppState) => appState.bar.player
@@ -11,6 +11,8 @@ export const getRounds = (appState: AppState) => appState.bar.rounds
 export const getRoundsNum = (appState: AppState) => appState.bar.rounds.length
 export const getRoundsCount = (appState: AppState) => appState.bar.game?.rounds || 0
 export const getRoundTimeLeft = (appState: AppState) => appState.bar.timeLeft
+export const getGameResult = (appState: AppState) => appState.bar.game?.result
+export const isAttacked = (appState: AppState) => appState.bar.attacked
 
 export const isStartScene = createSelector(
     [getScene],
@@ -37,6 +39,11 @@ export const isRoundFinishScene = createSelector(
     (scene) => scene === Scene.RoundFinish
 )
 
+export const isGameFinishScene = createSelector(
+    [getScene],
+    (scene) => scene === Scene.GameFinish
+)
+
 export const getCurrentRound = createSelector(
     [getRounds],
     (rounds) => rounds[rounds.length - 1] as Round | undefined
@@ -61,6 +68,13 @@ export const getRoundPlayer = createSelector(
     }
 )
 
+export const getPlayerHealth = createSelector(
+    [getRoundPlayer],
+    (player) => {
+        return Math.max(player?.health ?? 100, 0)
+    }
+)
+
 export const getRoundOpponent = createSelector(
     [getOpponent, getCurrentRound],
     (opponent, round) => {
@@ -77,6 +91,13 @@ export const getRoundOpponent = createSelector(
                 all: opponent.statistics.allGames
             }
         }
+    }
+)
+
+export const getOpponentHealth = createSelector(
+    [getRoundOpponent],
+    (opponent) => {
+        return Math.max(opponent?.health ?? 100, 0)
     }
 )
 
@@ -144,8 +165,12 @@ export const getOpponentDamage = createSelector(
 )
 
 export const getPlayerStatus = createSelector(
-    [getPlayerDamage, isRoundFinishScene],
-    (damage, isRoundFinish) => {
+    [getPlayerDamage, getGameResult, isRoundFinishScene, isGameFinishScene],
+    (damage, gameResult, isRoundFinish, isGameFinish) => {
+        if (isGameFinish && gameResult) {
+            return gameResult.type === GameResultType.Victory ? UserStatus.Victory : UserStatus.Lose
+        }
+
         if (isRoundFinish) {
             return damage === 0 ? UserStatus.Victory : UserStatus.Lose
         }
@@ -166,16 +191,16 @@ export const getOpponentStatus = createSelector(
 )
 
 export const isDefendDisabled = createSelector(
-    [isRoundTimeExpired, isRoundFinishScene],
-    (isTimeExpired, isFinishScene) => {
-        return isTimeExpired || isFinishScene
+    [isAttacked, isRoundTimeExpired, isRoundFinishScene],
+    (attacked, isTimeExpired, isFinishScene) => {
+        return attacked || isTimeExpired || isFinishScene
     }
 )
 
 export const isAttackDisabled = createSelector(
-    [isRoundTimeExpired, isRoundFinishScene],
-    (isTimeExpired, isFinishScene) => {
-        return isTimeExpired || isFinishScene
+    [isAttacked, isRoundTimeExpired, isRoundFinishScene],
+    (attacked, isTimeExpired, isFinishScene) => {
+        return attacked || isTimeExpired || isFinishScene
     }
 )
 
@@ -187,4 +212,23 @@ export const isMaxDefences = createSelector(
 export const isMaxAttacks = createSelector(
     [getPlayerAttacks],
     (attacks) => attacks.length === MAX_ATTACK_COUNT
+)
+
+export const getGameProfit = createSelector(
+    [getGameResult],
+    (result) => result?.profit ?? 0
+)
+
+export const isVictory = createSelector(
+    [getGameResult],
+    (result) => {
+        return result?.type === GameResultType.Victory
+    }
+)
+
+export const isLose = createSelector(
+    [getGameResult],
+    (result) => {
+        return result?.type === GameResultType.Lose
+    }
 )

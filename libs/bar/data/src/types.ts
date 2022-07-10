@@ -5,12 +5,12 @@ export type AppState = ReturnType<AppStore['getState']>
 export type AppDispatch = typeof store.dispatch
 
 export enum Scene {
-    Tutorial = 'tutorial',
     Start = 'start',
     Searching = 'searching',
     GameStart = 'game-start',
     Round = 'round',
-    RoundFinish = 'round-finish'
+    RoundFinish = 'round-finish',
+    GameFinish = 'game-finish'
 }
 
 export enum UserSkins {
@@ -40,10 +40,21 @@ export type User = {
     }
 }
 
+export enum GameResultType {
+    Victory = 'victory',
+    Lose = 'lose'
+}
+
+type GameResult = {
+    type: GameResultType
+    profit: number
+}
+
 export type Game = {
     id: number
     rounds: number
     opponent: User
+    result: GameResult | null
 }
 
 export type Round = {
@@ -65,9 +76,10 @@ export type Round = {
 export enum Actions {
     StartSearch = 'START-SEARCH',
     GameStart = 'GAME-START',
-    Attack = 'attack',
+    Attack = 'ATTACK',
     RoundStart = 'ROUND-START',
-    RoundFinish = 'ROUND-FINISH'
+    RoundFinish = 'ROUND-FINISH',
+    GameFinish = 'GAME-FINISH'
 }
 
 type StartSearchActionArgs = {
@@ -85,6 +97,12 @@ type AttackActionArgs = {
         attacks: BodyParts[]
         defences: BodyParts[]
     }
+}
+export type SendActionPayload = {
+    success: boolean
+    args:
+        | StartSearchActionArgs
+        | AttackActionArgs
 }
 
 export type SendAction =
@@ -129,20 +147,35 @@ type RoundFinishActionPayload = {
     }
 }
 
+type GameFinishActionPayload = {
+    type: Actions.GameFinish,
+    data: {
+        type: GameResultType
+        profit: number
+        statistics: {
+            allGames: number
+            wonGames: number
+        }
+    }
+}
+
 export type ReceiveActionPayload =
     | GameStartActionPayload
     | RoundStartActionPayload
     | RoundFinishActionPayload
+    | GameFinishActionPayload
 
 export type ReceiveAction =
     | GameStartActionPayload
     | RoundStartActionPayload
     | RoundFinishActionPayload
+    | GameFinishActionPayload
 
 export type State = {
     scene: Scene
     player: User | null
     game: Game | null
     timeLeft: number
+    attacked: boolean
     rounds: Round[]
 }

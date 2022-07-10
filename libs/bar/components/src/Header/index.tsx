@@ -3,9 +3,7 @@ import { useSelector } from 'react-redux'
 import classNames from 'classnames'
 
 import { selectors } from '@apps/bar/data'
-import { ProgressBar, ProgressBarColors, Games } from '@apps/bar/uikit'
-
-import { ProfileInfo } from './ProfileInfo'
+import { ProgressBar, ProgressBarColors, GamesStatistics, ProfileInfo } from '@apps/bar/uikit'
 
 import styles from './Header.module.scss'
 
@@ -16,8 +14,8 @@ export const Header: FC = () => {
     const player = useSelector(selectors.getRoundPlayer)
     const opponent = useSelector(selectors.getRoundOpponent)
 
-    const playerHealth = `${player?.health}/100`
-    const opponentHealth = `${opponent?.health}/100`
+    const playerHealth = useSelector(selectors.getPlayerHealth)
+    const opponentHealth = useSelector(selectors.getOpponentHealth)
 
     const isVisible = isRoundScene || isRoundFinishScene
 
@@ -43,11 +41,11 @@ export const Header: FC = () => {
                     <ProgressBar
                         progress={opponent.health}
                         color={ProgressBarColors.Red}
-                        text={opponentHealth}
+                        text={`${opponentHealth}/100`}
                         className={styles.health}
                     />
 
-                    <Games
+                    <GamesStatistics
                         won={opponent.games.won}
                         all={opponent.games.all}
                         className={styles.games}
@@ -62,7 +60,7 @@ export const Header: FC = () => {
 
             {player && (
                 <div className={playerClassName}>
-                    <Games
+                    <GamesStatistics
                         won={player.games.won}
                         all={player.games.all}
                         className={styles.games}
@@ -76,7 +74,7 @@ export const Header: FC = () => {
                     <ProgressBar
                         progress={player.health}
                         color={ProgressBarColors.Purple}
-                        text={playerHealth}
+                        text={`${playerHealth}/100`}
                         reversed={true}
                         className={styles.health}
                     />

@@ -4,7 +4,15 @@
     position: absolute;
     left: pxvw(117);
     bottom: pxvw(-9);
+    opacity: 0;
+    pointer-events: none;
     transform: rotateY(180deg);
+    transition: opacity 0.2s;
+
+    &_visible {
+        opacity: 1;
+        pointer-events: auto;
+    }
 
     &_arrived {
         animation: duckArrive 1.5s linear forwards;

@@ -1,6 +1,6 @@
-import {createSlice, PayloadAction} from '@reduxjs/toolkit'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-import {Actions, BodyParts, Round, Scene, State} from './types'
+import { Actions, BodyParts, Round, Scene, State, UserSkins } from './types'
 import * as actions from './actions'
 import * as selectors from './selectors'
 
@@ -8,8 +8,9 @@ const initialState: State = {
     scene: Scene.Start,
     player: null,
     game: null,
+    rounds: [],
     timeLeft: -1,
-    rounds: []
+    attacked: false
 }
 
 export const slice = createSlice({
@@ -60,6 +61,16 @@ export const slice = createSlice({
             }
 
             return state
+        },
+
+        reset(state) {
+            state.scene = Scene.Start
+            state.game = null
+            state.rounds = []
+            state.timeLeft = -1
+            state.attacked = false
+
+            return state
         }
     },
     extraReducers: builder => {
@@ -71,6 +82,26 @@ export const slice = createSlice({
 
         builder.addCase(actions.startSearch.fulfilled, (state) => {
             state.scene = Scene.Searching
+            state.game = null
+            state.rounds = []
+            state.timeLeft = -1
+            state.attacked = false
+
+            return state
+        })
+
+        builder.addCase(actions.sendAction.fulfilled, (state, action) => {
+            const { success, args } = action.payload
+
+            if (success) {
+                switch (args.type) {
+                    case Actions.Attack: {
+                        state.attacked = true
+
+                        break
+                    }
+                }
+            }
 
             return state
         })
@@ -85,7 +116,8 @@ export const slice = createSlice({
                     state.game = {
                         id: data.gameId,
                         rounds: data.rounds,
-                        opponent: data.opponent
+                        opponent: data.opponent,
+                        result: null
                     }
 
                     state.scene = Scene.GameStart
@@ -112,6 +144,7 @@ export const slice = createSlice({
 
                     state.scene = Scene.Round
                     state.timeLeft = data.time
+                    state.attacked = false
                     state.rounds = [...state.rounds, newRound]
 
                     break
@@ -128,9 +161,26 @@ export const slice = createSlice({
 
                         round.player.health = data.player.health
                         round.player.damage = data.player.damage
+
+                        state.scene = Scene.RoundFinish
                     }
 
-                    state.scene = Scene.RoundFinish
+                    break
+                }
+
+                case Actions.GameFinish: {
+                    if (state.player && state.game) {
+                        state.player.statistics = {
+                            ...data.statistics
+                        }
+
+                        state.game.result = {
+                            type: data.type,
+                            profit: data.profit
+                        }
+
+                        state.scene = Scene.GameFinish
+                    }
 
                     break
                 }

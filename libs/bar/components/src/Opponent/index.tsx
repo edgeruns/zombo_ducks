@@ -10,7 +10,11 @@ import styles from './Opponent.module.scss'
 export const Opponent: FC = () => {
     const opponent = useSelector(selectors.getOpponent)
     const isGameStartScene = useSelector(selectors.isGameStartScene)
+    const isRoundScene = useSelector(selectors.isRoundScene)
+    const isRoundFinishScene = useSelector(selectors.isRoundFinishScene)
     const status = useSelector(selectors.getOpponentStatus)
+
+    const isVisible = isGameStartScene || isRoundScene || isRoundFinishScene
 
     if (!opponent) {
         return null
@@ -18,6 +22,7 @@ export const Opponent: FC = () => {
 
     const rootClassName = classNames(
         styles.root,
+        isVisible && styles.root_visible,
         isGameStartScene && styles.root_arrived
     )
 

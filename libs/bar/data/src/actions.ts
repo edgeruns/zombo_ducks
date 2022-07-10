@@ -4,6 +4,7 @@ import {
     Actions,
     AppState,
     SendAction,
+    SendActionPayload,
     ReceiveAction,
     ReceiveActionPayload,
     UserSkins,
@@ -12,12 +13,17 @@ import {
 import * as selectors from './selectors'
 
 export const sendAction = createAsyncThunk<
-    void,
+    SendActionPayload,
     SendAction
 >(
     'sendAction',
     async (args) => {
         console.log(`Send action ${args.type}:`, args.data)
+
+        return {
+            success: true,
+            args
+        }
     }
 )
 

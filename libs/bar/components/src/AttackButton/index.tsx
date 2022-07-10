@@ -1,4 +1,4 @@
-import React, { FC, useCallback, useState, useEffect } from 'react'
+import React, { FC, useCallback } from 'react'
 import { useSelector } from 'react-redux'
 import classNames from 'classnames'
 
@@ -13,10 +13,10 @@ export const AttackButton: FC = () => {
 
     const isRoundScene = useSelector(selectors.isRoundScene)
     const playerAttacks = useSelector(selectors.getPlayerAttacks)
+    const playerDefences = useSelector(selectors.getPlayerDefences)
+    const isAttacked = useSelector(selectors.isAttacked)
 
-    const [attacked, setAttacked] = useState(false)
-
-    const isVisible = !attacked && isRoundScene && playerAttacks.length > 0
+    const isVisible = !isAttacked && isRoundScene && (playerAttacks.length > 0 || playerDefences.length > 0)
 
     const rootClassName = classNames(
         styles.root,
@@ -24,20 +24,13 @@ export const AttackButton: FC = () => {
     )
 
     const handleClick = useCallback(() => {
-        setAttacked(true)
         fakeAttack()
     }, [fakeAttack])
-
-    useEffect(() => {
-        if (isRoundScene) {
-            setAttacked(false)
-        }
-    }, [isRoundScene])
 
     return (
         <Button
             className={rootClassName}
-            disabled={attacked}
+            disabled={isAttacked}
             onClick={handleClick}
         >
             ATTACK

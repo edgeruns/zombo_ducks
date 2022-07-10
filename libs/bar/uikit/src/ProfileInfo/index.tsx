@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 
-import styles from './HeaderProfileInfo.module.scss'
+import styles from './ProfileInfo.module.scss'
 
 type ProfileInfoProps = {
     avatar: string
