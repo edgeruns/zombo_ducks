@@ -3,12 +3,26 @@ import classNames from 'classnames'
 
 import styles from './Button.module.scss'
 
-type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement>
+type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
+    size?: 's' | 'm'
+    color?: 'yellow' | 'red'
+}
 
 export const Button: FC<ButtonProps> = props => {
-    const { className, children, ...restProps } = props
+    const {
+        size = 'm',
+        color = 'yellow',
+        className,
+        children,
+        ...restProps
+    } = props
 
-    const rootClassName = classNames(styles.root, className)
+    const rootClassName = classNames(
+        styles.root,
+        className,
+        styles[`root_color-${color}`],
+        styles[`root_size-${size}`]
+    )
 
     return (
         <button

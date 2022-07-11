@@ -1,13 +1,15 @@
-import React, { FC } from 'react'
-import { useSelector } from 'react-redux'
+import React, { FC, useCallback } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import classNames from 'classnames'
 
-import { selectors } from '@apps/bar/data'
-import { ProgressBar, ProgressBarColors, GamesStatistics, ProfileInfo } from '@apps/bar/uikit'
+import { AppDispatch, slice, selectors } from '@apps/bar/data'
+import { ProgressBar, ProgressBarColors, GamesStatistics, ProfileInfo, CrossButton } from '@apps/bar/uikit'
 
 import styles from './Header.module.scss'
 
 export const Header: FC = () => {
+    const dispatch: AppDispatch = useDispatch()
+
     const isRoundScene = useSelector(selectors.isRoundScene)
     const isRoundFinishScene = useSelector(selectors.isRoundFinishScene)
 
@@ -33,6 +35,10 @@ export const Header: FC = () => {
         styles.gamer,
         styles.gamer_player
     )
+
+    const handleQuitClick = useCallback(() => {
+        dispatch(slice.actions.setQuitPopupOpened(true))
+    }, [dispatch])
 
     return (
         <header className={rootClassName}>
@@ -80,6 +86,11 @@ export const Header: FC = () => {
                     />
                 </div>
             )}
+
+            <CrossButton
+                className={styles.quit}
+                onClick={handleQuitClick}
+            />
         </header>
     )
 }

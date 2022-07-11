@@ -3,13 +3,13 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import {
     Actions,
-    actions,
     AppDispatch,
     BodyParts,
     GameResultType,
     ReceiveAction,
-    selectors,
-    UserSkins
+    UserSkins,
+    actions,
+    selectors
 } from '@apps/bar/data'
 
 export const useFakeActions = () => {
@@ -98,9 +98,9 @@ export const useFakeActions = () => {
         dispatch(actions.attack())
     }, [dispatch])
 
-    const fakeGameFinish = useCallback(() => {
+    const fakeGameFinish = useCallback((isWinForce = false) => {
         if (player) {
-            const isWin = playerHealth > opponentHealth
+            const isWin = isWinForce || playerHealth > opponentHealth
             const { wonGames, allGames } = player.statistics
 
             const actionArgs: ReceiveAction = {
@@ -119,11 +119,18 @@ export const useFakeActions = () => {
         }
     }, [dispatch, player, playerHealth, opponentHealth])
 
+    const fakeQuit = useCallback(() => {
+        dispatch(actions.quitGame())
+
+        setTimeout(fakeGameFinish, 2000, false)
+    }, [dispatch, fakeGameFinish])
+
     return {
         fakeSearch,
         fakeRoundStart,
         fakeRoundFinish,
         fakeAttack,
-        fakeGameFinish
+        fakeGameFinish,
+        fakeQuit
     }
 }

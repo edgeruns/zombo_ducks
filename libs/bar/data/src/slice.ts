@@ -1,6 +1,6 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import {createSlice, PayloadAction} from '@reduxjs/toolkit'
 
-import { Actions, BodyParts, Round, Scene, State, UserSkins } from './types'
+import {Actions, BodyParts, Round, Scene, State} from './types'
 import * as actions from './actions'
 import * as selectors from './selectors'
 
@@ -10,7 +10,8 @@ const initialState: State = {
     game: null,
     rounds: [],
     timeLeft: -1,
-    attacked: false
+    attacked: false,
+    quitPopupOpened: false
 }
 
 export const slice = createSlice({
@@ -71,6 +72,12 @@ export const slice = createSlice({
             state.attacked = false
 
             return state
+        },
+
+        setQuitPopupOpened(state, action: PayloadAction<boolean>) {
+            state.quitPopupOpened = action.payload
+
+            return state
         }
     },
     extraReducers: builder => {
@@ -91,12 +98,19 @@ export const slice = createSlice({
         })
 
         builder.addCase(actions.sendAction.fulfilled, (state, action) => {
-            const { success, args } = action.payload
+            const { success } = action.payload
+            const { arg } = action.meta
 
             if (success) {
-                switch (args.type) {
+                switch (arg.type) {
                     case Actions.Attack: {
                         state.attacked = true
+
+                        break
+                    }
+
+                    case Actions.QuitGame: {
+                        state.quitPopupOpened = false
 
                         break
                     }

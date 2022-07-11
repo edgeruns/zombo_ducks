@@ -21,8 +21,7 @@ export const sendAction = createAsyncThunk<
         console.log(`Send action ${args.type}:`, args.data)
 
         return {
-            success: true,
-            args
+            success: true
         }
     }
 )
@@ -81,7 +80,7 @@ export const startSearch = createAsyncThunk<
 )
 
 export const attack = createAsyncThunk<
-    void,
+    SendActionPayload,
     void,
     { state: AppState }
 >(
@@ -104,7 +103,42 @@ export const attack = createAsyncThunk<
                 }
             }
 
-            await dispatch(sendAction(actionArgs))
+            return await dispatch(sendAction(actionArgs)).unwrap()
+        }
+
+        return {
+            success: false
         }
     }
 )
+
+export const quitGame = createAsyncThunk<
+    SendActionPayload,
+    void,
+    { state: AppState }
+>(
+    'quitGame',
+    async (_, { dispatch, getState }) => {
+        const state = getState()
+
+        const game = selectors.getGame(state)
+        const player = selectors.getPlayer(state)
+
+        if (game && player) {
+            const actionArgs: SendAction = {
+                type: Actions.QuitGame,
+                data: {
+                    gameId: game.id,
+                    userId: player.id
+                }
+            }
+
+            return await dispatch(sendAction(actionArgs)).unwrap()
+        }
+
+        return {
+            success: false
+        }
+    }
+)
+

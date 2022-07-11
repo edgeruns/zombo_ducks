@@ -79,7 +79,8 @@ export enum Actions {
     Attack = 'ATTACK',
     RoundStart = 'ROUND-START',
     RoundFinish = 'ROUND-FINISH',
-    GameFinish = 'GAME-FINISH'
+    GameFinish = 'GAME-FINISH',
+    QuitGame = 'QUIT-GAME'
 }
 
 type StartSearchActionArgs = {
@@ -98,16 +99,23 @@ type AttackActionArgs = {
         defences: BodyParts[]
     }
 }
+
+type QuitGameActionArgs = {
+    type: Actions.QuitGame,
+    data: {
+        gameId: number
+        userId: number
+    }
+}
+
 export type SendActionPayload = {
     success: boolean
-    args:
-        | StartSearchActionArgs
-        | AttackActionArgs
 }
 
 export type SendAction =
     | StartSearchActionArgs
     | AttackActionArgs
+    | QuitGameActionArgs
 
 type GameStartActionPayload = {
     type: Actions.GameStart,
@@ -177,5 +185,6 @@ export type State = {
     game: Game | null
     timeLeft: number
     attacked: boolean
-    rounds: Round[]
+    rounds: Round[],
+    quitPopupOpened: boolean
 }
