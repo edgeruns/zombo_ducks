@@ -60,9 +60,9 @@ export const useFakeActions = () => {
             }
 
             dispatch(actions.receiveAction(args))
-        }, 3000)
+        }, 10000)
 
-        setTimeout(fakeRoundStart, 4500)
+        setTimeout(fakeRoundStart, 13000)
     }, [dispatch, fakeRoundStart])
 
     const fakeRoundFinish = useCallback(() => {

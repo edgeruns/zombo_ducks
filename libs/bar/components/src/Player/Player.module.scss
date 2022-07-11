@@ -4,11 +4,19 @@
     position: absolute;
     right: pxvw(117);
     bottom: pxvw(-9);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s;
 
     &_turned {
         .duck {
             transform: rotateY(0);
         }
+    }
+
+    &_visible {
+        opacity: 1;
+        pointer-events: auto;
     }
 }
 

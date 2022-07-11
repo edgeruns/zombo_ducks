@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import classNames from 'classnames'
 
 import { AppDispatch, slice, actions, selectors } from '@apps/bar/data'
-import { useFakeActions } from '@apps/bar/utils'
+import { useFakeActions, Sounds } from '@apps/bar/utils'
 import { GamesStatistics, ProfileInfo, Button, CrossButton } from '@apps/bar/uikit'
 
 import styles from './ResultPopup.module.scss'
@@ -16,16 +16,16 @@ export const ResultPopup: FC = () => {
     const isGameFinishScene = useSelector(selectors.isGameFinishScene)
     const player = useSelector(selectors.getPlayer)
     const profit = useSelector(selectors.getGameProfit)
-    const isVictory = useSelector(selectors.isVictory)
-    const isLose = useSelector(selectors.isLose)
+    const isGameVictory = useSelector(selectors.isGameVictory)
+    const isGameLose = useSelector(selectors.isGameLose)
 
-    const title = isVictory ? 'VICTORY' : 'LOSE'
-    const profitText = isVictory ? `+ ${profit}` : profit
+    const title = isGameVictory ? 'VICTORY' : 'LOSE'
+    const profitText = isGameVictory ? `+ ${profit}` : profit
 
     const rootClassName = classNames(
         styles.root,
-        isLose && styles.root_lose,
-        isVictory && styles.root_victory,
+        isGameLose && styles.root_lose,
+        isGameVictory && styles.root_victory,
         isGameFinishScene && styles.root_visible,
     )
 
@@ -65,6 +65,7 @@ export const ResultPopup: FC = () => {
 
             <Button
                 className={styles.button}
+                sound={Sounds.Laugh}
                 onClick={handleTryAgainClick}
             >
                 TRY AGAIN

@@ -1,0 +1,17 @@
+@import 'libs/bar/styles/src/mixins';
+
+.root {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: pxvw(14);
+    left: pxvw(54);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s;
+
+    &_visible {
+        opacity: 1;
+        pointer-events: auto;
+    }
+}

@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import classNames from 'classnames'
 
 import { slice, selectors } from '@apps/bar/data'
+import { Sounds, playSound } from '@apps/bar/utils'
 
 import watchSrc from './assets/watch.svg'
 import watchExpiredSrc from './assets/watch-expired.svg'
@@ -24,6 +25,8 @@ export const Rounds: FC = () => {
     const timeIntervalIdRef = useRef<NodeJS.Timer>()
 
     const isVisible = isRoundScene || isRoundFinishScene
+    const isWatchBlinking = timeLeft <= 3 && timeLeft >= 1
+    const isWatchExpired = timeLeft <= 3
     const stopTimer = isTimeExpired || isRoundFinishScene || isGameFinishScene
 
     const text = `Round ${current}/${count}`
@@ -31,6 +34,11 @@ export const Rounds: FC = () => {
     const rootClassName = classNames(
         styles.root,
         isVisible && styles.root_visible
+    )
+
+    const watchClassName = classNames(
+        styles.watch,
+        isWatchBlinking && styles.watch_blinking
     )
 
     useEffect(() => {
@@ -51,16 +59,22 @@ export const Rounds: FC = () => {
         }
     }, [dispatch, current, count])
 
+    useEffect(() => {
+        if (timeLeft === 3) {
+            playSound(Sounds.Timer, true)
+        }
+    }, [timeLeft])
+
     return (
         <div className={rootClassName}>
             <span className={styles.text}>
                 {text}
             </span>
 
-            <div className={styles.watch}>
+            <div className={watchClassName}>
                 <img
                     className={styles.watch__icon}
-                    src={isTimeExpired ? watchExpiredSrc : watchSrc}
+                    src={isWatchExpired ? watchExpiredSrc : watchSrc}
                     alt="Watch"
                 />
 

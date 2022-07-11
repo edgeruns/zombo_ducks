@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import classNames from 'classnames'
 
 import { BodyParts, selectors, slice } from '@apps/bar/data'
+import { Sounds, playSound } from '@apps/bar/utils'
 import { BodyPart } from '@apps/bar/uikit'
 
 import { PARTS } from './constants'
@@ -36,8 +37,14 @@ export const Attack: FC = () => {
     )
 
     const handleBodyPartToggle = useCallback((part: BodyParts) => {
+        const selected = playerAttacks.includes(part)
+
+        if (!selected) {
+            playSound(Sounds.Hit, true)
+        }
+
         dispatch(slice.actions.attack(part))
-    }, [dispatch])
+    }, [dispatch, playerAttacks])
 
     return (
         <div className={rootClassName}>
@@ -57,6 +64,7 @@ export const Attack: FC = () => {
 
                     return (
                         <BodyPart
+                            key={part.type}
                             img={part.img}
                             part={part.type}
                             icon="hit"

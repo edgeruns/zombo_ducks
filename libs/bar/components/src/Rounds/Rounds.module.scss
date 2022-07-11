@@ -36,6 +36,10 @@
     margin-top: pxvw(3);
     user-select: none;
 
+    &_blinking {
+        animation: 1s watchBlinking infinite forwards;
+    }
+
     &__icon {
         position: absolute;
         top: 0;
@@ -51,5 +55,19 @@
         font-size: pxvw(24);
         font-weight: 700;
         line-height: pxvw(34);
+    }
+}
+
+@keyframes watchBlinking {
+    from {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    to {
+        transform: scale(1);
     }
 }

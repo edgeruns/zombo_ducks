@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React, {FC, useEffect} from 'react'
 import { useSelector } from 'react-redux'
 import classNames from 'classnames'
 
@@ -16,10 +16,6 @@ export const Opponent: FC = () => {
 
     const isVisible = isGameStartScene || isRoundScene || isRoundFinishScene
 
-    if (!opponent) {
-        return null
-    }
-
     const rootClassName = classNames(
         styles.root,
         isVisible && styles.root_visible,
@@ -28,11 +24,13 @@ export const Opponent: FC = () => {
 
     return (
         <div className={rootClassName}>
-            <Duck
-                skin={opponent.skin}
-                status={status}
-                className={styles.duck}
-            />
+            {opponent && (
+                <Duck
+                    skin={opponent.skin}
+                    status={status}
+                    className={styles.duck}
+                />
+            )}
         </div>
     )
 }

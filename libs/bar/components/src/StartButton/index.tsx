@@ -4,7 +4,7 @@ import classNames from 'classnames'
 
 import { AppDispatch, actions, selectors } from '@apps/bar/data'
 import { Button } from '@apps/bar/uikit'
-import { useFakeActions } from '@apps/bar/utils'
+import { useFakeActions, Sounds, playSound } from '@apps/bar/utils'
 
 import styles from './StartButton.module.scss'
 
@@ -14,13 +14,18 @@ export const StartButton: FC = () => {
     const { fakeSearch } = useFakeActions()
 
     const isStartScene = useSelector(selectors.isStartScene)
+    const player = useSelector(selectors.getPlayer)
+
+    const isVisible = isStartScene && player
 
     const rootClassName = classNames(
         styles.root,
-        isStartScene && styles.root_visible
+        isVisible && styles.root_visible
     )
 
     const handleClick = useCallback(() => {
+        playSound(Sounds.StartSearching)
+
         dispatch(actions.startSearch())
         fakeSearch()
     }, [dispatch, fakeSearch])
@@ -28,6 +33,7 @@ export const StartButton: FC = () => {
     return (
         <Button
             className={rootClassName}
+            sound={null}
             onClick={handleClick}
         >
             START

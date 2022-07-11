@@ -18,20 +18,19 @@ export const Player: FC = () => {
 
     const rootClassName = classNames(
         styles.root,
-        isTurned && styles['root_turned']
+        isTurned && styles.root_turned,
+        player && styles.root_visible
     )
-
-    if (!player) {
-        return null
-    }
 
     return (
         <div className={rootClassName}>
-            <Duck
-                className={styles.duck}
-                skin={player.skin}
-                status={status}
-            />
+            {player && (
+                <Duck
+                    className={styles.duck}
+                    skin={player.skin}
+                    status={status}
+                />
+            )}
         </div>
     )
 }

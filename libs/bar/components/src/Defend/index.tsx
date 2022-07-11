@@ -57,6 +57,7 @@ export const Defend: FC = () => {
 
                     return (
                         <BodyPart
+                            key={part.type}
                             img={part.img}
                             part={part.type}
                             icon="shield"

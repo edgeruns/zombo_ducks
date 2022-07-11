@@ -220,14 +220,28 @@ export const getGameProfit = createSelector(
     (result) => result?.profit ?? 0
 )
 
-export const isVictory = createSelector(
+export const isRoundVictory = createSelector(
+    [isRoundFinishScene, getPlayerDamage, getOpponentDamage],
+    (isRoundFinish, playerDamage, opponentDamage) => {
+        return isRoundFinish && playerDamage > opponentDamage
+    }
+)
+
+export const isRoundLose = createSelector(
+    [isRoundFinishScene, getPlayerDamage, getOpponentDamage],
+    (isRoundFinish, playerDamage, opponentDamage) => {
+        return isRoundFinish && playerDamage < opponentDamage
+    }
+)
+
+export const isGameVictory = createSelector(
     [getGameResult],
     (result) => {
         return result?.type === GameResultType.Victory
     }
 )
 
-export const isLose = createSelector(
+export const isGameLose = createSelector(
     [getGameResult],
     (result) => {
         return result?.type === GameResultType.Lose

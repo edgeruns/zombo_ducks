@@ -1,10 +1,12 @@
-import React, { FC } from 'react'
+import React, { FC, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import classNames from 'classnames'
 
 import { selectors } from '@apps/bar/data'
+import { Sounds, playSound } from '@apps/bar/utils'
 
 import spinnerSvg from './assets/spinner.svg'
+
 import styles from './Searching.module.scss'
 
 export const Searching: FC = () => {
@@ -14,6 +16,12 @@ export const Searching: FC = () => {
         styles.root,
         isSearchingScene && styles.root_visible
     )
+
+    useEffect(() => {
+        if (isSearchingScene) {
+            playSound(Sounds.Searching)
+        }
+    }, [isSearchingScene])
 
     return (
         <div className={rootClassName}>

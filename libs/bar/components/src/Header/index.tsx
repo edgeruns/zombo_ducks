@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import classNames from 'classnames'
 
 import { AppDispatch, slice, selectors } from '@apps/bar/data'
+import { Sounds, playSound } from '@apps/bar/utils'
 import { ProgressBar, ProgressBarColors, GamesStatistics, ProfileInfo, CrossButton } from '@apps/bar/uikit'
 
 import styles from './Header.module.scss'
