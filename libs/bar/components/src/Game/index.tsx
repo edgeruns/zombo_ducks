@@ -11,6 +11,7 @@ import { Player } from '../Player'
 import { Opponent } from '../Opponent'
 import { Header } from '../Header'
 import { Rounds } from '../Rounds'
+import { BodyPartsCheckbox } from '../BodyPartsCheckbox'
 import { Defend } from '../Defend'
 import { Attack } from '../Attack'
 import { GamersDamage } from '../GamersDamage'
@@ -118,6 +119,7 @@ export const Game: FC = () => {
             <Opponent />
             <Header />
             <Rounds />
+            <BodyPartsCheckbox />
             <Defend />
             <Attack />
             <GamersDamage />
