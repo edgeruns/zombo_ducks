@@ -1,15 +1,18 @@
 import React, { FC, useState, useCallback } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import classNames from 'classnames'
 
-import { selectors } from '@apps/bar/data'
+import { AppDispatch, Mode, slice, selectors } from '@apps/bar/data'
 import { isAudioDisabled, toggleAudio } from '@apps/bar/utils'
 
 import { SoundToggle } from './SoundToggle'
+import { Tutorial } from './Tutorial'
 
 import styles from './Menu.module.scss'
 
 export const Menu: FC = () => {
+    const dispatch: AppDispatch = useDispatch()
+
     const isStartScene = useSelector(selectors.isStartScene)
 
     const [audioDisabled, setAudioDisabled] = useState(isAudioDisabled())
@@ -23,12 +26,24 @@ export const Menu: FC = () => {
         setAudioDisabled(toggleAudio())
     }, [])
 
+    const handleTutorialClick = useCallback(() => {
+        dispatch(slice.actions.setMode(Mode.Tutorial))
+    }, [dispatch])
+
     return (
         <div className={rootClassName}>
-            <SoundToggle
-                audioDisabled={audioDisabled}
-                onClick={handleSoundToggle}
-            />
+            <div className={styles.item}>
+                <SoundToggle
+                    audioDisabled={audioDisabled}
+                    onClick={handleSoundToggle}
+                />
+            </div>
+
+            <div className={styles.item}>
+                <Tutorial
+                    onClick={handleTutorialClick}
+                />
+            </div>
         </div>
     )
 }

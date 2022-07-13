@@ -18,15 +18,16 @@ type Icons = 'shield' | 'hit'
 type BodyPartProps = {
     img: string
     part: BodyParts
-    icon: Icons
-    selected: boolean
-    defended: boolean
-    damaged: boolean
-    disabled: boolean
-    darked: boolean
+    icon?: Icons
+    size?: 's' | 'm'
+    selected?: boolean
+    defended?: boolean
+    damaged?: boolean
+    disabled?: boolean
+    darked?: boolean
     reversed?: boolean
     className?: string
-    onToggle: (part: BodyParts) => void
+    onToggle?: (part: BodyParts) => void
 }
 
 export const BodyPart: FC<BodyPartProps> = props => {
@@ -34,11 +35,12 @@ export const BodyPart: FC<BodyPartProps> = props => {
         img,
         part,
         icon,
-        selected,
-        defended,
-        damaged,
-        darked,
-        disabled,
+        size = 'm',
+        selected = false,
+        defended = false,
+        damaged = false,
+        darked = false,
+        disabled = false,
         reversed = false,
         className,
         onToggle
@@ -47,6 +49,7 @@ export const BodyPart: FC<BodyPartProps> = props => {
     const rootClassName = classNames(
         styles.root,
         className,
+        styles[`root_size-${size}`],
         reversed && styles.root_reversed,
         selected && styles.root_selected,
         defended && styles.root_defended,
@@ -56,7 +59,7 @@ export const BodyPart: FC<BodyPartProps> = props => {
     )
 
     const handleToggle = useCallback(() => {
-        onToggle(part)
+        onToggle && onToggle(part)
     }, [part, onToggle])
 
     return (
@@ -70,11 +73,13 @@ export const BodyPart: FC<BodyPartProps> = props => {
                 alt={part}
             />
 
-            <img
-                className={styles.icon}
-                src={iconsSrc[icon]}
-                alt={icon}
-            />
+            {icon && (
+                <img
+                    className={styles.icon}
+                    src={iconsSrc[icon]}
+                    alt={icon}
+                />
+            )}
         </div>
     )
 }

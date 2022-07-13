@@ -1,10 +1,11 @@
-import {createSlice, PayloadAction} from '@reduxjs/toolkit'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-import {Actions, BodyParts, Round, Scene, State} from './types'
+import { Actions, BodyParts, Round, Scene, Mode, State } from './types'
 import * as actions from './actions'
 import * as selectors from './selectors'
 
 const initialState: State = {
+    mode: Mode.Game,
     scene: Scene.Start,
     player: null,
     game: null,
@@ -76,6 +77,12 @@ export const slice = createSlice({
 
         setQuitPopupOpened(state, action: PayloadAction<boolean>) {
             state.quitPopupOpened = action.payload
+
+            return state
+        },
+
+        setMode(state, action: PayloadAction<Mode>) {
+            state.mode = action.payload
 
             return state
         }

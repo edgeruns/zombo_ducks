@@ -66,7 +66,7 @@ export const useFakeActions = () => {
     }, [dispatch, fakeRoundStart])
 
     const fakeRoundFinish = useCallback(() => {
-        const opponentAttacks = [BodyParts.Head, BodyParts.Torso]
+        const opponentAttacks = [BodyParts.Head]
         const opponentDefences = [BodyParts.Head, BodyParts.Torso]
 
         const playerDamaged = opponentAttacks.filter(part => !playerDefences.includes(part))

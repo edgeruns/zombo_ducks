@@ -9,12 +9,13 @@ import styles from './Player.module.scss'
 
 export const Player: FC = () => {
     const player = useSelector(selectors.getPlayer)
+    const isTutorialMode = useSelector(selectors.isTutorialMode)
     const isGameStartScene = useSelector(selectors.isGameStartScene)
     const isRoundScene = useSelector(selectors.isRoundScene)
     const isRoundFinishScene = useSelector(selectors.isRoundFinishScene)
     const status = useSelector(selectors.getPlayerStatus)
 
-    const isTurned = isGameStartScene || isRoundScene || isRoundFinishScene
+    const isTurned = isTutorialMode || isGameStartScene || isRoundScene || isRoundFinishScene
 
     const rootClassName = classNames(
         styles.root,

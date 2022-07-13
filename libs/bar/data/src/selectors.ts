@@ -1,8 +1,9 @@
 import { createSelector } from '@reduxjs/toolkit'
 
-import { AppState, GameResultType, Round, Scene, UserStatus } from './types'
+import { AppState, GameResultType, Round, Scene, Mode, UserStatus } from './types'
 import { MAX_ATTACK_COUNT, MAX_DEFENDE_COUNT } from './constants'
 
+export const getMode = (appState: AppState) => appState.bar.mode
 export const getScene = (appState: AppState) => appState.bar.scene
 export const getPlayer = (appState: AppState) => appState.bar.player
 export const getGame = (appState: AppState) => appState.bar.game
@@ -14,6 +15,11 @@ export const getRoundTimeLeft = (appState: AppState) => appState.bar.timeLeft
 export const getGameResult = (appState: AppState) => appState.bar.game?.result
 export const isAttacked = (appState: AppState) => appState.bar.attacked
 export const isQuitPopupOpened = (appState: AppState) => appState.bar.quitPopupOpened
+
+export const isTutorialMode = createSelector(
+    [getMode],
+    (mode) => mode === Mode.Tutorial
+)
 
 export const isStartScene = createSelector(
     [getScene],

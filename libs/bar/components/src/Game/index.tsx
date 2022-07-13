@@ -19,6 +19,7 @@ import { RoundText } from '../RoundText'
 import { AttackButton } from '../AttackButton'
 import { ResultPopup } from '../ResultPopup'
 import { QuitPopup } from '../QuitPopup'
+import { TutorialPopup } from '../TutorialPopup'
 
 export const Game: FC = () => {
     const dispatch: AppDispatch = useDispatch()
@@ -127,6 +128,7 @@ export const Game: FC = () => {
             <AttackButton />
             <ResultPopup />
             <QuitPopup />
+            <TutorialPopup />
         </>
     )
 }

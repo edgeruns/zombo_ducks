@@ -4,6 +4,11 @@ export type AppStore = typeof store
 export type AppState = ReturnType<AppStore['getState']>
 export type AppDispatch = typeof store.dispatch
 
+export enum Mode {
+    Tutorial = 'tutorial',
+    Game = 'game'
+}
+
 export enum Scene {
     Start = 'start',
     Searching = 'searching',
@@ -180,6 +185,7 @@ export type ReceiveAction =
     | GameFinishActionPayload
 
 export type State = {
+    mode: Mode
     scene: Scene
     player: User | null
     game: Game | null

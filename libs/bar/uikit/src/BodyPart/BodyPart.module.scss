@@ -2,8 +2,6 @@
 
 .root {
     position: relative;
-    width: pxvw(56);
-    height: pxvw(56);
     border: pxvw(1.5) solid var(--dark-blue);
     border-radius: 50%;
     background-color: var(--gray-blue);
@@ -29,14 +27,49 @@
         cursor: pointer;
     }
 
+    &_size {
+        &-s {
+            width: pxvw(48);
+            height: pxvw(48);
+
+            &.root_reversed {
+                .icon {
+                    left: unset;
+                    right: pxvw(-16);
+                }
+            }
+
+            .icon {
+                top: pxvw(16);
+                left: pxvw(-16);
+                width: pxvw(48);
+                height: pxvw(48);
+            }
+        }
+
+        &-m {
+            width: pxvw(56);
+            height: pxvw(56);
+
+            &.root_reversed {
+                .icon {
+                    left: unset;
+                    right: pxvw(-20);
+                }
+            }
+
+            .icon {
+                top: pxvw(20);
+                left: pxvw(-20);
+                width: pxvw(56);
+                height: pxvw(56);
+            }
+        }
+    }
+
     &_reversed {
         .img {
             transform: rotateY(180deg);
-        }
-
-        .icon {
-            left: unset;
-            right: pxvw(-20);
         }
     }
 
@@ -66,6 +99,11 @@
     &_disabled {
         pointer-events: none;
         user-select: none;
+
+        .icon {
+            pointer-events: none;
+            user-select: none;
+        }
     }
 }
 
@@ -79,10 +117,6 @@
 
 .icon {
     position: absolute;
-    top: pxvw(20);
-    left: pxvw(-20);
-    width: pxvw(56);
-    height: pxvw(56);
     opacity: 0;
     pointer-events: none;
     user-select: none;

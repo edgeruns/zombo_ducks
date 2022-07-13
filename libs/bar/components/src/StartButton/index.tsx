@@ -13,10 +13,11 @@ export const StartButton: FC = () => {
 
     const { fakeSearch } = useFakeActions()
 
+    const isTutorialMode = useSelector(selectors.isTutorialMode)
     const isStartScene = useSelector(selectors.isStartScene)
     const player = useSelector(selectors.getPlayer)
 
-    const isVisible = isStartScene && player
+    const isVisible = !isTutorialMode && isStartScene && player
 
     const rootClassName = classNames(
         styles.root,

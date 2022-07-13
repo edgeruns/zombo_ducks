@@ -15,3 +15,11 @@
         pointer-events: auto;
     }
 }
+
+.item {
+    margin-right: pxvw(32);
+
+    &:last-of-type {
+        margin-right: 0;
+    }
+}
