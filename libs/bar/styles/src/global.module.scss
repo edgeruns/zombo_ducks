@@ -27,7 +27,7 @@ html {
 body {
     margin: 0;
     @include webpBg('/apps/bar/src/assets/bg', 'png');
-    background-position: center;
+    background-position: bottom;
     background-size: cover;
     background-repeat: no-repeat;
 }

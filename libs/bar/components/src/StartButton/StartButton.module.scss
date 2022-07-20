@@ -6,6 +6,7 @@
     bottom: pxvw(29);
     pointer-events: none;
     opacity: 0;
+    z-index: 2;
     transition: opacity 0.2s;
 
     &_visible {

@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import classNames from 'classnames'
 
 import { AppDispatch, slice, selectors } from '@apps/bar/data'
-import { Sounds, playSound } from '@apps/bar/utils'
 import { ProgressBar, ProgressBarColors, GamesStatistics, ProfileInfo, CrossButton } from '@apps/bar/uikit'
 
 import styles from './Header.module.scss'
@@ -11,11 +10,13 @@ import styles from './Header.module.scss'
 export const Header: FC = () => {
     const dispatch: AppDispatch = useDispatch()
 
+    const isTutorialMode = useSelector(selectors.isTutorialMode)
+    const isGameStartScene = useSelector(selectors.isGameStartScene)
     const isRoundScene = useSelector(selectors.isRoundScene)
     const isRoundFinishScene = useSelector(selectors.isRoundFinishScene)
 
-    const player = useSelector(selectors.getRoundPlayer)
-    const opponent = useSelector(selectors.getRoundOpponent)
+    const player = useSelector(selectors.getPlayer)
+    const opponent = useSelector(selectors.getOpponent)
 
     const playerHealth = useSelector(selectors.getPlayerHealth)
     const opponentHealth = useSelector(selectors.getOpponentHealth)
@@ -24,6 +25,7 @@ export const Header: FC = () => {
 
     const rootClassName = classNames(
         styles.root,
+        isGameStartScene && styles.root_arrive,
         isVisible && styles.root_visible
     )
 
@@ -46,15 +48,15 @@ export const Header: FC = () => {
             {opponent && (
                 <div className={opponentClassName}>
                     <ProgressBar
-                        progress={opponent.health}
+                        progress={opponentHealth}
                         color={ProgressBarColors.Red}
                         text={`${opponentHealth}/100`}
                         className={styles.health}
                     />
 
                     <GamesStatistics
-                        won={opponent.games.won}
-                        all={opponent.games.all}
+                        won={opponent.statistics.wonGames}
+                        all={opponent.statistics.allGames}
                         className={styles.games}
                     />
 
@@ -68,8 +70,8 @@ export const Header: FC = () => {
             {player && (
                 <div className={playerClassName}>
                     <GamesStatistics
-                        won={player.games.won}
-                        all={player.games.all}
+                        won={player.statistics.wonGames}
+                        all={player.statistics.allGames}
                         className={styles.games}
                     />
 
@@ -79,7 +81,7 @@ export const Header: FC = () => {
                     />
 
                     <ProgressBar
-                        progress={player.health}
+                        progress={playerHealth}
                         color={ProgressBarColors.Purple}
                         text={`${playerHealth}/100`}
                         reversed={true}
@@ -88,10 +90,12 @@ export const Header: FC = () => {
                 </div>
             )}
 
-            <CrossButton
-                className={styles.quit}
-                onClick={handleQuitClick}
-            />
+            {!isTutorialMode && (
+                <CrossButton
+                    className={styles.quit}
+                    onClick={handleQuitClick}
+                />
+            )}
         </header>
     )
 }

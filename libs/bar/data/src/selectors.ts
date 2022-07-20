@@ -9,10 +9,10 @@ export const getPlayer = (appState: AppState) => appState.bar.player
 export const getGame = (appState: AppState) => appState.bar.game
 export const getOpponent = (appState: AppState) => appState.bar.game?.opponent
 export const getRounds = (appState: AppState) => appState.bar.rounds
-export const getRoundsNum = (appState: AppState) => appState.bar.rounds.length
 export const getRoundsCount = (appState: AppState) => appState.bar.game?.rounds || 0
-export const getRoundTimeLeft = (appState: AppState) => appState.bar.timeLeft
+export const getTimeLeft = (appState: AppState) => appState.bar.timeLeft
 export const getGameResult = (appState: AppState) => appState.bar.game?.result
+export const isRoundStarted = (appState: AppState) => appState.bar.roundStarted
 export const isAttacked = (appState: AppState) => appState.bar.attacked
 export const isQuitPopupOpened = (appState: AppState) => appState.bar.quitPopupOpened
 
@@ -51,6 +51,16 @@ export const isGameFinishScene = createSelector(
     (scene) => scene === Scene.GameFinish
 )
 
+export const getRoundsNum = createSelector(
+    [getRounds, isGameStartScene],
+    (rounds, isGameStart) => isGameStart ? 1 : rounds.length
+)
+
+export const getRoundTimeLeft = createSelector(
+    [getTimeLeft, isGameStartScene],
+    (timeLeft, isGameStart) => isGameStart ? 10 : timeLeft
+)
+
 export const getCurrentRound = createSelector(
     [getRounds],
     (rounds) => rounds[rounds.length - 1] as Round | undefined
@@ -67,10 +77,6 @@ export const getRoundPlayer = createSelector(
             nickname: player.nickname,
             avatar: player.avatar,
             health: round.player.health,
-            games: {
-                won: player.statistics.wonGames,
-                all: player.statistics.allGames
-            }
         }
     }
 )
@@ -93,10 +99,6 @@ export const getRoundOpponent = createSelector(
             nickname: opponent.nickname,
             avatar: opponent.avatar,
             health: round.opponent.health,
-            games: {
-                won: opponent.statistics.wonGames,
-                all: opponent.statistics.allGames
-            }
         }
     }
 )
@@ -198,16 +200,16 @@ export const getOpponentStatus = createSelector(
 )
 
 export const isDefendDisabled = createSelector(
-    [isAttacked, isRoundTimeExpired, isRoundFinishScene],
-    (attacked, isTimeExpired, isFinishScene) => {
-        return attacked || isTimeExpired || isFinishScene
+    [isAttacked, isRoundTimeExpired, isRoundFinishScene, isGameStartScene],
+    (attacked, isTimeExpired, isFinishScene, isGameStart) => {
+        return attacked || isTimeExpired || isFinishScene || isGameStart
     }
 )
 
 export const isAttackDisabled = createSelector(
-    [isAttacked, isRoundTimeExpired, isRoundFinishScene],
-    (attacked, isTimeExpired, isFinishScene) => {
-        return attacked || isTimeExpired || isFinishScene
+    [isAttacked, isRoundTimeExpired, isRoundFinishScene, isGameStartScene],
+    (attacked, isTimeExpired, isFinishScene, isGameStart) => {
+        return attacked || isTimeExpired || isFinishScene || isGameStart
     }
 )
 

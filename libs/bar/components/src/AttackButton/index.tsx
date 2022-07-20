@@ -1,15 +1,14 @@
 import React, { FC, useCallback } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import classNames from 'classnames'
 
-import { selectors } from '@apps/bar/data'
+import { AppDispatch, actions, selectors } from '@apps/bar/data'
 import { Button } from '@apps/bar/uikit'
-import { useFakeActions } from '@apps/bar/utils'
 
 import styles from './AttackButton.module.scss'
 
 export const AttackButton: FC = () => {
-    const { fakeAttack } = useFakeActions()
+    const dispatch: AppDispatch = useDispatch()
 
     const isRoundScene = useSelector(selectors.isRoundScene)
     const playerAttacks = useSelector(selectors.getPlayerAttacks)
@@ -24,8 +23,8 @@ export const AttackButton: FC = () => {
     )
 
     const handleClick = useCallback(() => {
-        fakeAttack()
-    }, [fakeAttack])
+        dispatch(actions.attack())
+    }, [dispatch])
 
     return (
         <Button

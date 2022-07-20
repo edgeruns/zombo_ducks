@@ -1,12 +1,19 @@
 @import 'libs/bar/styles/src/mixins';
+@import 'libs/bar/styles/src/vars';
+@import 'libs/bar/styles/src/anims';
 
 .root {
     position: absolute;
     right: pxvw(53);
-    bottom: pxvw(50);
+    bottom: pxvw(45);
     opacity: 0;
     pointer-events: none;
+    z-index: 2;
     transition: opacity 0.2s;
+
+    &_arrive {
+        animation: fadeIn 0.2s 2s forwards;
+    }
 
     &_visible {
         opacity: 1;

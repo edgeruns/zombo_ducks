@@ -13,9 +13,11 @@ import styles from './Rounds.module.scss'
 export const Rounds: FC = () => {
     const dispatch = useDispatch()
 
+    const isGameStartScene = useSelector(selectors.isGameStartScene)
     const isRoundScene = useSelector(selectors.isRoundScene)
     const isRoundFinishScene = useSelector(selectors.isRoundFinishScene)
     const isGameFinishScene = useSelector(selectors.isGameFinishScene)
+    const isRoundStarted = useSelector(selectors.isRoundStarted)
 
     const current = useSelector(selectors.getRoundsNum)
     const count = useSelector(selectors.getRoundsCount)
@@ -33,6 +35,7 @@ export const Rounds: FC = () => {
 
     const rootClassName = classNames(
         styles.root,
+        isGameStartScene && styles.root_arrive,
         isVisible && styles.root_visible
     )
 
@@ -50,14 +53,14 @@ export const Rounds: FC = () => {
     }, [stopTimer])
 
     useEffect(() => {
-        if (current > 0 && current <= count) {
+        if (isRoundStarted && current > 0 && current <= count) {
             let time = timeLeft
 
             timeIntervalIdRef.current = setInterval(() => {
                 dispatch(slice.actions.setTimeLeft(--time))
             }, 1000)
         }
-    }, [dispatch, current, count])
+    }, [dispatch, current, count, isRoundStarted])
 
     useEffect(() => {
         if (timeLeft === 3) {

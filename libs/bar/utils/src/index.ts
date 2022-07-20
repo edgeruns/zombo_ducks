@@ -1,3 +1,3 @@
 export * from './isWebpSupported'
-export * from './useFakeActions'
+export * from './useTutorial'
 export * from './sounds'

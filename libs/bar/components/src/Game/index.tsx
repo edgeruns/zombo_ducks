@@ -2,7 +2,7 @@ import React, { FC, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { AppDispatch, actions, selectors } from '@apps/bar/data'
-import { isWebpSupported, useFakeActions, Sounds, playSound } from '@apps/bar/utils'
+import { isWebpSupported, Sounds, playSound } from '@apps/bar/utils'
 
 import { StartButton } from '../StartButton'
 import { Menu } from '../Menu'
@@ -20,6 +20,7 @@ import { AttackButton } from '../AttackButton'
 import { ResultPopup } from '../ResultPopup'
 import { QuitPopup } from '../QuitPopup'
 import { TutorialPopup } from '../TutorialPopup'
+import { Tutorial } from '../Tutorial'
 
 export const Game: FC = () => {
     const dispatch: AppDispatch = useDispatch()
@@ -28,16 +29,10 @@ export const Game: FC = () => {
     const isStartScene = useSelector(selectors.isStartScene)
     const isGameStartScene = useSelector(selectors.isGameStartScene)
     const isRoundScene = useSelector(selectors.isRoundScene)
-    const isRoundFinishScene = useSelector(selectors.isRoundFinishScene)
     const isRoundVictory = useSelector(selectors.isRoundVictory)
     const isRoundLose = useSelector(selectors.isRoundLose)
     const isGameVictory = useSelector(selectors.isGameVictory)
     const isGameLose = useSelector(selectors.isGameLose)
-    const isTimeExpired = useSelector(selectors.isRoundTimeExpired)
-    const roundsCount = useSelector(selectors.getRoundsCount)
-    const roundNum = useSelector(selectors.getRoundsNum)
-
-    const { fakeRoundStart, fakeRoundFinish, fakeGameFinish } = useFakeActions()
 
     useEffect(() => {
         const supported = isWebpSupported()
@@ -93,24 +88,6 @@ export const Game: FC = () => {
         dispatch(actions.getPlayer())
     }, [dispatch])
 
-    useEffect(() => {
-        if (isTimeExpired && isRoundScene) {
-            fakeRoundFinish()
-        }
-    }, [isTimeExpired, isRoundScene, fakeRoundFinish])
-
-    useEffect(() => {
-        if (isRoundFinishScene) {
-            setTimeout(fakeRoundStart, 3000)
-        }
-    }, [isRoundFinishScene, fakeRoundStart])
-
-    useEffect(() => {
-        if (roundNum === roundsCount && isRoundFinishScene) {
-            setTimeout(fakeGameFinish, 3000)
-        }
-    }, [roundNum, roundsCount, isRoundFinishScene, fakeGameFinish])
-
     return (
         <>
             <StartButton />
@@ -129,6 +106,7 @@ export const Game: FC = () => {
             <ResultPopup />
             <QuitPopup />
             <TutorialPopup />
+            <Tutorial />
         </>
     )
 }

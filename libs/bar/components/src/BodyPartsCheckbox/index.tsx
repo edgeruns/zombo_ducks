@@ -7,6 +7,7 @@ import { selectors, MAX_ATTACK_COUNT, MAX_DEFENDE_COUNT } from '@apps/bar/data'
 import styles from './BodyPartsCheckbox.module.scss'
 
 export const BodyPartsCheckbox: FC = () => {
+    const isGameStartScene = useSelector(selectors.isGameStartScene)
     const isRoundScene = useSelector(selectors.isRoundScene)
     const isRoundFinishScene = useSelector(selectors.isRoundFinishScene)
     const playerAttacks = useSelector(selectors.getPlayerAttacks)
@@ -19,6 +20,7 @@ export const BodyPartsCheckbox: FC = () => {
 
     const rootClassName = classNames(
         styles.root,
+        isGameStartScene && styles.root_arrive,
         isVisible && styles.root_visible
     )
 

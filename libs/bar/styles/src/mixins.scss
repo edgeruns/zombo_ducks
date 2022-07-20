@@ -10,6 +10,6 @@
     }
 }
 
-@function pxvw($px, $factor: 667) {
-    @return math.div($px, $factor) * 100vw;
+@function pxvw($px, $factor: 400) {
+    @return math.div($px, $factor) * 100vmin;
 }

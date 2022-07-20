@@ -3,15 +3,13 @@ import { useDispatch, useSelector } from 'react-redux'
 import classNames from 'classnames'
 
 import { AppDispatch, slice, actions, selectors } from '@apps/bar/data'
-import { useFakeActions, Sounds } from '@apps/bar/utils'
+import { Sounds } from '@apps/bar/utils'
 import { GamesStatistics, ProfileInfo, Button, CrossButton } from '@apps/bar/uikit'
 
 import styles from './ResultPopup.module.scss'
 
 export const ResultPopup: FC = () => {
     const dispatch: AppDispatch = useDispatch()
-
-    const { fakeSearch } = useFakeActions()
 
     const isGameFinishScene = useSelector(selectors.isGameFinishScene)
     const player = useSelector(selectors.getPlayer)
@@ -31,8 +29,7 @@ export const ResultPopup: FC = () => {
 
     const handleTryAgainClick = useCallback(() => {
         dispatch(actions.startSearch())
-        fakeSearch()
-    }, [dispatch, fakeSearch])
+    }, [dispatch])
 
     const handleCrossClick = useCallback(() => {
         dispatch(slice.actions.reset())
