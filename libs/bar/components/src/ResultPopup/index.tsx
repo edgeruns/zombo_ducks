@@ -17,7 +17,7 @@ export const ResultPopup: FC = () => {
     const isGameVictory = useSelector(selectors.isGameVictory)
     const isGameLose = useSelector(selectors.isGameLose)
 
-    const title = isGameVictory ? 'VICTORY' : 'LOSE'
+    const title = isGameVictory ? 'VICTORY!' : 'LOSE'
     const profitText = isGameVictory ? `+ ${profit}` : profit
 
     const rootClassName = classNames(

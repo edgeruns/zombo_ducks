@@ -8,7 +8,7 @@
     top: pxvw(64);
     left: pxvw(54);
     width: pxvw(272);
-    height: pxvw(206);
+    height: pxvw(236);
     padding: pxvw(16) 0 pxvw(24);
     opacity: 0;
     pointer-events: none;
@@ -39,14 +39,14 @@
 .title {
     margin: 0;
     color: var(--yellow);
-    font-size: pxvw(24);
-    line-height: pxvw(34);
+    font-size: pxvw(40);
+    line-height: pxvw(56);
 }
 
 .info {
     display: flex;
     align-items: center;
-    margin-top: pxvw(8);
+    margin-top: pxvw(16);
 }
 
 .games {
