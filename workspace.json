@@ -7,6 +7,7 @@
         "bar-styles": "libs/bar/styles",
         "bar-uikit": "libs/bar/uikit",
         "bar-utils": "libs/bar/utils",
+        "game-api": "apps/game-api",
         "home-layout": "libs/home/layout",
         "home-main": "libs/home/main",
         "home-overview": "libs/home/overview",
@@ -17,5 +18,6 @@
         "landing-styles": "libs/landing/styles",
         "launchpad": "apps/launchpad",
         "utils": "libs/utils"
-    }
+    },
+    "$schema": "./node_modules/nx/schemas/workspace-schema.json"
 }
