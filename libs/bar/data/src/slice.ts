@@ -1,6 +1,6 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import {createSlice, PayloadAction} from '@reduxjs/toolkit'
 
-import { Actions, BodyParts, Round, Scene, Mode, State } from './types'
+import {Actions, BodyParts, Mode, Round, Scene, State, UserSkins} from './types'
 import * as actions from './actions'
 import * as selectors from './selectors'
 
@@ -12,6 +12,7 @@ const initialState: State = {
     rounds: [],
     timeLeft: -1,
     attacked: false,
+    roundStarted: false,
     quitPopupOpened: false
 }
 
@@ -66,11 +67,13 @@ export const slice = createSlice({
         },
 
         reset(state) {
+            state.mode = Mode.Game
             state.scene = Scene.Start
             state.game = null
             state.rounds = []
             state.timeLeft = -1
             state.attacked = false
+            state.roundStarted = false
 
             return state
         },
@@ -83,6 +86,87 @@ export const slice = createSlice({
 
         setMode(state, action: PayloadAction<Mode>) {
             state.mode = action.payload
+
+            return state
+        },
+
+        startTutorialSearch(state) {
+            state.scene = Scene.Searching
+            state.game = null
+            state.rounds = []
+            state.timeLeft = -1
+            state.attacked = false
+
+            return state
+        },
+
+        startTutorialGame(state) {
+            state.scene = Scene.GameStart
+
+            state.game = {
+                id: 1,
+                rounds: 5,
+                result: null,
+                opponent: {
+                    id: 2,
+                    nickname: 'bot',
+                    skin: UserSkins.Default,
+                    avatar: '/assets/avatar.png',
+                    statistics: {
+                        allGames: 20,
+                        wonGames: 15
+                    }
+                }
+            }
+
+            return state
+        },
+
+        startTutorialRound(state) {
+            state.scene = Scene.Round
+            state.roundStarted = true
+            state.timeLeft = 10
+
+            state.rounds = [
+                {
+                    time: state.timeLeft,
+                    player: {
+                        health: 100,
+                        damage: 0,
+                        attacks: [],
+                        defences: []
+                    },
+                    opponent: {
+                        health: 100,
+                        damage: 0,
+                        attacks: [],
+                        defences: []
+                    }
+                }
+            ]
+
+            return state
+        },
+
+        startTutorialRoundFinish(state) {
+            const round = state.rounds[0]
+
+            state.scene = Scene.RoundFinish
+
+            if (round) {
+                round.opponent.attacks = [BodyParts.Torso]
+                round.opponent.defences = [BodyParts.Head, BodyParts.Leg]
+
+                if (!round.player.defences.includes(BodyParts.Torso)) {
+                    round.player.health = 80
+                    round.player.damage = -20
+                }
+
+                if (!round.opponent.defences.includes(round.player.attacks[0])) {
+                    round.opponent.health = 80
+                    round.opponent.damage = -20
+                }
+            }
 
             return state
         }
@@ -166,6 +250,7 @@ export const slice = createSlice({
                     state.scene = Scene.Round
                     state.timeLeft = data.time
                     state.attacked = false
+                    state.roundStarted = true
                     state.rounds = [...state.rounds, newRound]
 
                     break
@@ -184,6 +269,7 @@ export const slice = createSlice({
                         round.player.damage = data.player.damage
 
                         state.scene = Scene.RoundFinish
+                        state.roundStarted = false
                     }
 
                     break

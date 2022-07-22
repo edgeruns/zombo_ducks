@@ -191,6 +191,7 @@ export type State = {
     game: Game | null
     timeLeft: number
     attacked: boolean
+    roundStarted: boolean
     rounds: Round[],
     quitPopupOpened: boolean
 }

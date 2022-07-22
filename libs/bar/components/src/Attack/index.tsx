@@ -15,6 +15,7 @@ import styles from './Attack.module.scss'
 export const Attack: FC = () => {
     const dispatch = useDispatch()
 
+    const isGameStartScene = useSelector(selectors.isGameStartScene)
     const isRoundScene = useSelector(selectors.isRoundScene)
     const isRoundFinishScene = useSelector(selectors.isRoundFinishScene)
     const isMaxAttacks = useSelector(selectors.isMaxAttacks)
@@ -25,15 +26,17 @@ export const Attack: FC = () => {
     const opponentDamaged = useSelector(selectors.getOpponentDamagedParts)
 
     const isVisible = isRoundScene || isRoundFinishScene
+    const isIconVisible = isGameStartScene || isRoundScene
 
     const rootClassName = classNames(
         styles.root,
+        isGameStartScene && styles.root_arrive,
         isVisible && styles.root_visible
     )
 
     const iconClassName = classNames(
         styles.icon,
-        isRoundScene && styles.icon_visible
+        isIconVisible && styles.icon_visible
     )
 
     const handleBodyPartToggle = useCallback((part: BodyParts) => {

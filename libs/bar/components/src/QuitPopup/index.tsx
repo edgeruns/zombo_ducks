@@ -2,8 +2,7 @@ import React, { FC, useCallback } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import classNames from 'classnames'
 
-import { AppDispatch, slice, selectors } from '@apps/bar/data'
-import { useFakeActions } from '@apps/bar/utils'
+import { AppDispatch, slice, actions, selectors } from '@apps/bar/data'
 import { Button } from '@apps/bar/uikit'
 
 import styles from './QuitPopup.module.scss'
@@ -13,16 +12,14 @@ export const QuitPopup: FC = () => {
 
     const isOpened = useSelector(selectors.isQuitPopupOpened)
 
-    const { fakeQuit } = useFakeActions()
-
     const rootClassName = classNames(
         styles.root,
         isOpened && styles.root_visible
     )
 
     const handleQuitClick = useCallback(() => {
-        fakeQuit()
-    }, [fakeQuit])
+        dispatch(actions.quitGame())
+    }, [dispatch])
 
     const handleContinueClick = useCallback(() => {
         dispatch(slice.actions.setQuitPopupOpened(false))

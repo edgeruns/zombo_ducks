@@ -14,6 +14,7 @@ import styles from './Defend.module.scss'
 export const Defend: FC = () => {
     const dispatch = useDispatch()
 
+    const isGameStartScene = useSelector(selectors.isGameStartScene)
     const isRoundScene = useSelector(selectors.isRoundScene)
     const isRoundFinishScene = useSelector(selectors.isRoundFinishScene)
     const isMaxDefences = useSelector(selectors.isMaxDefences)
@@ -24,15 +25,17 @@ export const Defend: FC = () => {
     const playerDamaged = useSelector(selectors.getPlayerDamagedParts)
 
     const isVisible = isRoundScene || isRoundFinishScene
+    const isIconVisible = isGameStartScene || isRoundFinishScene
 
     const rootClassName = classNames(
         styles.root,
+        isGameStartScene && styles.root_arrive,
         isVisible && styles.root_visible
     )
 
     const iconClassName = classNames(
         styles.icon,
-        isRoundScene && styles.icon_visible
+        isIconVisible && styles.icon_visible
     )
 
     const handleBodyPartToggle = useCallback((part: BodyParts) => {

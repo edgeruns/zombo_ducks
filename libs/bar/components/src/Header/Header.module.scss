@@ -1,4 +1,6 @@
 @import 'libs/bar/styles/src/mixins';
+@import 'libs/bar/styles/src/vars';
+@import 'libs/bar/styles/src/anims';
 
 .root {
     display: flex;
@@ -15,6 +17,10 @@
     background: linear-gradient(180deg, #140729 0%, rgba(0, 0, 0, 0) 190%);
     transition: opacity 0.2s;
     z-index: 2;
+
+    &_arrive {
+        animation: fadeIn 0.2s $opponent-arrive-time forwards;
+    }
 
     &_visible {
         opacity: 1;
