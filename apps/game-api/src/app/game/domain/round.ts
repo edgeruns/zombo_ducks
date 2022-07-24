@@ -26,6 +26,11 @@ export class Round implements RoundInterface {
         this.fighter.setProtection(protection)
     }
 
+    setReadyEnemy(damage: Damage, protection: Protection) {
+        this.enemy.setDamage(damage)
+        this.enemy.setProtection(protection)
+    }
+
     compute(maxRounds: number) {
         const actionsFighterOne = this.fighter.getActions()
         const actionsFighterTwo = this.enemy.getActions()
@@ -48,5 +53,13 @@ export class Round implements RoundInterface {
 
     isAllReady(): boolean {
         return this.fighter.isReady() && this.enemy.isReady()
+    }
+
+    getFighter(): Fighter {
+        return this.fighter
+    }
+
+    getEnemy(): Fighter {
+        return this.enemy
     }
 }

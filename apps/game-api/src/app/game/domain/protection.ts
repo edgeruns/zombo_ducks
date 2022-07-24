@@ -1,6 +1,5 @@
 import { BasicActionInterface, SerializedParams } from './interfaces'
 import { Damage } from './damage'
-import { current } from '@reduxjs/toolkit'
 
 export class Protection implements BasicActionInterface {
     private readonly head: boolean
@@ -12,6 +11,11 @@ export class Protection implements BasicActionInterface {
         this.body = body
         this.legs = legs
     }
+
+    public static fromBytes(bytes: Uint8Array) {
+        return new Protection(!!bytes[0], !!bytes[1], !!bytes[2])
+    }
+
 
     toBytes() {
         const buffer = new Uint8Array(3)

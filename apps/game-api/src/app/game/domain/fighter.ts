@@ -15,14 +15,13 @@ export interface FighterInterface {
 
 export class Fighter implements FighterInterface {
     public readonly player: Player
-    public readonly health: Health
+    public readonly health = new Health(100)
 
     private protection: Protection
     private damage: Damage
 
-    constructor(player: Player, health: Health) {
+    constructor(player: Player) {
         this.player = player
-        this.health = health
     }
 
     setProtection(protection: Protection) {
