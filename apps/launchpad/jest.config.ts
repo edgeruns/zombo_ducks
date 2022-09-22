@@ -1,3 +1,4 @@
+/* eslint-disable */
 export default {
   displayName: 'launchpad',
   preset: '../../jest.preset.js',
@@ -7,4 +8,4 @@ export default {
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
   coverageDirectory: '../../coverage/apps/launchpad',
-}
+};

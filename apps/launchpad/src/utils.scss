@@ -1,0 +1,37 @@
+@use "sass:math";
+
+@function dpxvw($px) {
+  $widthPercent: math.div(1440, 100);
+  $vw: math.div($px, $widthPercent);
+  @return $vw + vw;
+}
+
+@function tpxvw($px) {
+  $widthPercent: math.div(768, 100);
+  $vw: math.div($px, $widthPercent);
+  @return $vw + vw;
+}
+
+@function mpxvw($px) {
+  $widthPercent: math.div(320, 100);
+  $vw: math.div($px, $widthPercent);
+  @return $vw + vw;
+}
+
+@mixin mobile() {
+  @media (max-width: 425px) {
+    @content;
+  }
+}
+
+@mixin tablet() {
+  @media (max-width: 1280px) {
+    @content;
+  }
+}
+
+@mixin desktop() {
+  @media (min-width: 1280.1px) {
+    @content;
+  }
+}

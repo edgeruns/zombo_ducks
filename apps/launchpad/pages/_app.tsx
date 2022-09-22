@@ -1,21 +1,21 @@
 import { AppProps } from 'next/app'
 import Head from 'next/head'
-import './styles.css'
+import './styles.global.scss'
 
-import 'swiper/css/bundle'
 
 function CustomApp({ Component, pageProps }: AppProps) {
-  return (
-    <>
-      <Head>
-        <title>Welcome to launchpad!</title>
-
-      </Head>
-      <main className="app">
-        <Component {...pageProps} />
-      </main>
-    </>
-  )
+    return (
+        <>
+            <Head>
+                <title>GameDuck</title>
+            </Head>
+            <div className='app'>
+                <Component {...pageProps} />
+            </div>
+        </>
+    )
 }
 
 export default CustomApp
+
+

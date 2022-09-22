@@ -1,0 +1,83 @@
+@import '/apps/launchpad/src/utils.scss';
+
+.wrapper {
+    position: relative;
+
+    &:hover {
+        svg path {
+            fill: #fffdf7;
+            transition: 0.2s ease;
+        }
+
+        & .btn {
+            background: #fffdf7;
+            color: #000;
+        }
+    }
+    svg path {
+        transition: 0.2s ease;
+    }
+}
+
+.btn {
+    z-index: 100;
+    color: #fffdf7;
+    background: #ac5cfd;
+    font-family: 'Anek Tamil', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 130%;
+    text-align: center;
+    letter-spacing: -0.01em;
+    cursor: pointer;
+    transition: 0.2s ease;
+
+    &:hover {
+        color: #000;
+        background-color: #fffdf7;
+    }
+
+    @include desktop {
+        padding: dpxvw(16) dpxvw(36);
+        font-size: dpxvw(18);
+        border-radius: dpxvw(8);
+    }
+
+    @include tablet {
+        padding: tpxvw(16) tpxvw(36);
+        font-size: tpxvw(18);
+        border-radius: tpxvw(8);
+    }
+
+    @include mobile {
+        padding: mpxvw(14) mpxvw(24);
+        font-size: mpxvw(14);
+        border-radius: mpxvw(8);
+    }
+}
+
+.slice {
+    position: absolute;
+    background: transparent;
+
+    @include desktop {
+        width: dpxvw(69.3);
+        height: dpxvw(70.21);
+        top: dpxvw(40);
+        right: dpxvw(0);
+    }
+
+    @include tablet {
+        width: tpxvw(57.23);
+        height: tpxvw(57.95);
+        top: tpxvw(42);
+        right: tpxvw(0);
+    }
+
+    @include mobile {
+        width: mpxvw(44.39);
+        height: mpxvw(49.68);
+        top: mpxvw(34);
+        right: mpxvw(0);
+    }
+}

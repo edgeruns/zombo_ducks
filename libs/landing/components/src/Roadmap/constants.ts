@@ -44,8 +44,8 @@ export const PHASES = [
         date: 'End August 2022',
         items: [
             'Start of reward payments to holders',
-            'Creating launchpad for independent game developers with an open API and friendly tool-kit for building',
-            'Presentation of the first DEMO version of the game made through the launchpad'
+            'Creating launchpad_v2 for independent game developers with an open API and friendly tool-kit for building',
+            'Presentation of the first DEMO version of the game made through the launchpad_v2'
         ]
     },
 
@@ -54,7 +54,7 @@ export const PHASES = [
         date: 'Early September 2022',
         items: [
             'Introducing a DAO where community can vote on futher development and integration moves',
-            'Games launchpad launch',
+            'Games launchpad_v2 launch',
             'Roadmap V2.0 development'
         ]
     }

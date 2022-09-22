@@ -1,0 +1,371 @@
+@import '/apps/launchpad/src/utils.scss';
+
+.wrapper {
+    @include desktop {
+        padding: dpxvw(150) dpxvw(120) dpxvw(10) dpxvw(120);
+    }
+
+    @include tablet {
+        padding: tpxvw(80) tpxvw(10) tpxvw(10) tpxvw(10);
+    }
+
+    @include mobile {
+        padding: mpxvw(50) mpxvw(10) mpxvw(10) mpxvw(10);
+    }
+}
+
+.title-content {
+    font-family: 'Staatliches', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 130%;
+    letter-spacing: -0.01em;
+    color: #fffdf7;
+    text-align: center;
+
+    @include desktop {
+        font-size: dpxvw(70);
+    }
+
+    @include tablet {
+        font-size: tpxvw(60);
+    }
+
+    @include mobile {
+        font-size: mpxvw(40);
+        text-align: left;
+    }
+}
+
+.paragraph-content {
+    font-family: 'Anek Tamil', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 130%;
+    letter-spacing: -0.01em;
+    color: #fffdf7;
+
+    @include desktop {
+        font-size: dpxvw(18);
+        text-align: center;
+    }
+
+    @include tablet {
+        font-size: tpxvw(14);
+        // padding: tpxvw(0) tpxvw(64);
+        text-align: center;
+    }
+
+    @include mobile {
+        font-size: mpxvw(12);
+        text-align: start;
+    }
+
+    br {
+        @include mobile {
+            display: none;
+        }
+    }
+}
+
+.cards {
+    display: flex;
+
+    @include desktop {
+        padding-top: dpxvw(55);
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    @include tablet {
+        padding-top: tpxvw(55);
+        flex-direction: column;
+        align-items: center;
+    }
+
+    @include mobile {
+        padding-top: mpxvw(55);
+    }
+}
+
+.card-left {
+    background: #c0ff59;
+
+    @include desktop {
+        margin-right: dpxvw(10);
+    }
+
+    @include tablet {
+        margin-bottom: tpxvw(98);
+    }
+
+    @include mobile {
+        margin-bottom: mpxvw(78);
+    }
+}
+
+.card-right {
+    background-color: #ac5cfd;
+}
+
+.title-icons {
+    position: absolute;
+    background-color: transparent;
+}
+
+.icon-right {
+    @include desktop {
+        width: dpxvw(32);
+        height: dpxvw(32);
+        top: dpxvw(30);
+        right: dpxvw(120);
+    }
+
+    @include tablet {
+        width: tpxvw(32);
+        height: tpxvw(32);
+        top: tpxvw(40);
+        right: tpxvw(180);
+    }
+
+    @include mobile {
+        width: mpxvw(20);
+        height: mpxvw(20);
+        top: mpxvw(20);
+        right: mpxvw(20);
+    }
+}
+
+.icon-left {
+    @include desktop {
+        width: dpxvw(45);
+        height: dpxvw(32.79);
+        top: dpxvw(30);
+        right: dpxvw(165);
+    }
+
+    @include tablet {
+        width: tpxvw(45);
+        height: tpxvw(32.79);
+        top: tpxvw(40);
+        right: tpxvw(220);
+    }
+
+    @include mobile {
+        width: mpxvw(28);
+        height: mpxvw(20.4);
+        top: mpxvw(20);
+        right: mpxvw(40);
+    }
+}
+
+.card {
+    box-sizing: border-box;
+    position: relative;
+
+    @include desktop {
+        border-radius: dpxvw(16);
+        width: dpxvw(575);
+        height: dpxvw(420);
+        padding: dpxvw(30) dpxvw(108) dpxvw(108) dpxvw(42);
+    }
+
+    @include tablet {
+        border-radius: tpxvw(16);
+        width: tpxvw(620);
+        height: tpxvw(420);
+        padding: tpxvw(40) tpxvw(158) tpxvw(98) tpxvw(37);
+    }
+
+    @include mobile {
+        border-radius: mpxvw(16);
+        width: mpxvw(300);
+        height: mpxvw(320);
+        padding: mpxvw(16) mpxvw(56) mpxvw(29) mpxvw(16);
+    }
+}
+
+.title-card {
+    font-family: 'Staatliches', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 130%;
+    letter-spacing: -0.01em;
+    background-color: transparent;
+    position: relative;
+
+    @include desktop {
+        font-size: dpxvw(32);
+        padding-bottom: dpxvw(54);
+    }
+
+    @include tablet {
+        font-size: tpxvw(32);
+        padding-bottom: tpxvw(54);
+    }
+
+    @include mobile {
+        font-size: mpxvw(22);
+        padding-bottom: mpxvw(28);
+        width: mpxvw(268);
+    }
+
+    & span {
+        background: transparent;
+        text-decoration: underline;
+    }
+}
+
+.title-right {
+    color: #fffdf7;
+}
+
+.title-left {
+    color: #000000;
+}
+
+.p-list {
+    background-color: transparent;
+}
+
+.p-items {
+    position: relative;
+    background-color: transparent;
+    font-family: 'Anek Tamil', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 130%;
+    letter-spacing: -0.01em;
+
+    @include desktop {
+        font-size: dpxvw(18);
+        padding-bottom: dpxvw(24);
+        padding-left: dpxvw(25);
+    }
+
+    @include tablet {
+        font-size: tpxvw(18);
+        padding-bottom: tpxvw(24);
+        padding-left: tpxvw(25);
+    }
+
+    @include mobile {
+        font-size: mpxvw(14);
+        padding-bottom: mpxvw(17);
+        padding-left: mpxvw(17);
+    }
+
+    &:last-child {
+        padding-bottom: 0;
+    }
+}
+
+.p-r-item {
+    color: #fffdf7;
+}
+
+.p-l-item {
+    color: #000000;
+}
+
+.asterisk {
+    position: absolute;
+    background-color: transparent;
+}
+
+.left-asterisk {
+    @include desktop {
+        width: dpxvw(15);
+        height: dpxvw(14.74);
+        left: dpxvw(0);
+        top: dpxvw(5);
+    }
+
+    @include tablet {
+        width: tpxvw(15);
+        height: tpxvw(14.74);
+        left: tpxvw(0);
+        top: tpxvw(3);
+    }
+
+    @include mobile {
+        width: mpxvw(10);
+        height: mpxvw(10);
+        left: mpxvw(0);
+        top: mpxvw(5);
+    }
+}
+
+.right-asterisk {
+    @include desktop {
+        width: dpxvw(15);
+        height: dpxvw(14.74);
+        left: dpxvw(0);
+        top: dpxvw(5);
+    }
+
+    @include tablet {
+        width: tpxvw(15);
+        height: tpxvw(14.74);
+        left: tpxvw(0);
+        top: tpxvw(3);
+    }
+
+    @include mobile {
+        width: mpxvw(10);
+        height: mpxvw(9.82);
+        left: mpxvw(0);
+        top: mpxvw(5);
+    }
+}
+
+.lslice {
+    @include desktop {
+        width: dpxvw(231.56);
+        height: dpxvw(126.13);
+        top: dpxvw(390);
+        left: dpxvw(0);
+    }
+
+    @include tablet {
+        width: tpxvw(159.83);
+        height: tpxvw(80.74);
+        top: tpxvw(400);
+        left: tpxvw(0);
+    }
+
+    @include mobile {
+        width: mpxvw(105.66);
+        height: mpxvw(62);
+        top: mpxvw(305);
+        left: mpxvw(5);
+    }
+}
+
+.rslice {
+    @include desktop {
+        width: dpxvw(161);
+        height: dpxvw(170.35);
+        top: dpxvw(-90);
+        right: dpxvw(-70);
+    }
+
+    @include tablet {
+        width: tpxvw(93);
+        height: tpxvw(98.4);
+        top: tpxvw(-55);
+        right: tpxvw(-40);
+    }
+
+    @include mobile {
+        width: mpxvw(60);
+        height: mpxvw(67.13);
+        top: mpxvw(-35);
+        right: mpxvw(-10);
+    }
+}
+
+.slice {
+    position: absolute;
+    background-color: transparent;
+}

@@ -1,0 +1,26 @@
+@import '/apps/launchpad/src/utils.scss';
+
+.slide {
+    @include desktop {
+        padding-right: dpxvw(0);
+        width: dpxvw(999);
+    }
+
+    @include tablet {
+        padding-right: tpxvw(10);
+        padding-top: tpxvw(95);
+    }
+
+    @include mobile {
+        padding-right: mpxvw(10);
+        padding-top: mpxvw(72);
+    }
+
+    &:last-child {
+        padding-right: 0;
+    }
+
+    &.slide-active {
+        padding-left: 0;
+    }
+}

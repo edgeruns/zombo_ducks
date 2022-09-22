@@ -1,71 +1,67 @@
-@use "sass:math";
-@use "sass:map";
+@use 'sass:math';
+@use 'sass:map';
 
 $breakpoints: (
-  'mobile': 0px,
-  'tablet': 639px,
-  'desktop': 1024px
+    'mobile': 0px,
+    'tablet': 639px,
+    'desktop': 1024px,
 );
 
-
 @mixin media($breakpoint) {
-  @if ($breakpoint == 'desktop') {
-    @media (min-width: map.get($breakpoints, 'desktop')) {
-      @content;
+    @if ($breakpoint == 'desktop') {
+        @media (min-width: map.get($breakpoints, 'desktop')) {
+            @content;
+        }
     }
-  }
 
-
-  @if ($breakpoint == 'tablet') {
-    @media (min-width: map.get($breakpoints, 'tablet')) and (max-width: map.get($breakpoints, 'desktop')) {
-      @content;
+    @if ($breakpoint == 'tablet') {
+        @media (min-width: map.get($breakpoints, 'tablet')) and (max-width: map.get($breakpoints, 'desktop')) {
+            @content;
+        }
     }
-  }
 
-  @if ($breakpoint == 'mobile') {
-    $mobile-max-width: map.get($breakpoints, 'tablet');
+    @if ($breakpoint == 'mobile') {
+        $mobile-max-width: map.get($breakpoints, 'tablet');
 
-    @media (max-width: $mobile-max-width) {
-      @content;
+        @media (max-width: $mobile-max-width) {
+            @content;
+        }
     }
-  }
-
 }
 
 @mixin desktop() {
-  @include media('desktop') {
-    @content;
-  }
+    @include media('desktop') {
+        @content;
+    }
 }
 
 @mixin tablet() {
-  @include media('tablet') {
-    @content;
-  }
+    @include media('tablet') {
+        @content;
+    }
 }
 
 @mixin mobile() {
-  @include media('mobile') {
-    @content;
-  }
+    @include media('mobile') {
+        @content;
+    }
 }
 
 @function pxToVw($px, $size) {
-  $percent: math.div($size, 100);
-  $vw: math.div($px, $percent);
+    $percent: math.div($size, 100);
+    $vw: math.div($px, $percent);
 
-  @return $vw + vw;
+    @return $vw + vw;
 }
 
 @function dvw($px) {
-  @return pxToVw($px, 1400);
+    @return pxToVw($px, 1400);
 }
 
 @function tvw($px) {
-  @return pxToVw($px, 640);
+    @return pxToVw($px, 640);
 }
 
 @function mvw($px) {
-  @return pxToVw($px, 320);
+    @return pxToVw($px, 320);
 }
-
