@@ -5,6 +5,10 @@ export class Health {
         this.value = value
     }
 
+    setValue(value: number) {
+        this.value = value
+    }
+
     decrease(value: number): number {
         const computed = this.value - value
 

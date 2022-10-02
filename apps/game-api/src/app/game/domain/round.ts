@@ -3,20 +3,19 @@ import { Damage } from './damage'
 import { Protection } from './protection'
 
 export interface RoundInterface {
-    setFighters(first: Fighter, second: Fighter)
-
     setReady(damage: Damage, protection: Protection)
 
     isAllReady(): boolean
 
-    compute(maxRounds: number): RoundInterface
+    compute(maxRounds: number): { health: { fighter: number, enemy: number } }
 }
 
 export class Round implements RoundInterface {
-    protected fighter: Fighter
-    protected enemy: Fighter
+    public readonly fighter: Fighter
+    public readonly enemy: Fighter
 
-    setFighters(fighter: Fighter, enemy: Fighter) {
+
+    constructor(fighter: Fighter, enemy: Fighter) {
         this.fighter = fighter
         this.enemy = enemy
     }
@@ -24,11 +23,6 @@ export class Round implements RoundInterface {
     setReady(damage: Damage, protection: Protection) {
         this.fighter.setDamage(damage)
         this.fighter.setProtection(protection)
-    }
-
-    setReadyEnemy(damage: Damage, protection: Protection) {
-        this.enemy.setDamage(damage)
-        this.enemy.setProtection(protection)
     }
 
     compute(maxRounds: number) {
@@ -48,18 +42,15 @@ export class Round implements RoundInterface {
         this.fighter.health.decrease(fighterOneCount * damage)
         this.enemy.health.decrease(fighterTwoCount * damage)
 
-        return this
+        return {
+            health: {
+                fighter: this.fighter.health.getValue(),
+                enemy: this.enemy.health.getValue()
+            }
+        }
     }
 
     isAllReady(): boolean {
         return this.fighter.isReady() && this.enemy.isReady()
-    }
-
-    getFighter(): Fighter {
-        return this.fighter
-    }
-
-    getEnemy(): Fighter {
-        return this.enemy
     }
 }

@@ -11,7 +11,7 @@ export class Damage implements BasicActionInterface {
         this.legs = legs
     }
 
-    public static fromBytes(bytes: Uint8Array) {
+    public static fromBytes(bytes: number[]) {
         return new Damage(!!bytes[0], !!bytes[1], !!bytes[2])
     }
 

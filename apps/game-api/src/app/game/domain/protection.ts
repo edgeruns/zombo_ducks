@@ -12,7 +12,7 @@ export class Protection implements BasicActionInterface {
         this.legs = legs
     }
 
-    public static fromBytes(bytes: Uint8Array) {
+    public static fromBytes(bytes: number[]) {
         return new Protection(!!bytes[0], !!bytes[1], !!bytes[2])
     }
 

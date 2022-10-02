@@ -12,7 +12,9 @@
                 "outputPath": "dist/apps/launchpad"
             },
             "configurations": {
-                "development": {},
+                "development": {
+                    "outputPath": "tmp/apps/launchpad"
+                },
                 "production": {}
             }
         },

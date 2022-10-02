@@ -1,35 +1,51 @@
-import { Server, Socket } from 'socket.io';
+import { Server, Socket } from 'socket.io'
 import {
-    ConnectedSocket,
-    MessageBody,
+    ConnectedSocket, MessageBody,
     SubscribeMessage,
     WebSocketGateway,
-    WebSocketServer,
-    WsResponse
+    WebSocketServer
 } from '@nestjs/websockets';
-import { from, map, Observable } from 'rxjs';
-import { Events } from './constants';
+import { Events } from './constants'
+import { GameService, Rooms } from './game.service'
+import { UseGuards } from '@nestjs/common'
+import { NearGuard } from '../modules/near/near.guard'
+import { MoveDto } from './game.dto';
 
 @WebSocketGateway(3334, {
     namespace: 'game',
     cors: {
-        origin: '*'
-    }
+        origin: '*',
+    },
 })
 export class GameGateway {
+    constructor(private readonly service: GameService) {}
+
     @WebSocketServer()
     server: Server
 
+    @UseGuards(NearGuard)
+    async handleConnection(@ConnectedSocket() socket: Socket) {
+        await this.service.joinPlayer(socket)
+        return this.service.destroy(socket)
+    }
 
+
+    @UseGuards(NearGuard)
     @SubscribeMessage(Events.START_SEARCH_OPPONENT)
-    findOpponent(
-        @MessageBody() data: any,
-        @ConnectedSocket() client: Socket
-    ): Observable<WsResponse<number>> {
-        client.join('waiti')
+    async findOpponent(socket: Socket) {
+        return this.service.searchOpponent(this.server, socket)
+    }
 
-        console.log(data, client)
-        return from([1,2,3]).pipe(map(item => ({ event: 'STARTED_GAME', data: item })))
+
+    @UseGuards(NearGuard)
+    @SubscribeMessage(Events.MAKE_MOVE)
+    async makeMove(
+        @MessageBody()
+        data: MoveDto,
+
+        @ConnectedSocket()
+        socket: Socket
+    ) {
+        return this.service.makeMove(socket, data)
     }
 }
-

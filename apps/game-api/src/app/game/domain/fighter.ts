@@ -33,6 +33,8 @@ export class Fighter implements FighterInterface {
     }
 
     getActions() {
+        if (!this.protection || !this.damage) return undefined
+
         return {
             damage: this.damage,
             protection: this.protection,
@@ -41,5 +43,9 @@ export class Fighter implements FighterInterface {
 
     isReady(): boolean {
         return !!this.damage && !!this.protection
+    }
+
+    isLiving(): boolean {
+        return this.health.getValue() > 0
     }
 }
