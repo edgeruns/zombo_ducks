@@ -8,11 +8,7 @@
         "bar-uikit": "libs/bar/uikit",
         "bar-utils": "libs/bar/utils",
         "game-api": "apps/game-api",
-        "home-layout": "libs/home/layout",
-        "home-main": "libs/home/main",
-        "home-overview": "libs/home/overview",
-        "home-uikit": "libs/home/uikit",
-        "home-whyus": "libs/home/whyus",
+
         "landing": "apps/landing",
         "landing-components": "libs/landing/components",
         "landing-styles": "libs/landing/styles",
