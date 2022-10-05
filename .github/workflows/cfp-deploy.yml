@@ -53,6 +53,7 @@ jobs:
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
           directory: dist/apps/${{ github.event.inputs.project }}/exported
           accountId: f6349a281eb5fedf7468dc0f8fbfce39
+          branch: main
           projectName: ${{ github.event.inputs.project }}
 
 
