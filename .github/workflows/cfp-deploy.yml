@@ -44,7 +44,7 @@ jobs:
         run: pnpm install
 
       - name: Build project
-        run: npm run build "${{ github.event.inputs.project }}"
+        run: npm run export "${{ github.event.inputs.project }}"
 
       - name: Deploy launchpad to CFP
         if: github.event.inputs.project == 'launchpad'
