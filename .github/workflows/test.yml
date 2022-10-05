@@ -18,14 +18,10 @@ on:
         type: boolean
         required: false
         description: Include  emojis
-      environment:
-        required: false
-        description: Environment
-        type: environment
 
 jobs:
   greet:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
 
     steps:
       - name: Send greeting
