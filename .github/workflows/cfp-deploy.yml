@@ -1,3 +1,4 @@
+name: Deploy Static NextJS to CloudFlare Pages
 on:
   workflow_dispatch:
     inputs:
