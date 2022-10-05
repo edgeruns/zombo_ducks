@@ -46,14 +46,13 @@ jobs:
       - name: Build project
         run: npm run export "${{ github.event.inputs.project }}"
 
-      - name: Deploy launchpad to CFP
-        if: github.event.inputs.project == 'launchpad'
+      - name: Deploy ${{ github.event.inputs.project }} to CFP
         uses: cloudflare/pages-action@1
         with:
           apiToken: ${{ secrets.CLOUDFLARE_PAGES_TOKEN }}
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
-          directory: dist/apps/launchpad/exported
+          directory: dist/apps/${{ github.event.inputs.project }}/exported
           accountId: f6349a281eb5fedf7468dc0f8fbfce39
-          projectName: launchpad
+          projectName: ${{ github.event.inputs.project }}
 
 
