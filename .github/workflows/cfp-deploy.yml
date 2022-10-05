@@ -50,7 +50,7 @@ jobs:
         if: github.event.inputs.project == 'launchpad'
         uses: cloudflare/pages-action@1
         with:
-          apiToken: ${{ secrets.CLOUDFLARE_PAGES_TOKEN }}
+          apiToken: ${{ env.CLOUDFLARE_PAGES_TOKEN }}
           directory: dist/apps/launchpad/exported
           accountId: f6349a281eb5fedf7468dc0f8fbfce39
           projectName: launchpad
