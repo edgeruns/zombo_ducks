@@ -13,9 +13,6 @@ on:
 jobs:
   publish:
     runs-on: self-hosted
-    permissions:
-      contents: read
-      deployments: write
     name: Publish to Cloudflare Pages
     steps:
       - name: Checkout
