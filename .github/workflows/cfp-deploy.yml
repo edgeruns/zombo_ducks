@@ -43,10 +43,10 @@ jobs:
         run: pnpm install
 
       - name: Build project
-        run: npm run build "${{ github.event.input.project }}"
+        run: npm run build "${{ github.event.inputs.project }}"
 
       - name: Deploy launchpad to CFP
-        if: ${{ github.event.input.project == 'launchpad' }}
+        if: github.event.inputs.project == 'launchpad'
         uses: cloudflare/pages-action@1
         with:
           apiToken: ${{ secrets.CLOUDFLARE_PAGES_TOKEN }}
