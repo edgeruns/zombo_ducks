@@ -1,18 +1,18 @@
 {
-    "version": 2,
-    "projects": {
-        "bar": "apps/bar",
-        "bar-components": "libs/bar/components",
-        "bar-data": "libs/bar/data",
-        "bar-styles": "libs/bar/styles",
-        "bar-uikit": "libs/bar/uikit",
-        "bar-utils": "libs/bar/utils",
-        "game-api": "apps/game-api",
-        "landing": "apps/landing",
-        "landing-components": "libs/landing/components",
-        "landing-styles": "libs/landing/styles",
-        "launchpad": "apps/launchpad",
-        "utils": "libs/utils"
-    },
-    "$schema": "./node_modules/nx/schemas/workspace-schema.json"
+  "version": 2,
+  "projects": {
+    "bar-components": "libs/bar/components",
+    "bar-data": "libs/bar/data",
+    "bar-styles": "libs/bar/styles",
+    "bar-uikit": "libs/bar/uikit",
+    "bar-utils": "libs/bar/utils",
+    "games-zombofighter-api": "apps/games/zombofighter/api",
+    "games-zombofighter-client": "apps/games/zombofighter/client",
+    "landing-components": "libs/landing/components",
+    "landing-styles": "libs/landing/styles",
+    "landings-launchpad": "apps/landings/launchpad",
+    "landings-mint": "apps/landings/mint",
+    "utils": "libs/utils"
+  },
+  "$schema": "./node_modules/nx/schemas/workspace-schema.json"
 }

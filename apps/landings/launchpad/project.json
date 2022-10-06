@@ -1,0 +1,62 @@
+{
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/landings/launchpad",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/next:build",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "root": "apps/landings/launchpad",
+        "outputPath": "dist/apps/landings/launchpad"
+      },
+      "configurations": {
+        "development": {
+          "outputPath": "tmp/apps/landings/launchpad"
+        },
+        "production": {}
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/next:server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "landings-launchpad:build",
+        "dev": true
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "landings-launchpad:build:development",
+          "dev": true
+        },
+        "production": {
+          "buildTarget": "landings-launchpad:build:production",
+          "dev": false
+        }
+      }
+    },
+    "export": {
+      "executor": "@nrwl/next:export",
+      "options": {
+        "buildTarget": "landings-launchpad:build:production"
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/landings/launchpad"],
+      "options": {
+        "jestConfig": "apps/landings/launchpad/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/landings/launchpad/**/*.{ts,tsx,js,jsx}"]
+      }
+    }
+  },
+  "tags": []
+}

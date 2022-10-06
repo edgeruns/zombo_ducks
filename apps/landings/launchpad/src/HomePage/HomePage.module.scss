@@ -1,0 +1,446 @@
+@import '/apps/landings/launchpad/src/utils.scss';
+
+.wrapper {
+    overflow: hidden;
+}
+
+.container {
+    box-sizing: border-box;
+    @include desktop {
+        padding: dpxvw(30) dpxvw(120) dpxvw(0) dpxvw(120);
+    }
+
+    @include tablet {
+        padding: tpxvw(25) tpxvw(10) tpxvw(0) tpxvw(10);
+    }
+
+    @include mobile {
+        padding: mpxvw(15) mpxvw(10) mpxvw(0) mpxvw(10);
+    }
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    & a {
+        text-decoration: none;
+        color: #fffdf7;
+        cursor: pointer;
+    }
+
+    @include desktop {
+        margin-bottom: dpxvw(140);
+    }
+
+    @include tablet {
+        margin-bottom: tpxvw(100);
+    }
+
+    @include mobile {
+        margin-bottom: mpxvw(80);
+    }
+}
+
+.logo {
+    @include desktop {
+        width: dpxvw(44);
+        height: dpxvw(44);
+    }
+
+    @include tablet {
+        width: tpxvw(26);
+        height: tpxvw(26);
+    }
+
+    @include mobile {
+        width: mpxvw(26);
+        height: mpxvw(26);
+    }
+}
+
+.items {
+    font-family: 'Anek Tamil';
+    font-style: normal;
+    font-weight: 600;
+    line-height: 130%;
+    text-align: center;
+    letter-spacing: -0.01em;
+
+    &:hover {
+        opacity: 60%;
+    }
+
+    @include desktop {
+        padding-right: dpxvw(24);
+        font-size: dpxvw(12);
+
+        &:last-child {
+            padding-right: dpxvw(0);
+        }
+    }
+
+    @include tablet {
+        font-size: tpxvw(10);
+        padding-right: tpxvw(12);
+    }
+
+    @include mobile {
+        font-size: mpxvw(10);
+        padding-bottom: mpxvw(5);
+    }
+}
+
+.social {
+    display: flex;
+    align-items: flex-end;
+
+    @include mobile {
+        position: absolute;
+        left: mpxvw(145);
+    }
+}
+
+.social-icons {
+    @include desktop {
+        padding-right: dpxvw(40);
+    }
+
+    @include tablet {
+        padding-right: tpxvw(34);
+    }
+
+    @include mobile {
+    }
+
+    & .twit {
+        @include desktop {
+            width: dpxvw(24);
+            height: dpxvw(24);
+        }
+
+        @include tablet {
+            width: tpxvw(18);
+            height: tpxvw(18);
+        }
+
+        @include mobile {
+            width: mpxvw(18);
+            height: mpxvw(18);
+        }
+    }
+
+    & .disc {
+        @include desktop {
+            width: dpxvw(24);
+            height: dpxvw(24);
+        }
+
+        @include tablet {
+            width: tpxvw(18);
+            height: tpxvw(18);
+        }
+
+        @include mobile {
+            width: mpxvw(18);
+            height: mpxvw(18);
+        }
+    }
+
+    & .icons {
+        cursor: pointer;
+
+        &:hover {
+            opacity: 60%;
+        }
+        @include desktop {
+            padding-right: dpxvw(5);
+        }
+
+        @include tablet {
+            padding-right: tpxvw(5);
+        }
+
+        @include mobile {
+            padding-right: mpxvw(5);
+        }
+    }
+}
+
+.btn-wrapper {
+    box-sizing: border-box;
+    background: rgba(0, 0, 0, 0.82);
+    color: #fffdf7;
+    cursor: pointer;
+    font-family: 'Anek Tamil', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    transition: 0.1s ease;
+    &:hover {
+        background: #fffdf7;
+        color: #000;
+    }
+
+    @include desktop {
+        padding: dpxvw(10) dpxvw(22);
+        border-radius: dpxvw(100);
+        border: dpxvw(1) solid #fffdf7;
+        font-size: dpxvw(12);
+    }
+
+    @include tablet {
+        border: tpxvw(1) solid #fffdf7;
+        border-radius: tpxvw(100);
+        padding: tpxvw(7) tpxvw(18);
+        font-size: tpxvw(10);
+    }
+
+    @include mobile {
+        display: none;
+    }
+}
+
+.content {
+    display: flex;
+
+    @include desktop {
+        flex-direction: row;
+    }
+
+    @include tablet {
+        flex-direction: column;
+    }
+
+    @include mobile {
+        flex-direction: column;
+    }
+}
+
+.left-side {
+    @include desktop {
+        width: dpxvw(650);
+    }
+
+    @include tablet {
+        width: tpxvw(465);
+    }
+
+    @include mobile {
+        width: mpxvw(305);
+    }
+}
+
+.head-text {
+    display: flex;
+    align-items: center;
+}
+
+.powerby {
+    font-family: 'Staatliches', sans-serif;
+    font-weight: 400;
+    line-height: 130%;
+    letter-spacing: 0.01em;
+
+    color: #fffdf7;
+
+    @include desktop {
+        padding-right: dpxvw(10);
+        font-size: dpxvw(19);
+    }
+
+    @include tablet {
+        font-size: tpxvw(19);
+        padding-right: tpxvw(6.3);
+    }
+
+    @include mobile {
+        font-size: mpxvw(15.5);
+        padding-right: mpxvw(4.5);
+    }
+}
+
+.near {
+    @include desktop {
+        width: dpxvw(60.68);
+        height: dpxvw(19.07);
+    }
+
+    @include tablet {
+        width: tpxvw(60.68);
+        height: tpxvw(19.07);
+    }
+
+    @include mobile {
+        width: mpxvw(43.4);
+        height: mpxvw(13.64);
+    }
+}
+
+.title {
+    text-transform: uppercase;
+    color: #c0ff59;
+    font-family: 'Staatliches', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 130%;
+    letter-spacing: -0.01em;
+
+    @include desktop {
+        font-size: dpxvw(70);
+    }
+
+    @include tablet {
+        font-size: tpxvw(70);
+    }
+
+    @include mobile {
+        font-size: mpxvw(40);
+    }
+
+    & span {
+        color: #ac5cfd;
+    }
+}
+
+.paragraph {
+    font-family: 'Anek Tamil';
+    font-style: normal;
+    font-weight: 500;
+    line-height: 130%;
+    letter-spacing: -0.01em;
+    color: #fffdf7;
+
+    @include desktop {
+        font-size: dpxvw(18);
+    }
+
+    @include tablet {
+        font-size: tpxvw(14);
+    }
+
+    @include mobile {
+        font-size: mpxvw(12);
+    }
+}
+
+.btns {
+    display: flex;
+
+    @include desktop {
+        margin-top: dpxvw(54);
+    }
+
+    @include tablet {
+        font-size: tpxvw(14);
+        margin-top: tpxvw(44);
+    }
+
+    @include mobile {
+        font-size: mpxvw(12);
+        margin-top: mpxvw(32);
+    }
+}
+
+.footer {
+    width: 100%;
+    overflow: hidden;
+    @include desktop {
+        padding-top: dpxvw(150);
+    }
+
+    @include tablet {
+        padding-top: tpxvw(100);
+    }
+
+    @include mobile {
+        padding-top: mpxvw(50);
+    }
+}
+
+.side {
+    display: flex;
+    @include desktop {
+        flex-direction: row;
+    }
+
+    @include tablet {
+        flex-direction: column;
+    }
+
+    @include mobile {
+        flex-direction: column;
+    }
+}
+
+@keyframes cycle {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+.right-side {
+    position: relative;
+}
+
+.list {
+    position: relative;
+    @include desktop {
+    }
+    @include mobile {
+        height: 0;
+        & a {
+            display: none;
+        }
+    }
+
+    &.open {
+        @include desktop {
+        }
+        @include mobile {
+            & a {
+                display: block;
+            }
+        }
+    }
+}
+
+.panel {
+    @include desktop {
+    }
+    @include mobile {
+        padding-top: mpxvw(15);
+    }
+
+    &.open {
+        @include desktop {
+        }
+        @include mobile {
+        }
+    }
+}
+
+.burger {
+    position: absolute;
+    @include desktop {
+        display: none;
+    }
+
+    @include tablet {
+        display: none;
+    }
+
+    @include mobile {
+        display: block;
+        right: 0;
+        top: mpxvw(-13);
+    }
+
+    // &.open {
+
+    // }
+}

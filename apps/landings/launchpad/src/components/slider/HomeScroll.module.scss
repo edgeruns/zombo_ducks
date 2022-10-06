@@ -1,0 +1,75 @@
+@import '/apps/landings/launchpad/src/utils.scss';
+
+.scroll-list {
+    display: flex;
+    animation: cycle 150s linear infinite;
+    will-change: transform;
+    width: max-content;
+
+    &:hover {
+        animation-play-state: paused;
+    }
+}
+
+.scroll-item {
+    display: flex;
+
+    @include desktop {
+        margin-right: dpxvw(5);
+        margin-right: tpxvw(5);
+        border-radius: 8px;
+    }
+
+    @include tablet {
+        margin-right: tpxvw(5);
+        border-radius: 8px;
+    }
+
+    @include mobile {
+        margin-right: mpxvw(5);
+        border-radius: 8px;
+    }
+}
+
+.img {
+    &:hover {
+        transform: translateY(dpxvw(-5));
+    }
+    transition: all 0.5s ease-in-out;
+    @include desktop {
+        margin-right: dpxvw(5);
+        width: dpxvw(160);
+        height: dpxvw(160);
+        &:hover {
+            transform: translateY(dpxvw(-5));
+        }
+    }
+
+    @include tablet {
+        margin-right: tpxvw(5);
+        width: tpxvw(100);
+        height: tpxvw(100);
+        &:hover {
+            transform: translateY(tpxvw(-5));
+        }
+    }
+
+    @include mobile {
+        margin-right: mpxvw(5);
+        width: mpxvw(60);
+        height: mpxvw(60);
+        &:hover {
+            transform: translate(dpxvw(-5));
+        }
+    }
+}
+
+@keyframes cycle {
+    0% {
+        transform: translateX(0%);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}

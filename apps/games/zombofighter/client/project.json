@@ -1,0 +1,78 @@
+{
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/games/zombofighter/client/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/web:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "compiler": "babel",
+        "outputPath": "dist/apps/games/zombofighter/client",
+        "index": "apps/games/zombofighter/client/src/index.html",
+        "baseHref": "/",
+        "main": "apps/games/zombofighter/client/src/main.tsx",
+        "polyfills": "apps/games/zombofighter/client/src/polyfills.ts",
+        "tsConfig": "apps/games/zombofighter/client/tsconfig.app.json",
+        "assets": [
+          "apps/games/zombofighter/client/src/favicon.ico",
+          "apps/games/zombofighter/client/src/assets"
+        ],
+        "scripts": [],
+        "webpackConfig": "@nrwl/react/plugins/webpack"
+      },
+      "configurations": {
+        "development": {
+          "extractLicenses": false,
+          "optimization": false,
+          "sourceMap": true,
+          "vendorChunk": true
+        },
+        "production": {
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/web:dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "games-zombofighter-client:build",
+        "hmr": true
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "games-zombofighter-client:build:development"
+        },
+        "production": {
+          "buildTarget": "games-zombofighter-client:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "apps/games/zombofighter/client/**/*.{ts,tsx,js,jsx}"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/games/zombofighter/client"],
+      "options": {
+        "jestConfig": "apps/games/zombofighter/client/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

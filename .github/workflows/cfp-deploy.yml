@@ -1,4 +1,4 @@
-name: Deploy Static NextJS to CloudFlare Pages
+name: Deploy landing to CFP
 on:
   workflow_dispatch:
     inputs:
@@ -8,7 +8,7 @@ on:
         required: true
         options:
           - launchpad
-          - landing
+          - mint
 
 jobs:
   publish:
@@ -44,14 +44,14 @@ jobs:
         run: pnpm install
 
       - name: Build project
-        run: npm run export "${{ github.event.inputs.project }}"
+        run: npm run export landings-${{ github.event.inputs.project }}
 
       - name: Deploy ${{ github.event.inputs.project }} to CFP
         uses: cloudflare/pages-action@1
         with:
           apiToken: ${{ secrets.CLOUDFLARE_PAGES_TOKEN }}
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
-          directory: dist/apps/${{ github.event.inputs.project }}/exported
+          directory: dist/apps/landings/${{ github.event.inputs.project }}/exported
           accountId: f6349a281eb5fedf7468dc0f8fbfce39
           branch: main
           projectName: ${{ github.event.inputs.project }}

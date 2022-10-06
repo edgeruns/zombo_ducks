@@ -1,0 +1,307 @@
+@import '/apps/landings/launchpad/src/utils.scss';
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #000;
+}
+
+.swiper-pagination {
+    @include desktop {
+        left: dpxvw(-230) !important;
+        bottom: dpxvw(-40) !important;
+    }
+
+    @include tablet {
+        bottom: tpxvw(-30) !important;
+    }
+
+    @include mobile {
+        bottom: mpxvw(-35) !important;
+    }
+}
+
+.swiper-pagination-bullet {
+    border: 1px solid transparent !important;
+    cursor: pointer !important;
+    background: #fffdf7 !important;
+    color: transparent !important;
+
+    @include desktop {
+        width: dpxvw(50) !important;
+        height: dpxvw(1.6) !important;
+        margin: dpxvw(16) dpxvw(8) !important;
+        border-radius: dpxvw(100) !important;
+    }
+
+    @include tablet {
+        width: tpxvw(50) !important;
+        height: tpxvw(1.6) !important;
+        //margin: tpxvw(16) tpxvw(8) !important;
+        border-radius: tpxvw(100) !important;
+    }
+
+    @include mobile {
+        width: mpxvw(50) !important;
+        height: mpxvw(1.6);
+        margin: mpxvw(16) mpxvw(8) !important;
+        border-radius: mpxvw(100) !important;
+    }
+
+    &-active {
+        background-color: chartreuse !important;
+    }
+}
+
+.swiper-wrapper {
+    align-items: center;
+}
+
+.swiper-slide img {
+    opacity: 0.2;
+}
+
+.swiper-slide {
+    @include desktop {
+        margin-right: dpxvw(20);
+    }
+}
+
+.swiper-slide.bottom img {
+    opacity: 0.2;
+    @include desktop {
+        width: dpxvw(574);
+        height: dpxvw(322);
+    }
+
+    @include tablet {
+        width: tpxvw(574);
+        height: tpxvw(322);
+    }
+
+    @include mobile {
+        width: mpxvw(280);
+        height: mpxvw(160);
+    }
+}
+
+.swiper-slide-prev.bottom img {
+    @include tablet {
+        position: relative;
+        left: tpxvw(230);
+    }
+
+    @include mobile {
+        position: relative;
+        left: mpxvw(24);
+    }
+}
+
+.swiper-slide-next.bottom img {
+    @include desktop {
+        opacity: 1;
+        width: dpxvw(574);
+        height: dpxvw(322);
+    }
+
+    @include tablet {
+        opacity: 0.2;
+        position: relative;
+        left: tpxvw(-55);
+        width: tpxvw(574);
+        height: tpxvw(322);
+    }
+
+    @include mobile {
+        opacity: 0.2;
+        width: mpxvw(280);
+        height: mpxvw(160);
+        position: relative;
+        left: tpxvw(0);
+    }
+}
+
+.swiper-slide-active.bottom img {
+    opacity: 1;
+    @include desktop {
+        width: dpxvw(574);
+        height: dpxvw(322);
+    }
+
+    @include tablet {
+        position: relative;
+        left: tpxvw(85);
+        width: tpxvw(574);
+        height: tpxvw(322);
+    }
+
+    @include mobile {
+        width: mpxvw(280);
+        height: mpxvw(160);
+        position: relative;
+        left: tpxvw(28);
+    }
+}
+
+.swiper-slide-next.top {
+    @include tablet {
+        left: tpxvw(-2);
+    }
+}
+
+.swiper-slide-next.top img {
+    @include desktop {
+        position: relative;
+    }
+
+    @include tablet {
+        opacity: 1;
+        width: tpxvw(369) !important;
+        height: tpxvw(210) !important;
+    }
+
+    @include mobile {
+        width: mpxvw(280) !important;
+        height: mpxvw(150) !important;
+    }
+}
+
+.swiper-slide-prev.top img {
+    @include desktop {
+        width: dpxvw(470);
+        height: dpxvw(300);
+        left: dpxvw(50);
+    }
+
+    @include tablet {
+        width: tpxvw(320);
+        height: tpxvw(200);
+    }
+
+    @include mobile {
+        width: mpxvw(280);
+        height: mpxvw(150);
+    }
+}
+
+.swiper-slide.top img {
+    @include desktop {
+        width: dpxvw(470);
+        height: dpxvw(300);
+    }
+
+    @include tablet {
+        width: tpxvw(320);
+        height: tpxvw(200);
+    }
+
+    @include mobile {
+        width: mpxvw(280);
+        height: mpxvw(150);
+    }
+}
+
+.swiper-slide-active.top img {
+    opacity: 1;
+
+    @include desktop {
+        width: dpxvw(515);
+        height: dpxvw(330);
+    }
+
+    @include tablet {
+        width: tpxvw(369);
+        height: tpxvw(210);
+    }
+
+    @include mobile {
+        width: mpxvw(290);
+        height: mpxvw(160);
+    }
+}
+
+.swiper {
+    @include desktop {
+        //overflow: clip !important;
+    }
+
+    @include tablet {
+        overflow: visible !important;
+    }
+
+    @include mobile {
+        overflow: visible !important;
+    }
+}
+
+.swiper-button-prev.swiper-button-disabled {
+    //pointer-events: all ;
+}
+
+.swiper-button-next {
+    background: url(/Rightarrow.svg) no-repeat left/cover;
+    opacity: 1 !important;
+
+    &::after {
+        display: none;
+    }
+
+    //&:hover {
+    //  transform: scale(110%);
+    //}
+
+    @include desktop {
+        width: dpxvw(28) !important;
+        height: dpxvw(28) !important;
+        top: dpxvw(168) !important;
+        right: dpxvw(-15) !important;
+    }
+
+    @include tablet {
+        width: tpxvw(28) !important;
+        height: tpxvw(28) !important;
+        top: tpxvw(168) !important;
+        right: tpxvw(75) !important;
+    }
+
+    @include mobile {
+        width: mpxvw(16) !important;
+        height: mpxvw(16) !important;
+        top: mpxvw(100) !important;
+        right: mpxvw(0) !important;
+    }
+}
+
+.swiper-button-prev {
+    background: url(/Leftarrow.svg) no-repeat right/cover;
+    opacity: 1 !important;
+
+    &::after {
+        display: none;
+    }
+
+    //&:hover {
+    //  transform: scale();
+    //}
+
+    @include desktop {
+        width: dpxvw(28) !important;
+        height: dpxvw(28) !important;
+        top: dpxvw(168) !important;
+        left: dpxvw(-15) !important;
+    }
+
+    @include tablet {
+        width: tpxvw(28) !important;
+        height: tpxvw(28) !important;
+        top: tpxvw(168) !important;
+        left: tpxvw(75) !important;
+    }
+
+    @include mobile {
+        width: mpxvw(16) !important;
+        height: mpxvw(16) !important;
+        top: mpxvw(100) !important;
+        left: mpxvw(3.5) !important;
+    }
+}

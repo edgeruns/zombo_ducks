@@ -1,51 +1,51 @@
 {
-    "npmScope": "apps",
-    "affected": {
-        "defaultBase": "master"
+  "npmScope": "apps",
+  "affected": {
+    "defaultBase": "master"
+  },
+  "implicitDependencies": {
+    "package.json": {
+      "dependencies": "*",
+      "devDependencies": "*"
     },
-    "implicitDependencies": {
-        "package.json": {
-            "dependencies": "*",
-            "devDependencies": "*"
-        },
-        ".eslintrc.json": "*"
-    },
-    "tasksRunnerOptions": {
-        "default": {
-            "runner": "@nrwl/nx-cloud",
-            "options": {
-                "cacheableOperations": ["build", "lint", "test", "e2e"],
-                "accessToken": "YTVkOThiMDMtNzBlMy00ZDlkLTlkODUtNmQxNWQxOGIyOTM1fHJlYWQtd3JpdGU="
-            }
-        }
-    },
-    "generators": {
-        "@nrwl/react": {
-            "application": {
-                "style": "scss",
-                "linter": "eslint",
-                "babel": true
-            },
-            "component": {
-                "style": "scss"
-            },
-            "library": {
-                "style": "scss",
-                "linter": "eslint"
-            }
-        },
-        "@nrwl/next": {
-            "application": {
-                "style": "scss",
-                "linter": "eslint"
-            }
-        }
-    },
-    "defaultProject": "launchpad",
-    "$schema": "./node_modules/nx/schemas/nx-schema.json",
-    "targetDefaults": {
-        "build": {
-            "dependsOn": ["^build"]
-        }
+    ".eslintrc.json": "*"
+  },
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "@nrwl/nx-cloud",
+      "options": {
+        "cacheableOperations": ["build", "lint", "test", "e2e"],
+        "accessToken": "YTVkOThiMDMtNzBlMy00ZDlkLTlkODUtNmQxNWQxOGIyOTM1fHJlYWQtd3JpdGU="
+      }
     }
+  },
+  "generators": {
+    "@nrwl/react": {
+      "application": {
+        "style": "scss",
+        "linter": "eslint",
+        "babel": true
+      },
+      "component": {
+        "style": "scss"
+      },
+      "library": {
+        "style": "scss",
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/next": {
+      "application": {
+        "style": "scss",
+        "linter": "eslint"
+      }
+    }
+  },
+  "defaultProject": "landings-launchpad",
+  "$schema": "./node_modules/nx/schemas/nx-schema.json",
+  "targetDefaults": {
+    "build": {
+      "dependsOn": ["^build"]
+    }
+  }
 }

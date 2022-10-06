@@ -1,0 +1,686 @@
+@import '/apps/landings/launchpad/src/utils.scss';
+
+.wrapper {
+    overflow: hidden;
+    @include desktop {
+        padding: dpxvw(155) dpxvw(120) dpxvw(10) dpxvw(120);
+    }
+
+    @include tablet {
+        padding: tpxvw(80) tpxvw(10) tpxvw(10) tpxvw(10);
+    }
+
+    @include mobile {
+        padding: mpxvw(50) mpxvw(10) mpxvw(10) mpxvw(10);
+    }
+}
+
+.title {
+    @include desktop {
+        margin-bottom: dpxvw(64);
+    }
+
+    @include tablet {
+        margin-bottom: tpxvw(52);
+    }
+
+    @include mobile {
+        margin-bottom: mpxvw(25);
+    }
+}
+
+.title-content {
+    font-family: 'Staatliches', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 130%;
+    letter-spacing: -0.01em;
+    color: #fffdf7;
+    text-align: center;
+
+    @include desktop {
+        font-size: dpxvw(70);
+    }
+
+    @include tablet {
+        font-size: tpxvw(60);
+    }
+
+    @include mobile {
+        font-size: mpxvw(40);
+    }
+}
+
+.roadmap {
+    position: relative;
+
+    @include desktop {
+        padding-bottom: dpxvw(170);
+    }
+
+    @include tablet {
+        margin-left: tpxvw(60);
+        margin-right: tpxvw(60);
+        padding-bottom: tpxvw(80);
+    }
+
+    @include mobile {
+        margin-left: mpxvw(0);
+        margin-right: mpxvw(0);
+        padding-bottom: mpxvw(50);
+    }
+}
+
+.phase-content {
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+    align-items: baseline;
+    position: relative;
+
+    @include desktop {
+        width: dpxvw(360);
+        border: dpxvw(1) solid transparent;
+        padding: dpxvw(17) dpxvw(21);
+        border-radius: dpxvw(400);
+    }
+
+    @include tablet {
+        width: tpxvw(360);
+        border: tpxvw(1) solid transparent;
+        border-radius: tpxvw(400);
+        padding: tpxvw(17) tpxvw(21);
+    }
+
+    @include mobile {
+        width: mpxvw(300);
+        border: mpxvw(1) solid transparent;
+        border-radius: mpxvw(400);
+        padding: mpxvw(15) mpxvw(15);
+    }
+
+    &.phase-content-1 {
+        background-color: #c0ff59;
+        color: #000;
+    }
+
+    &.phase-content-2 {
+        background-color: #ac5cfd;
+        color: #fffdf7;
+    }
+
+    &.phase-content-3 {
+        background-color: #ac5cfd;
+        color: #fffdf7;
+    }
+
+    &.phase-content-4 {
+        background-color: #c0ff59;
+        color: #000;
+    }
+
+    &.phase-content-5 {
+        background-color: #c0ff59;
+        color: #000;
+    }
+}
+
+.vector {
+    position: absolute;
+}
+
+.Gb {
+    @include desktop {
+        width: dpxvw(222.18);
+        height: dpxvw(62);
+        bottom: dpxvw(-50);
+        left: dpxvw(75);
+    }
+
+    @include tablet {
+        width: tpxvw(222.18);
+        height: tpxvw(62);
+        bottom: tpxvw(-50);
+        left: tpxvw(75);
+    }
+
+    @include mobile {
+        width: mpxvw(122.19);
+        height: mpxvw(34.1);
+        bottom: mpxvw(-29);
+        left: mpxvw(80);
+    }
+
+    &.Gb4 {
+        @include mobile {
+            left: mpxvw(158);
+        }
+    }
+}
+
+.Gbr {
+    @include desktop {
+        width: dpxvw(85.25);
+        height: dpxvw(202.19);
+        bottom: dpxvw(-175);
+        right: dpxvw(5);
+    }
+
+    @include tablet {
+        width: tpxvw(70.83);
+        height: tpxvw(168);
+        bottom: tpxvw(-150);
+        right: tpxvw(8);
+    }
+
+    @include mobile {
+        width: mpxvw(43);
+        height: mpxvw(101.99);
+        bottom: mpxvw(-90);
+        right: mpxvw(10);
+    }
+}
+
+.Vp {
+    z-index: -1;
+    @include desktop {
+        width: dpxvw(98);
+        height: dpxvw(79.45);
+        top: dpxvw(-45);
+        left: dpxvw(-10);
+    }
+
+    @include tablet {
+        width: tpxvw(98);
+        height: tpxvw(79.45);
+        top: tpxvw(-45);
+        left: tpxvw(-10);
+    }
+
+    @include mobile {
+        width: mpxvw(71);
+        height: mpxvw(57.56);
+        top: mpxvw(-30);
+        left: mpxvw(-10);
+    }
+}
+
+.Vpb {
+    @include desktop {
+        width: dpxvw(93.47);
+        height: dpxvw(115);
+        bottom: dpxvw(-90);
+        right: dpxvw(8);
+    }
+
+    @include tablet {
+        width: tpxvw(93.47);
+        height: tpxvw(115);
+        bottom: tpxvw(-90);
+        right: tpxvw(8);
+    }
+
+    @include mobile {
+        width: mpxvw(72.13);
+        height: mpxvw(88.75);
+        bottom: mpxvw(-73);
+        right: mpxvw(10);
+    }
+}
+
+.a-img {
+    position: relative;
+    bottom: -1px;
+}
+
+.items {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+
+    @include mobile {
+        padding-bottom: mpxvw(40);
+    }
+}
+
+.items-2 {
+    @include desktop {
+        top: dpxvw(-110);
+        width: dpxvw(389);
+        left: dpxvw(620);
+    }
+
+    @include tablet {
+        left: tpxvw(300);
+        padding-bottom: tpxvw(80);
+        padding-top: tpxvw(80);
+    }
+
+    @include mobile {
+        left: 0;
+        padding-top: mpxvw(0);
+        padding-bottom: mpxvw(50);
+    }
+}
+
+.items-3 {
+    @include desktop {
+        width: dpxvw(362);
+        left: dpxvw(100);
+    }
+
+    @include tablet {
+        padding-bottom: tpxvw(80);
+    }
+
+    @include mobile {
+        padding-bottom: mpxvw(40);
+    }
+}
+
+.items-4 {
+    @include desktop {
+        width: dpxvw(360);
+        top: dpxvw(-150);
+        left: dpxvw(800);
+    }
+
+    @include tablet {
+        left: tpxvw(300);
+        padding-bottom: tpxvw(65);
+    }
+
+    @include mobile {
+        padding-bottom: mpxvw(40);
+        left: 0;
+    }
+}
+
+.items-5 {
+    @include desktop {
+        width: dpxvw(370);
+        top: dpxvw(-90);
+        left: dpxvw(300);
+    }
+
+    @include tablet {
+        padding-bottom: tpxvw(80);
+    }
+
+    @include mobile {
+        padding-bottom: mpxvw(30);
+    }
+}
+
+.phase {
+    font-family: 'Anek Tamil', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 130%;
+    letter-spacing: -0.01em;
+
+    @include desktop {
+        font-size: dpxvw(24);
+    }
+
+    @include tablet {
+        font-size: tpxvw(24);
+    }
+
+    @include mobile {
+        font-size: mpxvw(16);
+    }
+}
+
+.date {
+    font-family: 'Anek Tamil', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 130%;
+    letter-spacing: -0.01em;
+
+    @include desktop {
+        font-size: dpxvw(14);
+    }
+
+    @include tablet {
+        font-size: tpxvw(14);
+    }
+
+    @include mobile {
+        font-size: mpxvw(12);
+    }
+}
+
+.road-p {
+    @include desktop {
+        padding-top: dpxvw(57);
+    }
+
+    @include tablet {
+        padding-top: tpxvw(57);
+    }
+
+    @include mobile {
+        padding-top: mpxvw(28);
+    }
+}
+
+.roadP {
+    @include desktop {
+        padding-top: dpxvw(77);
+    }
+
+    @include tablet {
+        padding-top: tpxvw(77);
+    }
+
+    @include mobile {
+        padding-top: mpxvw(40);
+    }
+}
+
+.p-items {
+    font-family: 'Anek Tamil', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 130%;
+    letter-spacing: -0.01em;
+    color: #fffdf7;
+
+    @include desktop {
+        font-size: dpxvw(18);
+        padding-bottom: dpxvw(10);
+    }
+
+    @include tablet {
+        font-size: tpxvw(18);
+        padding-bottom: tpxvw(10);
+    }
+
+    @include mobile {
+        font-size: mpxvw(12);
+        padding-bottom: mpxvw(10);
+    }
+
+    &:last-child {
+        padding-bottom: 0;
+    }
+}
+
+.arrow {
+    position: absolute;
+}
+
+.arrowMob {
+    position: absolute;
+}
+
+.arrow-1 {
+    @include desktop {
+        width: dpxvw(250.84);
+        left: dpxvw(340);
+        top: dpxvw(85);
+    }
+
+    @include tablet {
+        transform: matrix(0.5, 0.87, 0.87, -0.5, 0, 0);
+        width: tpxvw(250.84);
+        left: tpxvw(340);
+        top: tpxvw(100);
+    }
+
+    @include mobile {
+        display: none;
+    }
+}
+
+.arrow-2 {
+    @include desktop {
+        width: dpxvw(207.89);
+        left: dpxvw(-221);
+        top: dpxvw(170);
+    }
+
+    @include tablet {
+        width: tpxvw(207.89);
+        left: tpxvw(-220);
+        top: tpxvw(150);
+    }
+
+    @include mobile {
+        display: none;
+    }
+}
+
+.arrow-3 {
+    @include desktop {
+        width: dpxvw(302.35);
+        left: dpxvw(330);
+        top: dpxvw(150);
+    }
+
+    @include tablet {
+        transform: matrix(0.4, 0.91, 0.91, -0.4, 0, 0);
+        width: tpxvw(302.35);
+        left: tpxvw(340);
+        top: tpxvw(90);
+    }
+
+    @include mobile {
+        display: none;
+    }
+}
+
+.arrow-4 {
+    @include desktop {
+        width: dpxvw(302.35);
+        left: dpxvw(-110);
+        top: dpxvw(270);
+    }
+
+    @include tablet {
+        transform: scale(1, -1) rotate(75deg);
+        top: tpxvw(50);
+        left: tpxvw(-200);
+        width: tpxvw(206.25);
+    }
+
+    @include mobile {
+        display: none;
+    }
+}
+
+.arrowMob-1 {
+    @include desktop {
+        display: none;
+    }
+
+    @include tablet {
+        display: none;
+    }
+
+    @include mobile {
+        display: block;
+        width: mpxvw(113.29);
+        right: mpxvw(-45);
+        top: mpxvw(65);
+    }
+}
+
+.arrowMob-2 {
+    @include desktop {
+        display: none;
+    }
+
+    @include tablet {
+        display: none;
+    }
+
+    @include mobile {
+        display: block;
+        width: mpxvw(101);
+        right: mpxvw(-40);
+        top: mpxvw(70);
+    }
+}
+
+.arrowMob-3 {
+    @include desktop {
+        display: none;
+    }
+
+    @include tablet {
+        display: none;
+    }
+
+    @include mobile {
+        display: block;
+        width: mpxvw(111.07);
+        right: mpxvw(-35);
+        top: mpxvw(70);
+    }
+}
+
+.arrowMob-4 {
+    @include desktop {
+        display: none;
+    }
+
+    @include tablet {
+        display: none;
+    }
+
+    @include mobile {
+        display: block;
+        width: mpxvw(99.78);
+        right: mpxvw(-18);
+        top: mpxvw(75);
+    }
+}
+
+.p-size {
+    @include mobile {
+        width: mpxvw(160);
+    }
+}
+
+.bg {
+    position: absolute;
+}
+
+.items-1-bg {
+    @include desktop {
+        width: dpxvw(422);
+        height: dpxvw(422);
+        top: dpxvw(-15);
+        left: dpxvw(-15);
+    }
+
+    @include tablet {
+        width: tpxvw(422);
+        height: tpxvw(422);
+        top: tpxvw(-45);
+        left: tpxvw(-75);
+    }
+
+    @include mobile {
+        width: mpxvw(350);
+        height: mpxvw(250);
+        top: mpxvw(-73);
+        left: mpxvw(0);
+    }
+}
+
+.items-2-bg {
+    @include desktop {
+        width: dpxvw(422);
+        height: dpxvw(422);
+        top: dpxvw(-25);
+        left: dpxvw(-55);
+    }
+
+    @include tablet {
+        width: tpxvw(422);
+        height: tpxvw(422);
+        top: tpxvw(-25);
+        left: tpxvw(-75);
+    }
+
+    @include mobile {
+        width: mpxvw(350);
+        height: mpxvw(250);
+        top: mpxvw(-50);
+        left: mpxvw(-60);
+    }
+}
+
+.items-3-bg {
+    @include desktop {
+        width: dpxvw(422);
+        height: dpxvw(422);
+        top: dpxvw(-45);
+        left: dpxvw(-65);
+    }
+
+    @include tablet {
+        width: tpxvw(422);
+        height: tpxvw(422);
+        top: tpxvw(-65);
+        left: tpxvw(-75);
+    }
+
+    @include mobile {
+        width: mpxvw(350);
+        height: mpxvw(250);
+        top: mpxvw(-50);
+        left: mpxvw(-75);
+    }
+}
+
+.items-4-bg {
+    @include desktop {
+        width: dpxvw(422);
+        height: dpxvw(422);
+        top: dpxvw(-40);
+        left: dpxvw(-105);
+    }
+
+    @include tablet {
+        width: tpxvw(422);
+        height: tpxvw(422);
+        top: tpxvw(-65);
+        left: tpxvw(-105);
+    }
+
+    @include mobile {
+        width: mpxvw(350);
+        height: mpxvw(250);
+        top: mpxvw(-50);
+        left: mpxvw(-65);
+    }
+}
+
+.items-5-bg {
+    @include desktop {
+        width: dpxvw(422);
+        height: dpxvw(422);
+        top: dpxvw(-60);
+        left: dpxvw(-105);
+    }
+
+    @include tablet {
+        width: tpxvw(422);
+        height: tpxvw(422);
+        top: tpxvw(-50);
+        left: tpxvw(-105);
+    }
+
+    @include mobile {
+        width: mpxvw(350);
+        height: mpxvw(250);
+        top: mpxvw(-50);
+        left: mpxvw(-50);
+    }
+}

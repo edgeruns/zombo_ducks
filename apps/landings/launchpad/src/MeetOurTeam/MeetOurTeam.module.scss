@@ -1,0 +1,329 @@
+@import '/apps/landings/launchpad/src/utils.scss';
+
+.wrapper {
+    overflow: hidden;
+    @include desktop {
+        padding: dpxvw(0) dpxvw(120) dpxvw(175) dpxvw(120);
+    }
+
+    @include tablet {
+        padding: tpxvw(0) tpxvw(10) tpxvw(83.35) tpxvw(10);
+    }
+
+    @include mobile {
+        padding: mpxvw(0) mpxvw(10) mpxvw(51) mpxvw(10);
+    }
+}
+
+.title {
+    @include desktop {
+        margin-bottom: dpxvw(64);
+    }
+
+    @include tablet {
+        margin-bottom: tpxvw(52);
+    }
+
+    @include mobile {
+        margin-bottom: mpxvw(25);
+    }
+}
+
+.title-content {
+    font-family: 'Staatliches', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 130%;
+    letter-spacing: -0.01em;
+    color: #fffdf7;
+    text-align: center;
+
+    @include desktop {
+        font-size: dpxvw(70);
+    }
+
+    @include tablet {
+        font-size: tpxvw(60);
+    }
+
+    @include mobile {
+        font-size: mpxvw(40);
+    }
+}
+
+.ducks {
+    display: flex;
+    justify-content: center;
+    position: relative;
+
+    @include mobile {
+        flex-wrap: wrap;
+    }
+}
+
+.duck {
+    @include desktop {
+        padding-bottom: dpxvw(16);
+    }
+
+    @include tablet {
+        padding-bottom: tpxvw(10);
+    }
+
+    @include mobile {
+        padding-bottom: mpxvw(17);
+    }
+}
+
+.duck-content {
+    position: relative;
+    &.content-l {
+        @include desktop {
+            padding-left: dpxvw(11);
+            padding-right: dpxvw(11);
+        }
+
+        @include tablet {
+            padding-left: tpxvw(6);
+            padding-right: tpxvw(6);
+        }
+
+        @include mobile {
+            padding-left: mpxvw(0);
+            padding-right: mpxvw(0);
+            padding-bottom: mpxvw(10);
+        }
+    }
+
+    &.content-s-l {
+        @include desktop {
+        }
+
+        @include tablet {
+        }
+
+        @include mobile {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+        }
+    }
+
+    &.content-s-r {
+        @include mobile {
+            position: relative;
+            left: mpxvw(75);
+            bottom: 0;
+        }
+    }
+}
+
+.duck-s {
+    @include desktop {
+        width: dpxvw(244.77);
+        height: dpxvw(244.77);
+    }
+
+    @include tablet {
+        width: tpxvw(130.83);
+        height: tpxvw(130.83);
+    }
+
+    @include mobile {
+        width: mpxvw(145);
+        height: mpxvw(145);
+    }
+}
+
+.duck-l {
+    @include desktop {
+        width: dpxvw(319.27);
+        height: dpxvw(319.27);
+        padding-right: dpxvw(11);
+    }
+
+    @include tablet {
+        width: tpxvw(170.64);
+        height: tpxvw(170.64);
+        padding-right: tpxvw(6);
+    }
+
+    @include mobile {
+        width: mpxvw(145);
+        height: mpxvw(145);
+        padding-right: mpxvw(6);
+    }
+}
+
+.d-l-r {
+    padding-right: 0;
+}
+
+.duck-text {
+    color: #fffdf7;
+    text-align: center;
+}
+
+.duck-title {
+    font-family: 'Anek Tamil', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 130%;
+    letter-spacing: -0.01em;
+
+    @include desktop {
+        font-size: dpxvw(18);
+    }
+
+    @include tablet {
+        font-size: tpxvw(10);
+    }
+
+    @include mobile {
+        font-size: mpxvw(14);
+    }
+
+    &.t-l {
+        @include desktop {
+            font-size: dpxvw(24);
+        }
+
+        @include tablet {
+            font-size: tpxvw(14);
+        }
+
+        @include mobile {
+            font-size: mpxvw(14);
+        }
+    }
+}
+
+.duck-p {
+    font-family: 'Anek Tamil', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 120%;
+    letter-spacing: -0.01em;
+
+    @include desktop {
+        font-size: dpxvw(12);
+    }
+
+    @include tablet {
+        font-size: tpxvw(8);
+    }
+
+    @include mobile {
+        font-size: mpxvw(10);
+    }
+
+    &.p-l {
+        @include desktop {
+            font-size: dpxvw(14);
+        }
+
+        @include tablet {
+            font-size: tpxvw(10);
+        }
+
+        @include mobile {
+            font-size: mpxvw(12);
+        }
+    }
+}
+
+.vec {
+    position: absolute;
+}
+
+.vec-left {
+    @include desktop {
+        width: dpxvw(32.49);
+        height: dpxvw(56.11);
+        top: dpxvw(235);
+        left: dpxvw(2);
+    }
+
+    @include tablet {
+        width: tpxvw(17.36);
+        height: tpxvw(29.99);
+        top: tpxvw(128);
+        left: tpxvw(5);
+    }
+
+    @include mobile {
+        width: mpxvw(17.61);
+        height: mpxvw(30.43);
+        top: mpxvw(140);
+        right: mpxvw(2);
+    }
+}
+
+.vec-right {
+    @include desktop {
+        width: dpxvw(32.49);
+        height: dpxvw(56.11);
+        top: dpxvw(237);
+        right: dpxvw(5);
+    }
+
+    @include tablet {
+        width: tpxvw(17.36);
+        height: tpxvw(29.99);
+        top: tpxvw(128);
+        right: tpxvw(5);
+    }
+
+    @include mobile {
+        width: mpxvw(18.58);
+        height: mpxvw(32.09);
+        top: mpxvw(140);
+        right: mpxvw(2);
+    }
+}
+
+.vec-center1 {
+    @include desktop {
+        width: dpxvw(75.53);
+        height: dpxvw(50);
+        top: dpxvw(305);
+        left: dpxvw(13);
+    }
+
+    @include tablet {
+        width: tpxvw(40.37);
+        height: tpxvw(26.72);
+        top: tpxvw(164);
+        left: tpxvw(8);
+    }
+
+    @include mobile {
+        width: mpxvw(31.37);
+        height: mpxvw(20.76);
+        top: mpxvw(140);
+        right: mpxvw(2);
+    }
+}
+
+.vec-center2 {
+    @include desktop {
+        width: dpxvw(106.16);
+        height: dpxvw(54.49);
+        top: dpxvw(305);
+        right: dpxvw(13);
+    }
+
+    @include tablet {
+        width: tpxvw(56.74);
+        height: tpxvw(29.12);
+        top: tpxvw(164);
+        right: tpxvw(8);
+    }
+
+    @include mobile {
+        width: mpxvw(36.68);
+        height: mpxvw(18.83);
+        top: mpxvw(140);
+        right: mpxvw(2);
+    }
+}
