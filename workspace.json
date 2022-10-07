@@ -1,13 +1,11 @@
 {
   "version": 2,
   "projects": {
-    "bar-components": "libs/bar/components",
-    "bar-data": "libs/bar/data",
-    "bar-styles": "libs/bar/styles",
-    "bar-uikit": "libs/bar/uikit",
-    "bar-utils": "libs/bar/utils",
-    "games-zombofighter-api": "apps/games/zombofighter/api",
     "games-zombofighter-client": "apps/games/zombofighter/client",
+    "games-zombofighter-client-components": "libs/games/zombofighter/client/components",
+    "games-zombofighter-client-data": "libs/games/zombofighter/client/data",
+    "games-zombofighter-client-uikit": "libs/games/zombofighter/client/uikit",
+    "games-zombofighter-client-utils": "libs/games/zombofighter/client/utils",
     "landing-components": "libs/landing/components",
     "landing-styles": "libs/landing/styles",
     "landings-launchpad": "apps/landings/launchpad",

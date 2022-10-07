@@ -1,0 +1,52 @@
+@import 'libs/games/zombofighter/client/uikit/src/mixins';
+
+.root {
+    position: relative;
+    padding: 0 pxvw(17);
+    height: pxvw(18);
+    border-radius: pxvw(12);
+    background-color: var(--gray-blue);
+    box-shadow: inset 0 pxvw(4) 0 #91bece, inset 0 pxvw(-4) 0 #d0e8f0;
+
+    &_reversed {
+        .line {
+            left: unset;
+            right: 0;
+        }
+    }
+
+    &_red {
+        .line {
+            background-color: var(--red);
+            box-shadow: inset 0 pxvw(-2) 0 #d6250d, inset 0 pxvw(2) 0 #ff9797;
+        }
+    }
+
+    &_purple {
+        .line {
+            background-color: #b844ff;
+            box-shadow: inset 0 pxvw(-2) 0 #a10dd6, inset 0 pxvw(2) 0 #d38bff;
+        }
+    }
+}
+
+.line {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    border-radius: pxvw(12);
+    transition: width 0.4s ease;
+}
+
+.text {
+    display: block;
+    position: relative;
+    width: 100%;
+    color: #fffdf7;
+    font-size: pxvw(12);
+    font-weight: 700;
+    line-height: pxvw(17);
+    text-align: center;
+    z-index: 2;
+}

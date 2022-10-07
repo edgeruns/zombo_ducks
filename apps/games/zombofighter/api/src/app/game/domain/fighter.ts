@@ -49,3 +49,5 @@ export class Fighter implements FighterInterface {
         return this.health.getValue() > 0
     }
 }
+
+
