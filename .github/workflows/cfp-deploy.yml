@@ -44,7 +44,7 @@ jobs:
         run: pnpm install
 
       - name: Build project
-        run: npm run export landings-${{ github.event.inputs.project }}
+        run: npm run export landings-${{ github.event.inputs.project }} --production
 
       - name: Deploy ${{ github.event.inputs.project }} to CFP
         uses: cloudflare/pages-action@1

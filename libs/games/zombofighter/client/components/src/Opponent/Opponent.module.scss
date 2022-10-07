@@ -1,0 +1,46 @@
+@import 'libs/games/zombofighter/client/uikit/src/vars';
+@import 'libs/games/zombofighter/client/uikit/src/mixins';
+
+.root {
+    position: absolute;
+    left: pxvw(117);
+    bottom: pxvw(-9);
+    opacity: 0;
+    pointer-events: none;
+    transform: rotateY(180deg);
+    transition: opacity 0.2s;
+
+    &_visible {
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    &_arrived {
+        animation: duckArrive $opponent-arrive-time linear forwards;
+    }
+}
+
+@keyframes duckArrive {
+    from {
+        left: pxvw(60);
+        bottom: pxvw(17);
+        transform: scale(0.69) rotateY(180deg);
+        opacity: 0;
+    }
+
+    25% {
+        opacity: 1;
+    }
+
+    50% {
+        left: pxvw(60);
+        bottom: pxvw(17);
+        transform: scale(0.69) rotateY(180deg);
+    }
+
+    to {
+        left: pxvw(117);
+        bottom: pxvw(-9);
+        transform: scale(1) rotateY(180deg);
+    }
+}

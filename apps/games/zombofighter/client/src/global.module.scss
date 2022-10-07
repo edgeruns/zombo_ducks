@@ -1,0 +1,33 @@
+@import 'libs/games/zombofighter/client/uikit/src/mixins';
+
+:root {
+    --yellow: #ffc700;
+    --dark-blue: #062c34;
+    --gray-blue: #b2d0db;
+    --red: #ff5959;
+    --green: #69f278;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+    width: 100%;
+    height: 100%;
+}
+
+html {
+    font-family: 'Anek Tamil', sans-serif;
+    overflow: hidden;
+}
+
+body {
+    margin: 0;
+    @include webpBg('/apps/games/zombofighter/client/src/assets/bg', 'png');
+    background-position: bottom;
+    background-size: cover;
+    background-repeat: no-repeat;
+}

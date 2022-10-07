@@ -15,11 +15,21 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@apps/bar/components": ["libs/bar/components/src/index.ts"],
-      "@apps/bar/data": ["libs/bar/data/src/index.ts"],
-      "@apps/bar/styles/*": ["libs/bar/styles/src/*"],
-      "@apps/bar/uikit": ["libs/bar/uikit/src/index.ts"],
-      "@apps/bar/utils": ["libs/bar/utils/src/index.ts"],
+      "@apps/games-zombofighter-client-components": [
+        "libs/games/zombofighter/client/components/src/index.ts"
+      ],
+      "@apps/games-zombofighter-client-data": [
+        "libs/games/zombofighter/client/data/src/index.ts"
+      ],
+      "@apps/games-zombofighter-client-styles": [
+        "libs/games/zombofighter/client/styles/src/*"
+      ],
+      "@apps/games-zombofighter-client-uikit": [
+        "libs/games/zombofighter/client/uikit/src/index.ts"
+      ],
+      "@apps/games-zombofighter-client-utils": [
+        "libs/games/zombofighter/client/utils/src/index.ts"
+      ],
       "@apps/home-layout": ["libs/home/layout/src/index.ts"],
       "@apps/home/layout": ["libs/home/layout/src/index.ts"],
       "@apps/home/main": ["libs/home/main/src/index.ts"],
