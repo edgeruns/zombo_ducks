@@ -33,10 +33,10 @@ spec:
           name: zombofight-api
           ports:
             - containerPort: 3333
-              name: zombofight-api
+              name: zf-api
               protocol: TCP
             - containerPort: 3334
-              name: zombofight-socket
+              name: zf-socket
               protocol: TCP
           terminationMessagePath: /dev/termination-log
           terminationMessagePolicy: File
