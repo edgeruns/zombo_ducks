@@ -2,15 +2,6 @@ name: Deploy
 on:
   workflow_dispatch:
     inputs:
-      environment:
-        type: choice
-        description: Environment
-        default: production
-        required: true
-        options:
-          - production
-          - development
-
       project:
         type: choice
         description: Project
@@ -23,7 +14,7 @@ jobs:
   publish:
     runs-on: self-hosted
     name: publish to docker repository
-    environment: ${{ github.event.inputs.environment }}
+    environment: production
     steps:
       - name: Checkout
         uses: actions/checkout@v3
