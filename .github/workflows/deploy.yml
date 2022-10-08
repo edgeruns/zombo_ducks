@@ -50,6 +50,8 @@ jobs:
         run: echo "::set-output name=value::${{ github.ref_name }}-${{ github.sha }}"
         id: version
 
+      - name: Show directory
+        run: echo "ls -la ."
 
       - name: Docker build
         run: |
