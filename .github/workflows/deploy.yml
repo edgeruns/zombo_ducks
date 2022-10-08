@@ -46,17 +46,14 @@ jobs:
       - name: Build project
         run: npm run build ${{ github.event.inputs.project }} --production
 
-      - name: Look version for docker
+      - name: Build version name
         run: echo "::set-output name=value::${{ github.ref_name }}-${{ github.sha }}"
         id: version
-
-      - name: Show directory
-        run: echo "ls -la ."
 
       - name: Docker build
         run: |
           docker build \
-            -f docker/${{ github.event.inputs.project }}.Dockefile \
+            -f ./docker/${{ github.event.inputs.project }}.Dockefile \
             -t devdammit/zombofight-api:${{ steps.version.outputs.value }} \
             .
 
