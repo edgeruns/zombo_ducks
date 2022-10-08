@@ -1,0 +1,70 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: zombofight-api
+    project: games
+    commitSha: '$COMMIT_SHA'
+  name: zombofight-api
+  namespace: games
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 2
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: zombofight-api
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+    type: RollingUpdate
+
+  template:
+    metadata:
+      labels:
+        app: zombofight-api
+        project: games
+    spec:
+      containers:
+        - image: devdammit/games-zombofighter-api:$BRANCH-$COMMIT_SHA
+
+          imagePullPolicy: Always
+          name: zombofight-api
+          ports:
+            - containerPort: 3333
+              name: zombofight-api
+              protocol: TCP
+            - containerPort: 3334
+              name: zombofight-socket
+              protocol: TCP
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          resources:
+            limits:
+              memory: 256Mi
+              cpu: 600m
+            requests:
+              cpu: 300m
+              memory: 128Mi
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: 3333
+            initialDelaySeconds: 10
+            periodSeconds: 1
+            timeoutSeconds: 1
+          readinessProbe:
+            httpGet:
+              path: /readyz
+              port: 3333
+            initialDelaySeconds: 5
+            periodSeconds: 1
+            timeoutSeconds: 1
+      dnsPolicy: ClusterFirst
+      nodeSelector:
+        kubernetes.io/role: other
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      terminationGracePeriodSeconds: 30
+

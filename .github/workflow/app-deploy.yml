@@ -1,4 +1,4 @@
-name: Deploy
+name: App Deploy
 on:
   workflow_dispatch:
     inputs:
@@ -11,9 +11,9 @@ on:
           - games-zombofighter-api
 
 jobs:
-  publish:
+  ci:
     runs-on: self-hosted
-    name: publish to docker repository
+    name: check and publish artefact
     environment: production
     steps:
       - name: Checkout
@@ -54,9 +54,21 @@ jobs:
         run: |
           docker build \
             -f ./docker/${{ github.event.inputs.project }}.Dockerfile \
-            -t devdammit/zombofight-api:${{ steps.version.outputs.value }} \
+            -t crypto-animals/${{ github.event.inputs.project }}:${{ steps.version.outputs.value }} \
             .
 
       - name: Docker push
         run: |
-          docker push devdammit/zombofight-api:${{ steps.version.outputs.value }}
+          docker push crypto-animals/${{ github.event.inputs.project }}:${{ steps.version.outputs.value }}
+
+
+  deploy:
+    runs-on: self-hosted
+    name: deploy ${{ github.event.inputs.project }}
+    environment: production
+    env:
+      COMMIT_SHA: ${{ github.sha }}
+      BRANCH: ${{ github.ref_name }}
+    steps:
+      - name: Deploy
+        run: kubectl apply -f deploy/${{ githbu.event.inputs.project }}
