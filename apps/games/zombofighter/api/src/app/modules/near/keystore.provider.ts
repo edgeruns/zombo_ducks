@@ -1,6 +1,7 @@
 import { keyStores, KeyPair } from 'near-api-js'
 import { KEY_STORE_PROVIDER } from './constants'
 import { Provider } from '@nestjs/common'
+import { ConfigService } from '@nestjs/config'
 
 export const keystoreProvider: Provider = {
     provide: KEY_STORE_PROVIDER,
@@ -12,4 +13,5 @@ export const keystoreProvider: Provider = {
 
         return keyStore
     },
+    inject: [ConfigService],
 }
