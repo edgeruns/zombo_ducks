@@ -53,9 +53,10 @@ jobs:
 
       - name: Docker build
         run: |
-          docker build -f ./docker/${{ github.event.inputs.project }}.Dockerfile \
-          devdammit/zombofight-api:${{ steps.version.outputs.value }} \
-          .
+          docker build \
+            -f docker/${{ github.event.inputs.project }}.Dockefile \
+            -t devdammit/zombofight-api:${{ steps.version.outputs.value }} \
+            .
 
       - name: Docker push
         run: |
