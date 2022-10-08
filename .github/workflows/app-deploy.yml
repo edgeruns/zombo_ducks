@@ -63,6 +63,7 @@ jobs:
 
 
   deploy:
+    needs: ci
     runs-on: self-hosted
     name: deploy ${{ github.event.inputs.project }}
     environment: production
