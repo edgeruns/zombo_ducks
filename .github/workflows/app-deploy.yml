@@ -73,8 +73,7 @@ jobs:
     steps:
       - name: Prepare deployment config
         run: |
-          envsubst < deploy/${{ github.event.inputs.project }}/deployment.yml |& \
-          tee deploy/${{ github.event.inputs.project }}/deployment.yml
+          envsubst < deploy/${{ github.event.inputs.project }}/deployment.yml |& > deploy/${{ github.event.inputs.project }}/deployment.yml
 
       - name: Deploy
         run: kubectl apply -f deploy/${{ github.event.inputs.project }}/
