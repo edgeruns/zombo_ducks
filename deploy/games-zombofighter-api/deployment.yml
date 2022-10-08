@@ -27,7 +27,7 @@ spec:
         project: games
     spec:
       containers:
-        - image: crypto-animals/games-zombofighter-api:$BRANCH-$COMMIT_SHA
+        - image: registry.digitalocean.com/crypto-animals/games-zombofighter-api:$BRANCH-$COMMIT_SHA
 
           imagePullPolicy: Always
           name: zombofight-api

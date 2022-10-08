@@ -54,12 +54,12 @@ jobs:
         run: |
           docker build \
             -f ./docker/${{ github.event.inputs.project }}.Dockerfile \
-            -t crypto-animals/${{ github.event.inputs.project }}:${{ steps.version.outputs.value }} \
+            -t registry.digitalocean.com/crypto-animals/${{ github.event.inputs.project }}:${{ steps.version.outputs.value }} \
             .
 
       - name: Docker push
         run: |
-          docker push crypto-animals/${{ github.event.inputs.project }}:${{ steps.version.outputs.value }}
+          docker push registry.digitalocean.com/crypto-animals/${{ github.event.inputs.project }}:${{ steps.version.outputs.value }}
 
 
   deploy:
