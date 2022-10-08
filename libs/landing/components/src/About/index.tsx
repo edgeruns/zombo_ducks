@@ -1,5 +1,7 @@
 import React, { CSSProperties, FC, useState, useMemo, useEffect } from 'react'
 
+import { Row } from '../Row'
+
 import styles from './About.module.scss'
 
 export const About: FC = () => {
@@ -60,45 +62,47 @@ export const About: FC = () => {
 
     return (
         <section className={styles.wrapper}>
-            <h1 className={styles.title}>
-                ZomboDucks
-            </h1>
+            <Row>
+                <h1 className={styles.title}>
+                    ZomboDucks
+                </h1>
 
-            <p className={styles.text}>
-                First P2E gaming platform platform on NEAR protocol<br />
-                May 2022: 1,555 unique nightmare ZomboDucks spawn
-            </p>
+                <p className={styles.text}>
+                    First P2E gaming platform platform on NEAR protocol<br />
+                    May 2022: 1,555 unique nightmare ZomboDucks spawn
+                </p>
 
-            <button className={styles.button}>
-                <div className={styles['button-content']}>
-                    <div className={styles['button-text']}>
-                        Mint Soon
+                <button className={styles.button}>
+                    <div className={styles['button-content']}>
+                        <div className={styles['button-text']}>
+                            Mint Soon
+                        </div>
                     </div>
+                </button>
+
+                <div className={styles.ducks}>
+                    <img
+                        className={styles.duck}
+                        style={greenDuckStyle}
+                        src="/about/duck-green.png"
+                        alt="Duck"
+                    />
+
+                    <img
+                        className={styles.duck}
+                        style={purpleDuckStyle}
+                        src="/about/duck-purple.png"
+                        alt="Duck"
+                    />
+
+                    <img
+                        className={styles.duck}
+                        style={blueDuckStyle}
+                        src="/about/duck-blue.png"
+                        alt="Duck"
+                    />
                 </div>
-            </button>
-
-            <div className={styles.ducks}>
-                <img
-                    className={styles.duck}
-                    style={greenDuckStyle}
-                    src="/about/duck-green.png"
-                    alt="Duck"
-                />
-
-                <img
-                    className={styles.duck}
-                    style={purpleDuckStyle}
-                    src="/about/duck-purple.png"
-                    alt="Duck"
-                />
-
-                <img
-                    className={styles.duck}
-                    style={blueDuckStyle}
-                    src="/about/duck-blue.png"
-                    alt="Duck"
-                />
-            </div>
+            </Row>
         </section>
     )
 }

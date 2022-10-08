@@ -1,23 +1,16 @@
 @import 'libs/landing/styles/src/mixins';
 
 .wrapper {
+    position: sticky;
+    top: 0;
+    background-color: #000000;
+    z-index: 3;
+}
+
+.content {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    position: sticky;
-    top: 0;
-    z-index: 3;
-
-    &::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: calc((100vw - 100%) / 2 * -1);
-        width: 100vw;
-        height: 100%;
-        background-color: #000000;
-        z-index: -1;
-    }
 }
 
 .logo {
@@ -75,7 +68,7 @@
 }
 
 @include desktop {
-    .wrapper {
+    .content {
         height: 70px;
     }
 
@@ -112,7 +105,7 @@
 }
 
 @include tablet {
-    .wrapper {
+    .content {
         height: pxvw_t(70);
     }
 
@@ -139,7 +132,7 @@
 }
 
 @include mobile {
-    .wrapper {
+    .content {
         height: pxvw_m(64);
     }
 

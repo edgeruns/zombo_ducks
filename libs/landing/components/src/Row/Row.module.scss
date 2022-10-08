@@ -1,0 +1,26 @@
+@import 'libs/landing/styles/src/mixins';
+@import 'libs/landing/styles/src/vars';
+
+.root {
+    width: 100%;
+}
+
+@include desktop {
+    .root {
+        max-width: #{$layout-width}px;
+        margin: 0 auto;
+        padding: 0 #{$layout-padding}px;
+    }
+}
+
+@include tablet {
+    .root {
+        padding: 0 pxvw_t($layout-padding-t);
+    }
+}
+
+@include mobile {
+    .root {
+        padding: 0 pxvw_m($layout-padding-m);
+    }
+}

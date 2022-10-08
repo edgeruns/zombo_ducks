@@ -11,7 +11,6 @@ export const Cursor: FC = () => {
     const breakpoint = useBreakpoint()
     const isDesktop = breakpoint === 'desktop'
 
-    // @ts-ignore
     useEffect(() => {
         if (isDesktop) {
             const dot = dotRef.current
@@ -75,6 +74,8 @@ export const Cursor: FC = () => {
                 window.removeEventListener('mouseup', handleMouseUp)
             }
         }
+
+        return undefined
     }, [isDesktop])
 
     if (!isDesktop) {

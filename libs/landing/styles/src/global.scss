@@ -1,4 +1,3 @@
-@import './vars';
 @import './mixins';
 @import './anims';
 
@@ -16,7 +15,7 @@ html {
 
 body {
     margin: 0;
-    overflow-y: overlay;
+    overflow-x: hidden;
 }
 
 #__next {
@@ -54,28 +53,4 @@ button {
     outline: none;
     border: none;
     background-color: transparent;
-}
-
-@include desktop {
-    body {
-        overflow-x: hidden;
-    }
-
-    #__next {
-        max-width: calc(#{$layout-width}px + #{$layout-padding * 2}px);
-        margin: 0 auto;
-        padding: 0 #{$layout-padding}px;
-    }
-}
-
-@include tablet {
-    #__next {
-        padding: 0 pxvw_t($layout-padding-t);
-    }
-}
-
-@include mobile {
-    #__next {
-        padding: 0 pxvw_m($layout-padding-m);
-    }
 }

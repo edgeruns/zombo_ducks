@@ -1,5 +1,7 @@
 import React, { FC, useCallback } from 'react'
 
+import { Row } from '../Row'
+
 import styles from './Footer.module.scss'
 
 const currentYear = new Date().getFullYear()
@@ -16,28 +18,30 @@ export const Footer: FC = () => {
 
     return (
         <footer className={styles.wrapper}>
-            <div className={styles.content}>
-                <div className={styles.copyright}>
-                    {copyright}
-                </div>
+            <Row className={styles.row}>
+                <div className={styles.content}>
+                    <div className={styles.copyright}>
+                        {copyright}
+                    </div>
 
-                <a
-                    className={styles.near}
-                    href="https://near.org"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    Near
-                </a>
+                    <a
+                        className={styles.near}
+                        href="https://near.org"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Near
+                    </a>
 
-                <div
-                    className={styles.backtop}
-                    onClick={handleBacktopClick}
-                >
-                    <span className={styles['backtop-text']}>Back to the top</span>
-                    <div className={styles['backtop-arrow']} />
+                    <div
+                        className={styles.backtop}
+                        onClick={handleBacktopClick}
+                    >
+                        <span className={styles['backtop-text']}>Back to the top</span>
+                        <div className={styles['backtop-arrow']} />
+                    </div>
                 </div>
-            </div>
+            </Row>
         </footer>
     )
 }
