@@ -4,8 +4,10 @@ import { GameModule } from './game/game.module'
 import { TypeOrmModule } from '@nestjs/typeorm'
 import schemas from './schemas'
 import { NearModule } from './modules/near/near.module'
+import { AppController } from './app.controller';
 
 @Module({
+    controllers: [AppController],
     imports: [
         NearModule,
         GameModule,

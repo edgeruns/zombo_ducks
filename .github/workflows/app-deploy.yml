@@ -77,4 +77,4 @@ jobs:
           tee deploy/${{ github.event.inputs.project }}/deployment.yml
 
       - name: Deploy
-        run: kubectl apply -f deploy/${{ github.event.inputs.project }}
+        run: kubectl apply -f deploy/${{ github.event.inputs.project }}/
