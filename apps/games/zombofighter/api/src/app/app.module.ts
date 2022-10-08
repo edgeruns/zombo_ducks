@@ -13,7 +13,7 @@ import { AppController } from './app.controller';
         GameModule,
         TypeOrmModule.forRoot({
             type: 'postgres',
-            port: 5432,
+            port: +process.env.DB_PORT || 5432,
             username: process.env.DB_USER,
             host: process.env.DB_HOST,
             database: process.env.DB_NAME,

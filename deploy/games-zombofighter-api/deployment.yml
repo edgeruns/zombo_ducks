@@ -28,6 +28,41 @@ spec:
     spec:
       containers:
         - image: registry.digitalocean.com/crypto-animals/games-zombofighter-api:$BRANCH-$COMMIT_SHA
+          env:
+            - name: NODE_ENV
+              value: production
+            - name: DB_SYNC
+              value: true
+            - name: REDIS_HOST
+              value: '$REDIS_HOST'
+            - name: REDIS_PORT
+              value: '$REDIS_PORT'
+            - name: REDIS_USER
+              value: '$REDIS_USER'
+            - name: REDIS_PASS
+              value: '$REDIS_PASS'
+            - name: DB_HOST
+              value: '$DB_HOST'
+            - name: DB_PORT
+              value: '$DB_PORT'
+            - name: DB_USER
+              value: '$DB_USER'
+            - name: DB_PASS
+              value: '$DB_PASS'
+            - name: DB_NAME
+              value: 'zombofighter'
+            - name: NEAR_WALLET_ID
+              value: 'devdammit.testnet'
+            - name: NEAR_NETWORK_ID
+              value: 'testnet'
+            - name: NEAR_NODE_URL
+              value: 'https://rpc.testnet.near.org'
+            - name: NEAR_WALLET_URL
+              value: 'https://wallet.testnet.near.org'
+            - name: NEAR_HELPER_URL
+              value: 'https://helper.testnet.near.org'
+            - name: NEAR_EXPLORER_URL
+              value: 'https://explorer.testnet.near.org'
 
           imagePullPolicy: Always
           name: zombofight-api
@@ -62,8 +97,6 @@ spec:
             periodSeconds: 1
             timeoutSeconds: 1
       dnsPolicy: ClusterFirst
-      nodeSelector:
-        kubernetes.io/role: other
       restartPolicy: Always
       schedulerName: default-scheduler
       terminationGracePeriodSeconds: 30

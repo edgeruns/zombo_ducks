@@ -70,6 +70,16 @@ jobs:
     env:
       COMMIT_SHA: ${{ github.sha }}
       BRANCH: ${{ github.ref_name }}
+      DB_HOST: ${{ secrets.DB_HOST }}
+      DB_PORT: ${{ secrets.DB_PORT }}
+      DB_USER: ${{ secrets.DB_USER }}
+      DB_PASS: ${{ secrets.DB_PASS }}
+      REDIS_HOST: ${{ secrets.REDIS_HOST }}
+      REDIS_PORT: ${{ secrets.REDIS_PORT }}
+      REDIS_PASS: ${{ secrets.REDIS_PASS }}
+      REDIS_USER: ${{ secrets.REDIS_USER }}
+      PRIVATE_NEAR_WALLET_KEY: ${{ secrets.PRIVATE_NEAR_WALLET_KEY }}
+
     steps:
       - name: Prepare deployment config
         run: |

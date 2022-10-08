@@ -13,8 +13,10 @@ import { CacheService } from './cache.service'
         TypeOrmModule.forFeature([GameSchema]),
         CacheModule.register({
             store: redisStore,
-            host: 'localhost',
-            port: 6379,
+            host: process.env.REDIS_HOST,
+            port: +process.env.REDIS_PORT || 6379,
+            username: process.env.REDIS_USER,
+            password: process.env.REDIS_PASS,
             ttl: 0,
         }),
     ],
