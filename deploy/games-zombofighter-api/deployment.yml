@@ -32,7 +32,7 @@ spec:
             - name: NODE_ENV
               value: 'production'
             - name: DB_SYNC
-              value: true
+              value: 'true'
             - name: REDIS_HOST
               value: '$REDIS_HOST'
             - name: REDIS_PORT
