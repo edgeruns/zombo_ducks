@@ -3,8 +3,10 @@ import React, { FC, useEffect, useRef } from 'react'
 import { useBreakpoint } from '@apps/utils'
 
 import styles from './Cursor.module.scss'
+import { rotate } from "next/dist/server/lib/squoosh/impl";
 
 export const Cursor: FC = () => {
+    const rootRef = useRef<HTMLDivElement>(null)
     const dotRef = useRef<HTMLDivElement>(null)
     const outlineRef = useRef<HTMLDivElement>(null)
 
@@ -13,6 +15,7 @@ export const Cursor: FC = () => {
 
     useEffect(() => {
         if (isDesktop) {
+            const root = rootRef.current
             const dot = dotRef.current
             const outline = outlineRef.current
 
@@ -20,12 +23,9 @@ export const Cursor: FC = () => {
                 const { clientX, clientY } = event
 
                 requestAnimationFrame(() => {
-                    if (dot && outline) {
-                        dot.style.top = `${clientY}px`
-                        dot.style.left = `${clientX}px`
-
-                        outline.style.top = `${clientY}px`
-                        outline.style.left = `${clientX}px`
+                    if (root) {
+                        root.style.setProperty('--cursor-x', `${clientX}px`)
+                        root.style.setProperty('--cursor-y', `${clientY}px`)
                     }
                 })
             }
@@ -54,8 +54,8 @@ export const Cursor: FC = () => {
 
             const handleMouseUp = () => {
                 if (dot && outline) {
-                    dot.style.width = '8px'
-                    dot.style.height = '8px'
+                    dot.style.width = ''
+                    dot.style.height = ''
                     outline.style.opacity = '1'
                 }
             }
@@ -83,7 +83,10 @@ export const Cursor: FC = () => {
     }
 
     return (
-        <>
+        <div
+            className={styles.root}
+            ref={rootRef}
+        >
             <div
                 className={styles.dot}
                 ref={dotRef}
@@ -93,6 +96,6 @@ export const Cursor: FC = () => {
                 className={styles.outline}
                 ref={outlineRef}
             />
-        </>
+        </div>
     )
 }
