@@ -66,7 +66,7 @@ export const About: FC = () => {
 
             <p className={styles.text}>
                 First P2E gaming platform platform on NEAR protocol<br />
-                May 2022: 1,555 unique nightmare ZomboDucks spawn
+                October 2022: 1,555 unique nightmare ZomboDucks spawn
             </p>
 
             <button className={styles.button}>
