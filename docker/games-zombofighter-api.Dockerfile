@@ -3,7 +3,7 @@ FROM node:16.14-alpine
 WORKDIR app
 
 COPY node_modules ./node_modules
-COPY dist/apps/zombofighter/api .
+COPY dist/apps/games/zombofighter/api .
 
 ENV PORT=3333
 
