@@ -41,6 +41,8 @@ spec:
               value: '$REDIS_USER'
             - name: REDIS_PASS
               value: '$REDIS_PASS'
+            - name: REDIS_FULL
+              value: '$REDIS_FULL'
             - name: DB_HOST
               value: '$DB_HOST'
             - name: DB_PORT

@@ -78,6 +78,7 @@ jobs:
       REDIS_PORT: ${{ secrets.REDIS_PORT }}
       REDIS_PASS: ${{ secrets.REDIS_PASS }}
       REDIS_USER: ${{ secrets.REDIS_USER }}
+      REDIS_FULL: ${{ secrets.REDIS_FULL }}
       PRIVATE_NEAR_WALLET_KEY: ${{ secrets.PRIVATE_NEAR_WALLET_KEY }}
 
     steps:
