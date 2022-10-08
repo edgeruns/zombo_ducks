@@ -11,9 +11,9 @@ on:
           - games-zombofighter-api
 
 jobs:
-  publish:
+  prepare:
     runs-on: self-hosted
-    name: publish to docker repository
+    name: checkout repository
     environment: production
     steps:
       - name: Checkout
@@ -43,9 +43,21 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
+  build:
+    runs-on: self-hosted
+    name: build ${{ github.event.inputs.project }} project
+    needs: [prepare]
+    environment: production
+    steps:
       - name: Build project
         run: npm run build ${{ github.event.inputs.project }} --production
 
+  publish:
+    runs-on: self-hosted
+    name: publish ${{ github.event.inputs.project }} to docker repository
+    environment: production
+    needs: [build]
+    steps:
       - name: Build version name
         run: echo "::set-output name=value::${{ github.ref_name }}-${{ github.sha }}"
         id: version
