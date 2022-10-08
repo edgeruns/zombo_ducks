@@ -1,6 +1,7 @@
 {
   "version": 2,
   "projects": {
+    "games-zombofighter-api": "apps/games/zombofighter/api",
     "games-zombofighter-client": "apps/games/zombofighter/client",
     "games-zombofighter-client-components": "libs/games/zombofighter/client/components",
     "games-zombofighter-client-data": "libs/games/zombofighter/client/data",

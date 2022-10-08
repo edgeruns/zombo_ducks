@@ -1,0 +1,58 @@
+name: Deploy
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        type: choice
+        description: Environment
+        default: production
+        required: true
+        options:
+          - production
+          - development
+
+      project:
+        type: choice
+        description: Project
+        required: true
+        default: games-zombofighter-api
+        options:
+          - games-zombofighter-api
+
+jobs:
+  publish:
+    runs-on: self-hosted
+    name: publish to docker repository
+    environment: ${{ github.event.inputs.environment }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Check run number and run id
+        run: echo "${{ github.run_number }} and ${{ github.run_id }}"
+#      - name: Install Node.js
+#        uses: actions/setup-node@v3
+#        with:
+#          node-version: 16
+#
+#      - name: Enable corepack
+#        run: corepack enable
+#
+#      - name: Get pnpm store directory
+#        id: pnpm-cache
+#        run: |
+#          echo "::set-output name=pnpm_cache_dir::$(pnpm store path)"
+#
+#      - uses: actions/cache@v3
+#        name: Setup pnpm cache
+#        with:
+#          path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
+#          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+#          restore-keys: |
+#            ${{ runner.os }}-pnpm-store-
+#
+#      - name: Install dependencies
+#        run: pnpm install
+#
+#      - name: Build project
+#        run: npm run build ${{ github.event.inputs.project }} --production
