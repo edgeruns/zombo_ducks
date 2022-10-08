@@ -71,4 +71,4 @@ jobs:
       BRANCH: ${{ github.ref_name }}
     steps:
       - name: Deploy
-        run: kubectl apply -f deploy/${{ githbu.event.inputs.project }}
+        run: kubectl apply -f deploy/${{ github.event.inputs.project }}
