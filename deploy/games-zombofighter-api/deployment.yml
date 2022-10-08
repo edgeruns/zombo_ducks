@@ -49,6 +49,9 @@ spec:
               value: '$DB_USER'
             - name: DB_PASS
               value: '$DB_PASS'
+            - name: PRIVATE_NEAR_WALLET_KEY
+              value: '$PRIVATE_NEAR_WALLET_KEY'
+
             - name: DB_NAME
               value: 'zombofighter'
             - name: NEAR_WALLET_ID
