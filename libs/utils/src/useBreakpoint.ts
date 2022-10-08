@@ -20,10 +20,10 @@ export function useBreakpoint() {
 
         handleResize()
 
-        window.addEventListener('resize', handleResize, false)
+        window.addEventListener('resize', handleResize)
 
         return () => {
-            window.removeEventListener('resize', handleResize, false)
+            window.removeEventListener('resize', handleResize)
         }
     }, [])
 
