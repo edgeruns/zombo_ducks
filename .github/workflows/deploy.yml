@@ -28,8 +28,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Check run number and run id
-        run: echo "${{ github.run_number }} and ${{ github.run_id }}"
+      - name: Look version for docker
+        run: echo "${{ github.ref_name }}-${{ github.sha }}"
 #      - name: Install Node.js
 #        uses: actions/setup-node@v3
 #        with:
