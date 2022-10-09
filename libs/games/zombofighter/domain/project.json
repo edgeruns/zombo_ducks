@@ -1,0 +1,34 @@
+{
+  "name": "games-zombofighter-domain",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/games/zombofighter/domain/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/games/zombofighter/domain",
+        "main": "libs/games/zombofighter/domain/src/index.ts",
+        "tsConfig": "libs/games/zombofighter/domain/tsconfig.lib.json",
+        "assets": ["libs/games/zombofighter/domain/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/games/zombofighter/domain/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/games/zombofighter/domain"],
+      "options": {
+        "jestConfig": "libs/games/zombofighter/domain/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

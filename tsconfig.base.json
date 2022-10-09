@@ -30,6 +30,9 @@
       "@apps/games-zombofighter-client-utils": [
         "libs/games/zombofighter/client/utils/src/index.ts"
       ],
+      "@apps/games/zombofighter/domain": [
+        "libs/games/zombofighter/domain/src/index.ts"
+      ],
       "@apps/home-layout": ["libs/home/layout/src/index.ts"],
       "@apps/home/layout": ["libs/home/layout/src/index.ts"],
       "@apps/home/main": ["libs/home/main/src/index.ts"],

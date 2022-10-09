@@ -7,6 +7,7 @@
     "games-zombofighter-client-data": "libs/games/zombofighter/client/data",
     "games-zombofighter-client-uikit": "libs/games/zombofighter/client/uikit",
     "games-zombofighter-client-utils": "libs/games/zombofighter/client/utils",
+    "games-zombofighter-domain": "libs/games/zombofighter/domain",
     "landing-components": "libs/landing/components",
     "landing-styles": "libs/landing/styles",
     "landings-launchpad": "apps/landings/launchpad",
