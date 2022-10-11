@@ -1,0 +1,26 @@
+{
+  "name": "games-zombofighter-client-features-player",
+  "$schema": "../../../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/games/zombofighter/client/features/player/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "libs/games/zombofighter/client/features/player/**/*.{ts,tsx,js,jsx}"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/games/zombofighter/client/features/player"],
+      "options": {
+        "jestConfig": "libs/games/zombofighter/client/features/player/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  }
+}

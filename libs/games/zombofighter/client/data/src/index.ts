@@ -1,16 +1,24 @@
-export * from './store'
+import { slice } from './slice'
+import * as actions from './actions'
+import * as selectors from './selectors'
+
 export {
     Mode,
     Scene,
     Actions,
     SendAction,
     ReceiveAction,
+    User,
     UserSkins,
     UserStatus,
     GameResultType,
     BodyParts,
 } from './types'
-export { slice } from './slice'
-export * as actions from './actions'
-export * as selectors from './selectors'
+
 export { MAX_ATTACK_COUNT, MAX_DEFENDE_COUNT } from './constants'
+
+export default {
+    slice,
+    actions,
+    selectors
+}

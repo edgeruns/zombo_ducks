@@ -1,0 +1,24 @@
+@import 'libs/games/zombofighter/client/uikit/src/styles/mixins';
+
+.root {
+    position: absolute;
+    left: 50%;
+    bottom: pxvw(70);
+    opacity: 0;
+    pointer-events: none;
+    user-select: none;
+    transform: translateX(-50%);
+    transition: opacity 0.2s;
+
+    &--visible {
+        opacity: 1;
+    }
+}
+
+.text {
+    display: block;
+    color: var(--yellow);
+    font-size: pxvw(24);
+    font-weight: 700;
+    line-height: pxvw(34);
+}

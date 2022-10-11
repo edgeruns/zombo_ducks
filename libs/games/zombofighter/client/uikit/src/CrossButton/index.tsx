@@ -1,7 +1,7 @@
 import React, { FC, MouseEvent, useCallback, ButtonHTMLAttributes } from 'react'
 import classNames from 'classnames'
 
-import { Sounds, playSound } from '@apps/games-zombofighter-client-utils'
+import { Sounds, playSound } from '@apps/games/zombofighter/client/features/shared/sounds'
 
 import crossSrc from './assets/cross.svg'
 

@@ -1,6 +1,6 @@
 import { createSelector } from '@reduxjs/toolkit'
 
-import { AppState } from './store'
+import { AppState } from './types'
 import {
     GameResultType,
     Round,
@@ -14,7 +14,7 @@ export const getMode = (appState: AppState) => appState.bar.mode
 export const getScene = (appState: AppState) => appState.bar.scene
 export const getPlayer = (appState: AppState) => appState.bar.player
 export const getGame = (appState: AppState) => appState.bar.game
-export const getOpponent = (appState: AppState) => appState.bar.game?.opponent
+export const getOpponent = (appState: AppState) => appState.bar.game?.opponent ?? null
 export const getRounds = (appState: AppState) => appState.bar.rounds
 export const getRoundsCount = (appState: AppState) =>
     appState.bar.game?.rounds || 0

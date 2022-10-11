@@ -1,0 +1,73 @@
+@import 'libs/games/zombofighter/client/uikit/src/styles/mixins';
+
+.root {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: pxvw(64);
+    left: pxvw(54);
+    width: pxvw(272);
+    height: pxvw(236);
+    padding: pxvw(16) 0 pxvw(24);
+    opacity: 0;
+    pointer-events: none;
+    user-select: none;
+    border-radius: pxvw(8);
+    border: pxvw(1.5) solid var(--dark-blue);
+    background-color: var(--gray-blue);
+    box-shadow: inset 0 pxvw(4) 0 #91bece, inset 0 pxvw(-4) #d0e8f0;
+    transition: opacity 0.2s;
+
+    &--lose {
+        .profit {
+            color: var(--red);
+        }
+    }
+
+    &--victory {
+        .profit {
+            color: var(--green);
+        }
+    }
+
+    &--visible {
+        opacity: 1;
+        pointer-events: auto;
+        user-select: auto;
+    }
+}
+
+.title {
+    margin: 0;
+    color: var(--yellow);
+    font-size: pxvw(40);
+    line-height: pxvw(56);
+}
+
+.info {
+    display: flex;
+    align-items: center;
+    margin-top: pxvw(16);
+}
+
+.games {
+    margin-right: pxvw(16);
+}
+
+.profit {
+    margin-top: pxvw(8);
+    font-size: pxvw(24);
+    font-weight: 700;
+    line-height: pxvw(34);
+}
+
+.button {
+    margin-top: auto;
+}
+
+.close {
+    position: absolute;
+    top: pxvw(-12);
+    right: pxvw(-12);
+}

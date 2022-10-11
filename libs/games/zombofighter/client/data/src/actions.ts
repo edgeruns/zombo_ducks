@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import { AppState } from './store'
 
 import {
+    AppState,
     Actions,
     SendAction,
     SendActionPayload,

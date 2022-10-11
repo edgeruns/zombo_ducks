@@ -1,0 +1,25 @@
+@import 'libs/games/zombofighter/client/uikit/src/styles/mixins';
+
+.root {
+    position: absolute;
+    right: pxvw(117);
+    bottom: pxvw(-9);
+    opacity: 0;
+    pointer-events: none;
+    user-select: none;
+    transition: opacity 0.2s;
+
+    &--turned {
+        .duck {
+            transform: rotateY(0);
+        }
+    }
+
+    &--visible {
+        opacity: 1;
+    }
+}
+
+.duck {
+    transform: rotateY(180deg);
+}

@@ -30,6 +30,24 @@
       "@apps/games-zombofighter-client-utils": [
         "libs/games/zombofighter/client/utils/src/index.ts"
       ],
+      "@apps/games/zombofighter/client/features/hud": [
+        "libs/games/zombofighter/client/features/hud/src/index.ts"
+      ],
+      "@apps/games/zombofighter/client/features/opponent": [
+        "libs/games/zombofighter/client/features/opponent/src/index.ts"
+      ],
+      "@apps/games/zombofighter/client/features/player": [
+        "libs/games/zombofighter/client/features/player/src/index.ts"
+      ],
+      "@apps/games/zombofighter/client/features/result": [
+        "libs/games/zombofighter/client/features/result/src/index.ts"
+      ],
+      "@apps/games/zombofighter/client/features/shared/sounds": [
+        "libs/games/zombofighter/client/features/shared/sounds/src/index.ts"
+      ],
+      "@apps/games/zombofighter/client/features/tutorial": [
+        "libs/games/zombofighter/client/features/tutorial/src/index.ts"
+      ],
       "@apps/games/zombofighter/domain": [
         "libs/games/zombofighter/domain/src/index.ts"
       ],

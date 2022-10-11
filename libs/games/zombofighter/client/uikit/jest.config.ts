@@ -7,5 +7,5 @@ export default {
     },
     moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
     coverageDirectory:
-        '../../../../../coverage/libs/games/zombofighter/client/uikit/src/mixins',
+        '../../../../../coverage/libs/games/zombofighter/client/uikit/src/styles/mixins',
 }

@@ -1,0 +1,16 @@
+export enum Sounds {
+    Button = 'button',
+    Timer = 'timer',
+    Laugh = 'laugh',
+    Hit = 'hit',
+    Start = 'start',
+    StartSearching = 'start-searching',
+    Searching = 'searching',
+    GameStart = 'game-start',
+    GameSession = 'game-session',
+    RoundStart = 'round-start',
+    RoundVictory = 'round-victory',
+    RoundLose = 'round-lose',
+    GameFinishVictory = 'game-finish-victory',
+    GameFinishLose = 'game-finish-lose',
+}

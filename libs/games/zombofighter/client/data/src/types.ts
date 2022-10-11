@@ -1,5 +1,4 @@
-import { store } from './store'
-
+import { slice } from './slice'
 
 export enum Mode {
     Tutorial = 'tutorial',
@@ -192,4 +191,8 @@ export type State = {
     roundStarted: boolean
     rounds: Round[]
     quitPopupOpened: boolean
+}
+
+export type AppState = {
+    [slice.name]: State
 }
