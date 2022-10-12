@@ -31,8 +31,6 @@ jobs:
     runs-on: self-hosted
     name: Publish to Cloudflare Pages
     environment: production
-    env:
-      NODE_ENV: production
     steps:
       - name: Checkout
         uses: actions/checkout@v3
