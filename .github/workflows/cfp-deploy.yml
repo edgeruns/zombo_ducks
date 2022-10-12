@@ -5,7 +5,7 @@ on:
       framework:
         type: choice
         description: Select framework
-        required: ture
+        required: true
         default: nextjs
         options:
           - nextjs
