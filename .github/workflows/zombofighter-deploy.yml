@@ -1,4 +1,4 @@
-name: App Deploy
+name: Zombofighter CD
 on:
   workflow_dispatch:
     inputs:
