@@ -24,10 +24,10 @@ jobs:
           result-encoding: string
           script: |
             const projects = []
-            if (${{ github.event.inputs.api }} === 'true') {
+            if (${{ github.event.inputs.api }}) {
               projects.push('games-zombofighter-api')
             }
-            if (${{ github.event.inputs.client }} === 'true') {
+            if (${{ github.event.inputs.client }}) {
               projects.push('games-zombofighter-client')
             }
 
@@ -95,7 +95,8 @@ jobs:
     name: deploy ${{ matrix.project }}
     environment: production
     strategy:
-      matrix: ${{ fromJson(needs.prepare.outputs.matrix) }}
+      matrix:
+        project: ${{ fromJson(needs.prepare.outputs.matrix) }}
     env:
       COMMIT_SHA: ${{ github.sha }}
       BRANCH: ${{ github.ref_name }}
