@@ -9,6 +9,7 @@ on:
         default: games-zombofighter-api
         options:
           - games-zombofighter-api
+          - games-zombofighter-client
 
 jobs:
   ci:

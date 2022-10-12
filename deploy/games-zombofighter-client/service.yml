@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+    labels:
+        app: zombofighter-ui
+    name: zombofighter-ui
+    namespace: games
+spec:
+    ports:
+        - port: 3333
+          name: http
+          protocol: TCP
+          targetPort: 3333
+    selector:
+        app: zombofighter-ui
+    sessionAffinity: None
+    type: ClusterIP

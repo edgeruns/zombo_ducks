@@ -48,3 +48,11 @@ spec:
                 name: zombofight-api
                 port:
                   number: 3334
+
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: zombofight-ui
+                port:
+                  number: 3333
