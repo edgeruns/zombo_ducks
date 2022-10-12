@@ -2,21 +2,6 @@ name: Deploy landing to CFP
 on:
   workflow_dispatch:
     inputs:
-      framework:
-        type: choice
-        description: Select framework
-        required: true
-        default: nextjs
-        options:
-          - nextjs
-          - cra
-      namespace:
-        type: choice
-        description: Type project
-        required: true
-        options:
-          - landings
-          - games
       project:
         type: choice
         description: NextJS Project
@@ -24,7 +9,6 @@ on:
         options:
           - launchpad
           - mint
-          - zombofighter
 
 jobs:
   publish:
@@ -60,31 +44,14 @@ jobs:
         run: pnpm install
 
       - name: Build project by nextjs
-        if: github.event.inputs.framework == 'nextjs'
-        run: npm run export ${{ github.event.inputs.namespace }}-${{ github.event.inputs.project }}
+        run: npm run export landings-${{ github.event.inputs.project }}
 
       - name: Deploy NextJS App ${{ github.event.inputs.project }} to CFP
         uses: cloudflare/pages-action@1
-        if: github.event.inputs.framework == 'nextjs'
         with:
           apiToken: ${{ secrets.CLOUDFLARE_PAGES_TOKEN }}
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
-          directory: dist/apps/${{ github.event.inputs.namespace }}/${{ github.event.inputs.project }}/exported
-          accountId: f6349a281eb5fedf7468dc0f8fbfce39
-          branch: main
-          projectName: ${{ github.event.inputs.project }}
-
-      - name: Build project by CRA
-        if: github.event.inputs.framework == 'cra'
-        run: npm run build ${{ github.event.inputs.namespace }}-${{ github.event.inputs.project }}
-
-      - name: Deploy CRA App ${{ github.event.inputs.project }} to CFP
-        uses: cloudflare/pages-action@1
-        if: github.event.inputs.framework == 'cra'
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_PAGES_TOKEN }}
-          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
-          directory: dist/apps/${{ github.event.inputs.namespace }}/${{ github.event.inputs.project }}/client
+          directory: dist/apps/landings/${{ github.event.inputs.project }}/exported
           accountId: f6349a281eb5fedf7468dc0f8fbfce39
           branch: main
           projectName: ${{ github.event.inputs.project }}
