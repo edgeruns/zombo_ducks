@@ -1,7 +1,5 @@
 export * from './Menu'
-export * from './StartButton'
 export * from './ActionButton'
-export * from './Searching'
 export * from './Header'
 export * from './Rounds'
 export * from './BodyPartsCheckbox'

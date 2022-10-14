@@ -1,28 +1,24 @@
 import React, { FC } from 'react'
-import classNames from 'classnames'
+import classNames from 'classnames/bind'
 
-import { UserSkins, UserStatus } from '@apps/games-zombofighter-client-data'
+import { Props, Skins, Status } from './types'
 
 import styles from './Duck.module.scss'
 
-type DuckProps = {
-    skin?: UserSkins
-    status?: UserStatus
-    className?: string
-}
+const cx = classNames.bind(styles)
 
-export const Duck: FC<DuckProps> = (props) => {
+export const Duck: FC<Props> = (props) => {
     const {
-        skin = UserSkins.Default,
-        status = UserStatus.Normal,
+        skin = Skins.Default,
+        status = Status.Normal,
         className,
     } = props
 
-    const rootClassName = classNames(
-        styles.root,
+    const rootClassName = cx(
+        'root',
         className,
-        styles[`root_skin-${skin}`],
-        styles[`root_status-${status}`]
+        `root--skin-${skin}`,
+        `root--status-${status}`,
     )
 
     return <div className={rootClassName} />

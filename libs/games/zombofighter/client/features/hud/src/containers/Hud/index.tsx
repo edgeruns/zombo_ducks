@@ -2,7 +2,6 @@ import React, { FC } from 'react'
 
 import {
     useMenu,
-    useStartButton,
     useActionButton,
     useSearching,
     useHeader,
@@ -16,7 +15,6 @@ import {
 } from '../../hooks'
 import {
     Menu,
-    StartButton,
     ActionButton,
     Searching,
     Header,
@@ -31,7 +29,6 @@ import {
 
 export const HudContainer: FC = () => {
     const menu = useMenu()
-    const startButton = useStartButton()
     const actionButton = useActionButton()
     const searching = useSearching()
     const header = useHeader()
@@ -50,12 +47,6 @@ export const HudContainer: FC = () => {
                 isSoundsDisabled={menu.isSoundsDisabled}
                 onSoundClick={menu.handleSoundClick}
                 onTutorialClick={menu.handleTutorialClick}
-            />
-
-            <StartButton
-                isVisible={startButton.isVisible}
-                text={startButton.text}
-                onClick={startButton.handleClick}
             />
 
             <ActionButton

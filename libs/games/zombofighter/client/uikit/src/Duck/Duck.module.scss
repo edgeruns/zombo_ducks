@@ -7,9 +7,9 @@
     background-size: contain;
     background-position: center;
 
-    &_skin {
+    &--skin {
         &-default {
-            &.root_status {
+            &.root--status {
                 &-normal {
                     background-image: url('./assets/skins/default/normal.png');
                 }

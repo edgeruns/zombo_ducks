@@ -1,5 +1,4 @@
 export * from './useMenu'
-export * from './useStartButton'
 export * from './useActionButton'
 export * from './useSearching'
 export * from './useHeader'

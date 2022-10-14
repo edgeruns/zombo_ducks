@@ -9,16 +9,6 @@ export const isMenuVisible = createSelector(
     }
 )
 
-export const isStartButtonVisible = createSelector(
-    [
-        game.selectors.isStartScene,
-        game.selectors.getPlayer
-    ],
-    (isStartScene, player) => {
-        return isStartScene && !!player
-    }
-)
-
 export const isActionButtonVisible = createSelector(
     [
         game.selectors.isAttacked,
