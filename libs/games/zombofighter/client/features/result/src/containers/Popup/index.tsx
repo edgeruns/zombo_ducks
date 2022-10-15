@@ -1,35 +1,40 @@
 import { FC, useCallback } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
-import game from '@apps/games-zombofighter-client-data'
+import user from '@apps/games/zombofighter/client/features/shared/user'
 import { Sounds, playSound } from '@apps/games/zombofighter/client/features/shared/sounds'
 
+import { FeatureDispatch } from '../../data/store.feature'
+import * as actions from '../../data/actions'
 import * as selectors from '../../data/selectors'
 import { Popup } from '../../ui'
 
 export const ResultPopupContainer: FC = () => {
-    const dispatch = useDispatch<any>()
+    const dispatch = useDispatch<FeatureDispatch>()
 
-    const isVisible = useSelector(selectors.isPopupVisible)
     const isVictory = useSelector(selectors.isVictory)
+    const isDraws = useSelector(selectors.isDraws)
     const isLose = useSelector(selectors.isLose)
-    const player = useSelector(selectors.getPlayer)
+    const player = useSelector(user.selectors.getUser)
     const profit = useSelector(selectors.getProfit)
+
+    const navigate = useNavigate()
 
     const handleAgainClick = useCallback(() => {
         playSound(Sounds.Laugh)
-
-        dispatch(game.actions.startSearch())
-    }, [dispatch])
+        navigate('/game/search')
+    }, [navigate])
 
     const handleCrossClick = useCallback(() => {
-        dispatch(game.slice.actions.reset())
-    }, [dispatch])
+        dispatch(actions.reset())
+        navigate('/')
+    }, [dispatch, navigate])
 
     return player && (
         <Popup
-            isVisible={isVisible}
             isVictory={isVictory}
+            isDraws={isDraws}
             isLose={isLose}
             player={player}
             profit={profit}

@@ -1,8 +1,7 @@
 import React, { FC } from 'react'
 import classNames from 'classnames/bind'
 
-import { BodyParts } from '@apps/games-zombofighter-client-data'
-import { BodyPart, CrossButton } from '@apps/games-zombofighter-client-uikit'
+import { BodyPart, BodyParts, CrossButton } from '@apps/games-zombofighter-client-uikit'
 
 import { Props } from './types'
 

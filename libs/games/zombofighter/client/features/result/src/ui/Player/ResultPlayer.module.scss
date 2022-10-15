@@ -1,0 +1,11 @@
+@import 'libs/games/zombofighter/client/uikit/src/styles/mixins';
+
+.root {
+    position: absolute;
+    right: pxvw(117);
+    bottom: pxvw(-9);
+}
+
+.player {
+    transform: rotateY(180deg);
+}

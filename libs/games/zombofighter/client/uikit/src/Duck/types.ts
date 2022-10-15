@@ -1,12 +1,6 @@
-export enum Skins {
-    Default = 'default',
-}
+export type Skins = 'default'
 
-export enum Status {
-    Normal = 'normal',
-    Lose = 'lose',
-    Victory = 'victory',
-}
+export type Status = 'normal' | 'lose' | 'victory'
 
 export type Props = {
     skin?: Skins

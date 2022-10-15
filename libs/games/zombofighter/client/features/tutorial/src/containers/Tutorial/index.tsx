@@ -1,18 +1,15 @@
 import { FC, useCallback, useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 
-import game from '@apps/games-zombofighter-client-data'
-
-import * as selectors from '../../data/selectors'
 import { STEPS } from './constants'
 import { Tutorial } from '../../ui'
 
 export const TutorialContainer: FC = () => {
     const dispatch = useDispatch<any>()
 
-    const isVisible = useSelector(selectors.isVisible)
-    const isHintVisible = useSelector(selectors.isHintVisible)
-    const isRoundTimeExpired = useSelector(selectors.isRoundTimeExpired)
+    const isVisible = true
+    const isHintVisible = true
+    const isRoundTimeExpired = false
 
     const [active, setActive] = useState(0)
 
@@ -20,9 +17,9 @@ export const TutorialContainer: FC = () => {
         const isLast = active + 1 >= STEPS.length
 
         if (isLast) {
-            dispatch(game.slice.actions.reset())
+            // Сбрасываем все
         } else if (active === 2) {
-            dispatch(game.slice.actions.startTutorialRound())
+            // Начинаем раунд
         } else {
             setActive(active + 1)
         }
@@ -32,7 +29,7 @@ export const TutorialContainer: FC = () => {
         if (isRoundTimeExpired) {
             setActive(prev => prev + 1)
 
-            dispatch(game.slice.actions.startTutorialRoundFinish())
+            // Ловим конец раунда
         }
     }, [dispatch, isRoundTimeExpired])
 

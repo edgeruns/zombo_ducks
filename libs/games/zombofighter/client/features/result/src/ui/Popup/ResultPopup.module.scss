@@ -10,9 +10,6 @@
     width: pxvw(272);
     height: pxvw(236);
     padding: pxvw(16) 0 pxvw(24);
-    opacity: 0;
-    pointer-events: none;
-    user-select: none;
     border-radius: pxvw(8);
     border: pxvw(1.5) solid var(--dark-blue);
     background-color: var(--gray-blue);
@@ -25,16 +22,11 @@
         }
     }
 
+    &--draws,
     &--victory {
         .profit {
             color: var(--green);
         }
-    }
-
-    &--visible {
-        opacity: 1;
-        pointer-events: auto;
-        user-select: auto;
     }
 }
 

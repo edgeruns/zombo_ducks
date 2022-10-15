@@ -3,13 +3,14 @@ export enum Skins {
 }
 
 export type Statistics = {
-    allGames: number
-    wonGames: number
+    wins: number
+    loses: number
 }
 
 export type User = {
-    id: number
+    id: string
     nickname: string
     skin: Skins
+    avatar: string
     statistics: Statistics
 }

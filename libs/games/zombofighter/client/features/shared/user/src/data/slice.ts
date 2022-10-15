@@ -5,12 +5,13 @@ import { State } from './types'
 
 const initialState: State = {
     user: {
-        id: 1,
-        nickname: 'Devdammit',
+        id: '1',
+        nickname: 'devdammit',
         skin: Skins.Default,
+        avatar: '/assets/avatar.png',
         statistics: {
-            allGames: 20,
-            wonGames: 20
+            wins: 20,
+            loses: 10
         }
     }
 }

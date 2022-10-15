@@ -1,14 +1,14 @@
 import { GameMeta, PlayerState, RoundResult } from './interfaces';
 import { Action } from './action'
 import * as fp from 'lodash/fp'
-import {Type} from "class-transformer";
-
+import { Transform, Type } from "class-transformer"
 
 export class Round {
     @Type(() => Action)
     public readonly actions: Map<PlayerState['uuid'], Action> = new Map()
 
-    @Type(() => Date)
+    @Type(() => String)
+    @Transform(({ value }) => new Date(value), { toClassOnly: true })
     public readonly createdAt: Date = new Date()
 
     setAction(player: PlayerState['uuid'], action: Action) {
@@ -22,10 +22,6 @@ export class Round {
     }
 
     compute(meta: GameMeta): RoundResult[] {
-        if (!this.isAllReady()) {
-            throw new Error("U can't compute round cause not enough actions")
-        }
-
         return fp.pipe(
             Object.fromEntries,
             Object.keys,
@@ -35,7 +31,7 @@ export class Round {
                     const enemy = fp.pipe(
                         fp.filter((uuid) => uuid !== playerUUID),
                         fp.first,
-                        (uuid: PlayerState['uuid']) => this.actions.get(uuid)
+                        (uuid: PlayerState['uuid']) => this.actions.get(uuid) ?? { damage: [0, 0, 0] }
                     )(uuids) as Action
 
                     if (!player || !enemy) {

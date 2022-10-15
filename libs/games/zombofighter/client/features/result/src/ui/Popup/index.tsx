@@ -9,6 +9,7 @@ import {
 } from '@apps/games-zombofighter-client-uikit'
 
 import { Props } from './types'
+import { getTitle, getProfitText } from './utils'
 
 import styles from './ResultPopup.module.scss'
 
@@ -16,8 +17,8 @@ const cx = classNames.bind(styles)
 
 export const Popup: FC<Props> = props => {
     const {
-        isVisible,
         isVictory,
+        isDraws,
         isLose,
         player,
         profit,
@@ -25,13 +26,13 @@ export const Popup: FC<Props> = props => {
         onCrossClick
     } = props
 
-    const title = isVictory ? 'VICTORY!' : 'LOSE'
-    const profitText = isVictory ? `+ ${profit}` : profit
+    const title = getTitle(profit)
+    const profitText = getProfitText(profit)
 
     const rootClassName = cx('root', {
         'root--lose': isLose,
-        'root--victory': isVictory,
-        'root--visible': isVisible
+        'root--draws': isDraws,
+        'root--victory': isVictory
     })
 
     return (
@@ -42,8 +43,8 @@ export const Popup: FC<Props> = props => {
 
             <div className={styles.info}>
                 <GamesStatistics
-                    won={player.statistics.wonGames}
-                    all={player.statistics.allGames}
+                    wins={player.statistics.wins}
+                    loses={player.statistics.loses}
                     className={styles.games}
                 />
 

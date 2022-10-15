@@ -15,5 +15,9 @@ export const slice = createSlice({
         builder.addCase(actions.found, (state, action) => {
             state.gameId = action.payload.gameId
         })
+
+        builder.addCase(actions.reset, (state) => {
+            state.gameId = null
+        })
     }
 })
