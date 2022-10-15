@@ -9,14 +9,10 @@ import { GameSchema } from './game.schema'
 
 @Entity('players')
 export class PlayerSchema {
+    uuid: string
+
     @PrimaryColumn()
     wallet: string
-
-    @OneToMany(() => GameSchema, (game) => game.winner)
-    winGames: GameSchema[]
-
-    @OneToMany(() => GameSchema, (game) => game.loser)
-    losesGames: GameSchema[]
 
     @CreateDateColumn()
     createdAt: Date
@@ -26,13 +22,5 @@ export class PlayerSchema {
 
     getNickname() {
         return this.wallet.split('.')[0]
-    }
-
-    getCountWins() {
-        return this.winGames.length
-    }
-
-    getCountLoses() {
-        return this.losesGames.length
     }
 }

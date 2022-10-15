@@ -1,11 +1,15 @@
 import { GameMeta, PlayerState, RoundResult } from './interfaces';
 import { Action } from './action'
 import * as fp from 'lodash/fp'
+import {Type} from "class-transformer";
+
 
 export class Round {
-    public actions: Map<PlayerState['uuid'], Action> = new Map()
+    @Type(() => Action)
+    public readonly actions: Map<PlayerState['uuid'], Action> = new Map()
 
-    protected createdAt: Date = new Date()
+    @Type(() => Date)
+    public readonly createdAt: Date = new Date()
 
     setAction(player: PlayerState['uuid'], action: Action) {
         if (!this.actions.has(player)) {

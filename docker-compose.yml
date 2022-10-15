@@ -6,7 +6,7 @@ services:
         image: redis:alpine
         container_name: crypto_redis
         ports:
-            - 6379:6379
+            - "6379:6379"
         environment:
             REDIS_URL: redis://localhost:6379/0
 
@@ -21,4 +21,4 @@ services:
 
 
         ports:
-            - 5432:5432
+            - "5432:5432"
