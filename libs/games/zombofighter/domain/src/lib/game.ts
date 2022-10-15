@@ -7,7 +7,6 @@ import { GameMeta, GameState, PlayerState } from './interfaces'
 import { MAX_ROUNDS } from './constants'
 import { Action } from './action'
 
-
 export class Game {
     public uuid!: string
 
@@ -20,6 +19,7 @@ export class Game {
     public static meta: GameMeta = {
         MAX_ROUNDS: MAX_ROUNDS,
         NEXT_ROUND_LATENCY: '5s',
+        START_GAME_LATENCY: '5s',
     }
 
     public static init(state: GameState): Game {
@@ -27,12 +27,29 @@ export class Game {
     }
 
     public setAction(uuid: PlayerState['uuid'], action: Action) {
-        fp.pipe(fp.last, (round: Round) =>
-            round.setAction(uuid, action)
-        )(this.rounds)
+        fp.pipe(fp.last, (round: Round) => round.setAction(uuid, action))(
+            this.rounds
+        )
     }
 
-    public nextRound() {
+    public async waitStartPlayers() {
+        await new Promise((resolve) => {
+            setTimeout(() => {
+                resolve(undefined)
+            }, ms(Game.meta.START_GAME_LATENCY))
+        })
+
+    }
+
+    public async waitNextRound() {
+        await new Promise((resolve) => {
+            setTimeout(() => {
+                resolve(undefined)
+            }, ms(Game.meta.NEXT_ROUND_LATENCY))
+        })
+    }
+
+    public startRound() {
         if (this.isFinished()) {
             throw new Error('game finished')
         }
@@ -41,9 +58,7 @@ export class Game {
             throw new Error('prev round is not finished')
         }
 
-        setTimeout(() => {
-            this.rounds.push(new Round())
-        }, ms(Game.meta.NEXT_ROUND_LATENCY))
+        this.rounds.push(new Round())
     }
 
     public isWaiting(): boolean {
@@ -91,11 +106,36 @@ export class Game {
                 ({ health }) => health > 0
             ),
             (uuids): PlayerState['uuid'] | undefined => {
-                if (uuids.length === 1) {
-                    return uuids[0].uuid
+                if (uuids.length === 0) {
+                    return
                 }
 
-                return
+                return uuids[0].uuid
+            }
+        )()
+    }
+
+    public isDraw(): boolean {
+        if (!this.isFinished()) {
+            throw new Error('game not finished')
+        }
+
+        return fp.pipe(
+            this.players.entries,
+            Object.fromEntries,
+            Object.keys,
+            fp.map<
+                PlayerState['uuid'],
+                { uuid: PlayerState['uuid']; health: number }
+                >((uuid) => ({
+                uuid,
+                health: this.getHealth(uuid),
+            })),
+            fp.filter<{ uuid: PlayerState['uuid']; health: number }>(
+                ({ health }) => health > 0
+            ),
+            (uuids): boolean => {
+                return uuids.length === 0
             }
         )()
     }

@@ -1,8 +1,15 @@
 export type BodyParts = [number, number, number]
 
 
+
 export type PlayerState = {
     uuid: string
+
+    statistic: {
+        wins: number
+        loses: number
+        draws: number
+    }
 }
 
 export type ActionState = {
@@ -10,14 +17,12 @@ export type ActionState = {
     protection: BodyParts
 }
 
-export type RoundState = Record<PlayerState['uuid'], {
-    defence: BodyParts
-    attack: BodyParts
-}>
+export type RoundState = Record<PlayerState['uuid'], ActionState>
 
 export type GameMeta = {
     MAX_ROUNDS: number
     NEXT_ROUND_LATENCY: string
+    START_GAME_LATENCY: string
 }
 
 export type RoundResult = {
