@@ -1,7 +1,6 @@
 import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
-
-import game from '@apps/games-zombofighter-client-data'
+import { useLocation } from 'react-router-dom'
 
 import { Sounds } from '../types'
 import * as selectors from '../data/selectors'
@@ -9,69 +8,71 @@ import { playSound } from '../utils'
 
 export function useGameSounds() {
     const isEnabled = useSelector(selectors.isEnabled)
-    const opponent = useSelector(game.selectors.getOpponent)
-    const isStartScene = useSelector(game.selectors.isStartScene)
-    const isSearchingScene = useSelector(game.selectors.isSearchingScene)
-    const isGameStartScene = useSelector(game.selectors.isGameStartScene)
-    const isRoundScene = useSelector(game.selectors.isRoundScene)
-    const isRoundVictory = useSelector(game.selectors.isRoundVictory)
-    const isRoundLose = useSelector(game.selectors.isRoundLose)
-    const isGameVictory = useSelector(game.selectors.isGameVictory)
-    const isGameLose = useSelector(game.selectors.isGameLose)
-    const timeLeft = useSelector(game.selectors.getTimeLeft)
+
+    const location = useLocation()
+
+    const isPlayStartSound = location.pathname === '/'
+    const isPlaySearchSound = location.pathname === '/game/search'
+    const isPlayGameStartSound = false
+    const isPlayRoundStartSound = false
+    const isPlayTimerSound = false
+    const isPlayRoundVictorySound = false
+    const isPlayRoundLoseSound = false
+    const isPlayGameVictorySound = false
+    const isPlayGameLoseSound = false
 
     useEffect(() => {
-        if (isStartScene) {
+        if (isPlayStartSound) {
             playSound(Sounds.Start)
         }
-    }, [isStartScene, isEnabled])
+    }, [isPlayStartSound, isEnabled])
 
     useEffect(() => {
-        if (isSearchingScene) {
+        if (isPlaySearchSound) {
             playSound(Sounds.Searching)
         }
-    }, [isSearchingScene, isEnabled])
+    }, [isPlaySearchSound, isEnabled])
 
     useEffect(() => {
-        if (isGameStartScene && opponent) {
+        if (isPlayGameStartSound) {
             playSound(Sounds.GameStart)
             setTimeout(playSound, 2000, Sounds.GameSession)
         }
-    }, [isGameStartScene, opponent, isEnabled])
+    }, [isPlayGameStartSound, isEnabled])
 
     useEffect(() => {
-        if (isRoundScene) {
+        if (isPlayRoundStartSound) {
             playSound(Sounds.RoundStart, true)
         }
-    }, [isRoundScene, isEnabled])
+    }, [isPlayRoundStartSound, isEnabled])
 
     useEffect(() => {
-        if (timeLeft === 3) {
+        if (isPlayTimerSound) {
             playSound(Sounds.Timer, true)
         }
-    }, [timeLeft, isEnabled])
+    }, [isPlayTimerSound, isEnabled])
 
     useEffect(() => {
-        if (isRoundVictory) {
+        if (isPlayRoundVictorySound) {
             playSound(Sounds.RoundVictory, true)
         }
-    }, [isRoundVictory, isEnabled])
+    }, [isPlayRoundVictorySound, isEnabled])
 
     useEffect(() => {
-        if (isRoundLose) {
+        if (isPlayRoundLoseSound) {
             playSound(Sounds.RoundLose, true)
         }
-    }, [isRoundLose, isEnabled])
+    }, [isPlayRoundLoseSound, isEnabled])
 
     useEffect(() => {
-        if (isGameVictory) {
+        if (isPlayGameVictorySound) {
             playSound(Sounds.GameFinishVictory)
         }
-    }, [isGameVictory, isEnabled])
+    }, [isPlayGameVictorySound, isEnabled])
 
     useEffect(() => {
-        if (isGameLose) {
+        if (isPlayGameLoseSound) {
             playSound(Sounds.GameFinishLose)
         }
-    }, [isGameLose, isEnabled])
+    }, [isPlayGameLoseSound, isEnabled])
 }

@@ -1,7 +1,7 @@
-import React, { FC, useCallback } from 'react'
+import React, { FC } from 'react'
 import classNames from 'classnames'
 
-import { BodyParts } from '@apps/games-zombofighter-client-data'
+import { Icons, Props } from './types'
 
 import styles from './BodyPart.module.scss'
 
@@ -13,24 +13,7 @@ const iconsSrc: Record<Icons, string> = {
     hit: hitSrc,
 }
 
-type Icons = 'shield' | 'hit'
-
-type BodyPartProps = {
-    img: string
-    part: BodyParts
-    icon?: Icons
-    size?: 's' | 'm'
-    selected?: boolean
-    defended?: boolean
-    damaged?: boolean
-    disabled?: boolean
-    darked?: boolean
-    reversed?: boolean
-    className?: string
-    onToggle?: (part: BodyParts) => void
-}
-
-export const BodyPart: FC<BodyPartProps> = (props) => {
+export const BodyPart: FC<Props> = (props) => {
     const {
         img,
         part,
@@ -43,7 +26,7 @@ export const BodyPart: FC<BodyPartProps> = (props) => {
         disabled = false,
         reversed = false,
         className,
-        onToggle,
+        onClick
     } = props
 
     const rootClassName = classNames(
@@ -58,12 +41,8 @@ export const BodyPart: FC<BodyPartProps> = (props) => {
         disabled && styles.root_disabled
     )
 
-    const handleToggle = useCallback(() => {
-        onToggle && onToggle(part)
-    }, [part, onToggle])
-
     return (
-        <div className={rootClassName} onClick={handleToggle}>
+        <div className={rootClassName} onClick={onClick}>
             <img className={styles.img} src={img} alt={part} />
 
             {icon && (

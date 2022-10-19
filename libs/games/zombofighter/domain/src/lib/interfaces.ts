@@ -1,7 +1,5 @@
 export type BodyParts = [number, number, number]
 
-
-
 export type PlayerState = {
     uuid: string
 
@@ -23,6 +21,7 @@ export type GameMeta = {
     MAX_ROUNDS: number
     NEXT_ROUND_LATENCY: string
     START_GAME_LATENCY: string
+    DEFAULT_ROUND_TIME: string
 }
 
 export type RoundResult = {

@@ -1,4 +1,11 @@
-import { instanceToPlain, plainToInstance, Type } from 'class-transformer'
+import {
+    classToPlain,
+    deserialize,
+    instanceToPlain,
+    plainToClassFromExist,
+    plainToInstance, serialize,
+    Type
+} from 'class-transformer'
 import * as fp from 'lodash/fp'
 import ms from 'ms'
 import { Player } from './player'
@@ -14,16 +21,17 @@ export class Game {
     public players: Map<Player['uuid'], Player> = new Map()
 
     @Type(() => Round)
-    public rounds: Round[] = [new Round()]
+    public rounds: Round[] = []
 
     public static meta: GameMeta = {
         MAX_ROUNDS: MAX_ROUNDS,
         NEXT_ROUND_LATENCY: '5s',
-        START_GAME_LATENCY: '5s',
+        START_GAME_LATENCY: '2s',
+        DEFAULT_ROUND_TIME: '10s'
     }
 
     public static init(state: GameState): Game {
-        return plainToInstance(Game, state)
+        return plainToClassFromExist(new Game(), state)
     }
 
     public setAction(uuid: PlayerState['uuid'], action: Action) {
@@ -62,6 +70,10 @@ export class Game {
     }
 
     public isWaiting(): boolean {
+        if (this.rounds.length === 0) {
+            return false
+        }
+
         return fp.pipe(
             fp.last,
             (round: Round) => !round.isAllReady()
@@ -69,6 +81,10 @@ export class Game {
     }
 
     public isFinished(): boolean {
+        if (this.rounds.length === 0) {
+            return false
+        }
+
         if (this.isWaiting()) return false
 
         const everyoneIsAlive = fp.pipe(
@@ -144,13 +160,13 @@ export class Game {
         return instanceToPlain(this) as GameState
     }
 
-    private getHealth(uuid: PlayerState['uuid']) {
+    public getHealth(uuid: PlayerState['uuid']) {
         return fp.pipe(
             fp.map(
                 fp.pipe(
                     (round: Round) => round.compute(Game.meta),
                     fp.find((result) => result.uuid === uuid),
-                    fp.get('damage')
+                    fp.getOr(0, 'damage')
                 )
             ),
             fp.reduce((health: number, damage: number) => health - damage, 100)

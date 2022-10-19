@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import classNames from 'classnames/bind'
 
-import { Props, Skins, Status } from './types'
+import { Props } from './types'
 
 import styles from './Duck.module.scss'
 
@@ -9,8 +9,8 @@ const cx = classNames.bind(styles)
 
 export const Duck: FC<Props> = (props) => {
     const {
-        skin = Skins.Default,
-        status = Status.Normal,
+        skin = 'default',
+        status = 'normal',
         className,
     } = props
 

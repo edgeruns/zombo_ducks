@@ -1,0 +1,38 @@
+@import 'libs/games/zombofighter/client/uikit/src/styles/mixins';
+@import 'libs/games/zombofighter/client/uikit/src/styles/vars';
+
+.root {
+    position: absolute;
+    left: pxvw(117);
+    bottom: pxvw(-9);
+    transform: rotateY(180deg);
+
+    &--arrive {
+        animation: arrive $opponent-arrive-time linear forwards;
+    }
+}
+
+@keyframes arrive {
+    from {
+        left: pxvw(60);
+        bottom: pxvw(17);
+        transform: scale(0.69) rotateY(180deg);
+        opacity: 0;
+    }
+
+    25% {
+        opacity: 1;
+    }
+
+    50% {
+        left: pxvw(60);
+        bottom: pxvw(17);
+        transform: scale(0.69) rotateY(180deg);
+    }
+
+    to {
+        left: pxvw(117);
+        bottom: pxvw(-9);
+        transform: scale(1) rotateY(180deg);
+    }
+}

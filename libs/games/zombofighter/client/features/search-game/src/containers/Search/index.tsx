@@ -13,7 +13,10 @@ export const SearchGameContainer: FC = () => {
     return (
         <>
             <Loader {...loader} />
-            <Player {...player} />
+
+            {player && (
+                <Player {...player} />
+            )}
         </>
     )
 }

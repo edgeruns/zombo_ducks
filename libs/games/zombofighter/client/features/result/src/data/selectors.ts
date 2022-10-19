@@ -1,38 +1,26 @@
 import { createSelector } from '@reduxjs/toolkit'
 
-import game from '@apps/games-zombofighter-client-data'
+import { FeatureState } from './store.feature'
 
-export const isPopupVisible = createSelector(
-    [game.selectors.isGameFinishScene],
-    (isGameFinishScene) => {
-        return isGameFinishScene
+export const getProfit = (state: FeatureState) => state.result.profit
+
+export const isVictory = createSelector(
+    [getProfit],
+    (profit) => {
+        return profit > 0
     }
 )
 
-export const isVictory = createSelector(
-    [game.selectors.isGameVictory],
-    (isGameVictory) => {
-        return isGameVictory
+export const isDraws = createSelector(
+    [getProfit],
+    (profit) => {
+        return profit === 0
     }
 )
 
 export const isLose = createSelector(
-    [game.selectors.isGameLose],
-    (isGameLose) => {
-        return isGameLose
-    }
-)
-
-export const getPlayer = createSelector(
-    [game.selectors.getPlayer],
-    (player) => {
-        return player
-    }
-)
-
-export const getProfit = createSelector(
-    [game.selectors.getGameProfit],
-    (gameProfit) => {
-        return gameProfit
+    [getProfit],
+    (profit) => {
+        return profit < 0
     }
 )

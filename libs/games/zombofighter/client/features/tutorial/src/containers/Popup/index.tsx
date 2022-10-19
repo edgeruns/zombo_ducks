@@ -1,15 +1,9 @@
 import { FC, useCallback, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
 
-import game, { Mode } from '@apps/games-zombofighter-client-data'
-
-import * as selectors from '../../data/selectors'
 import { Popup } from '../../ui'
 
 export const TutorialPopupContainer: FC = () => {
-    const dispatch = useDispatch<any>()
-
-    const isVisible = useSelector(selectors.isPopupVisible)
+    const isVisible = true
 
     const [screenIndex, setScreenIndex] = useState(0)
 
@@ -22,8 +16,8 @@ export const TutorialPopupContainer: FC = () => {
     }, [])
 
     const handleCrossClick = useCallback(() => {
-        dispatch(game.slice.actions.setMode(Mode.Game))
-    }, [dispatch])
+
+    }, [])
 
     return (
         <Popup

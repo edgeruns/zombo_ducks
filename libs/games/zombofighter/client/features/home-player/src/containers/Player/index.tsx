@@ -9,7 +9,7 @@ import { Wrapper } from '../../ui'
 export const HomePlayerContainer: FC = () => {
     const player = useSelector(user.selectors.getUser)
 
-    return (
+    return player && (
         <Wrapper>
             <Duck skin={player.skin} />
         </Wrapper>

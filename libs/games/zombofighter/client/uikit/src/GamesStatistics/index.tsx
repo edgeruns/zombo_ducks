@@ -6,13 +6,13 @@ import bowlSrc from './assets/bowl.svg'
 import styles from './GamesStatistics.module.scss'
 
 type GamesStatisticsProps = {
-    won: number
-    all: number
+    wins: number
+    loses: number
     className?: string
 }
 
 export const GamesStatistics: FC<GamesStatisticsProps> = (props) => {
-    const { won, all, className } = props
+    const { wins, loses, className } = props
 
     const rootClassName = classNames(styles.root, className)
 
@@ -21,7 +21,7 @@ export const GamesStatistics: FC<GamesStatisticsProps> = (props) => {
             <img className={styles.icon} src={bowlSrc} alt="Bowl" />
 
             <span className={styles.text}>
-                {won}/{all}
+                {wins}/{loses}
             </span>
         </div>
     )
