@@ -44,7 +44,7 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/apps/landings/launchpad"],
+      "outputs": ["{workspaceRoot}/coverage/apps/landings/launchpad"],
       "options": {
         "jestConfig": "apps/landings/launchpad/jest.config.ts",
         "passWithNoTests": true

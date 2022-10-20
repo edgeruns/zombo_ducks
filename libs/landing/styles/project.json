@@ -13,7 +13,7 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/landing/styles"],
+      "outputs": ["{workspaceRoot}/coverage/libs/landing/styles"],
       "options": {
         "jestConfig": "libs/landing/styles/jest.config.ts",
         "passWithNoTests": true

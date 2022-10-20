@@ -15,7 +15,9 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/games/zombofighter/client/utils"],
+      "outputs": [
+        "{workspaceRoot}/coverage/libs/games/zombofighter/client/utils"
+      ],
       "options": {
         "jestConfig": "libs/games/zombofighter/client/utils/jest.config.ts",
         "passWithNoTests": true

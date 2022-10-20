@@ -17,7 +17,7 @@
     "test": {
       "executor": "@nrwl/jest:jest",
       "outputs": [
-        "coverage/libs/games/zombofighter/client/features/start-game"
+        "{workspaceRoot}/coverage/libs/games/zombofighter/client/features/start-game"
       ],
       "options": {
         "jestConfig": "libs/games/zombofighter/client/features/start-game/jest.config.ts",

@@ -17,7 +17,7 @@
     "test": {
       "executor": "@nrwl/jest:jest",
       "outputs": [
-        "coverage/libs/games/zombofighter/client/features/shared/sounds"
+        "{workspaceRoot}/coverage/libs/games/zombofighter/client/features/shared/sounds"
       ],
       "options": {
         "jestConfig": "libs/games/zombofighter/client/features/shared/sounds/jest.config.ts",
