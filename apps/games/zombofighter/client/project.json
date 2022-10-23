@@ -44,7 +44,8 @@
       "defaultConfiguration": "development",
       "options": {
         "buildTarget": "games-zombofighter-client:build",
-        "hmr": true
+        "hmr": true,
+        "proxyConfig": "apps/games/zombofighter/client/proxy.conf.json"
       },
       "configurations": {
         "development": {

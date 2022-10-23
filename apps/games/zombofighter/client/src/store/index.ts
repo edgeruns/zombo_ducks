@@ -5,6 +5,7 @@ import sounds from '@apps/games/zombofighter/client/features/shared/sounds'
 import searchGame from '@apps/games/zombofighter/client/features/search-game'
 import singleGame from '@apps/games/zombofighter/client/features/single-game'
 import result from '@apps/games/zombofighter/client/features/result'
+import { authSlice } from "@apps/games/zombofighter/client/features/auth";
 
 export const store = configureStore({
     reducer: {
@@ -13,6 +14,7 @@ export const store = configureStore({
         [searchGame.slice.name]: searchGame.slice.reducer,
         [singleGame.slice.name]: singleGame.slice.reducer,
         [result.slice.name]: result.slice.reducer,
+        [authSlice.name]: authSlice.reducer,
     }
 })
 

@@ -1,26 +1,32 @@
 import { Module } from '@nestjs/common'
 
-import { GameModule } from './game/game.module'
 import { TypeOrmModule } from '@nestjs/typeorm'
-import schemas from './schemas'
-import { NearModule } from './modules/near/near.module'
-import { AppController } from './app.controller';
+import { AppController } from './app.controller'
+import { ConfigModule, ConfigService } from '@nestjs/config'
+import configuration from './config/configuration'
+
+import {
+    PlayerSchema,
+    SessionSchema,
+    UserSchema,
+} from '@apps/games/zombofighter/api/schemas'
 
 @Module({
     controllers: [AppController],
     imports: [
-        NearModule,
-        GameModule,
-        TypeOrmModule.forRoot({
-            type: 'postgres',
-            port: +process.env.DB_PORT || 5432,
-            username: process.env.DB_USER,
-            password: process.env.DB_PASS,
-            ssl: true,
-            host: process.env.DB_HOST,
-            database: process.env.DB_NAME,
-            entities: schemas,
-            synchronize: process.env.DB_SYNC === 'true',
+        TypeOrmModule.forRootAsync({
+            imports: [ConfigModule.forRoot({ load: [configuration] })],
+            useFactory: (configService: ConfigService) => ({
+                type: 'postgres',
+                host: configService.get('database.host'),
+                port: configService.get('database.port'),
+                username: configService.get('database.username'),
+                password: configService.get('database.password'),
+                database: configService.get('database.name'),
+                entities: [UserSchema, SessionSchema, PlayerSchema],
+                synchronize: true,
+            }),
+            inject: [ConfigService],
         }),
     ],
 })

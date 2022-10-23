@@ -30,6 +30,27 @@
       "@apps/games-zombofighter-client-utils": [
         "libs/games/zombofighter/client/utils/src/index.ts"
       ],
+      "@apps/games/zombofighter/api/auth": [
+        "libs/games/zombofighter/api/auth/src/index.ts"
+      ],
+      "@apps/games/zombofighter/api/cache": [
+        "libs/games/zombofighter/api/cache/src/index.ts"
+      ],
+      "@apps/games/zombofighter/api/config": [
+        "libs/games/zombofighter/api/config/src/index.ts"
+      ],
+      "@apps/games/zombofighter/api/passport-near": [
+        "libs/games/zombofighter/api/passport-near/src/index.ts"
+      ],
+      "@apps/games/zombofighter/api/schemas": [
+        "libs/games/zombofighter/api/schemas/src/index.ts"
+      ],
+      "@apps/games/zombofighter/api/user": [
+        "libs/games/zombofighter/api/user/src/index.ts"
+      ],
+      "@apps/games/zombofighter/client/features/auth": [
+        "libs/games/zombofighter/client/features/auth/src/index.ts"
+      ],
       "@apps/games/zombofighter/client/features/home-player": [
         "libs/games/zombofighter/client/features/home-player/src/index.ts"
       ],
