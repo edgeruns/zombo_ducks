@@ -1,9 +1,5 @@
 export type DataBaseConfig = {
-    name: string
-    host: string
-    port: number
-    username: string
-    password: string
+    url: string
 }
 
 export type AuthConfig = {
@@ -13,11 +9,7 @@ export type AuthConfig = {
 }
 
 export type RedisConfig = {
-    host: string
-    port: number
-    username: string
-    password: string
-    db: number
+    url: string
 }
 
 export type AppConfig = {

@@ -45,6 +45,7 @@ specifiers:
   '@types/styled-components': 5.1.26
   '@typescript-eslint/eslint-plugin': 5.39.0
   '@typescript-eslint/parser': 5.39.0
+  axios: ^0.27.2
   babel-jest: 28.1.1
   babel-plugin-styled-components: 1.10.7
   buffer: ^6.0.3
@@ -93,6 +94,7 @@ specifiers:
   ts-jest: 28.0.5
   ts-node: 10.9.1
   tslib: ^2.3.0
+  tweetnacl: ^1.0.3
   typeorm: ^0.3.7
   typescript: 4.8.4
 
@@ -113,6 +115,7 @@ dependencies:
   '@nrwl/next': 15.0.0_r5pwag6p2d2am43b7mfrbxvxpu
   '@reduxjs/toolkit': 1.8.4_kkwg4cbsojnjnupd3btipussee
   '@socket.io/redis-adapter': 7.2.0
+  axios: 0.27.2
   buffer: 6.0.3
   cache-manager: 4.1.0
   cache-manager-redis-store: 2.0.0
@@ -142,6 +145,7 @@ dependencies:
   styled-media-query: 2.1.2_styled-components@5.3.5
   swiper: 8.4.3
   tslib: 2.4.0
+  tweetnacl: 1.0.3
   typeorm: 0.3.10_leyvcg7c6qb5ozyijwwflgz6g4
 
 devDependencies:
@@ -4197,6 +4201,15 @@ packages:
     transitivePeerDependencies:
       - debug
     dev: true
+
+  /axios/0.27.2:
+    resolution: {integrity: sha512-t+yRIyySRTp/wua5xEr+z1q60QmLq8ABsS5O9Me1AsE5dfKqgnCFzwiCZZ/cGNd1lq4/7akDWMxdhVlucjmnOQ==}
+    dependencies:
+      follow-redirects: 1.15.2
+      form-data: 4.0.0
+    transitivePeerDependencies:
+      - debug
+    dev: false
 
   /axios/1.1.3:
     resolution: {integrity: sha512-00tXVRwKx/FZr/IDVFt4C+f9FYairX517WoGCL6dpOntqLkZofjhu43F/Xl44UOpqa+9sLFDrG/XAnFsUYgkDA==}

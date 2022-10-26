@@ -10,19 +10,20 @@ import {
     SessionSchema,
     UserSchema,
 } from '@apps/games/zombofighter/api/schemas'
+import { AppConfig } from '@apps/games/zombofighter/api/config'
+import { AuthModule } from '@apps/games/zombofighter/api/auth'
 
 @Module({
     controllers: [AppController],
     imports: [
+        AuthModule,
         TypeOrmModule.forRootAsync({
             imports: [ConfigModule.forRoot({ load: [configuration] })],
             useFactory: (configService: ConfigService) => ({
                 type: 'postgres',
-                host: configService.get('database.host'),
-                port: configService.get('database.port'),
-                username: configService.get('database.username'),
-                password: configService.get('database.password'),
-                database: configService.get('database.name'),
+                url: configService.get<AppConfig['database']['url']>(
+                    'database.url'
+                ),
                 entities: [UserSchema, SessionSchema, PlayerSchema],
                 synchronize: true,
             }),

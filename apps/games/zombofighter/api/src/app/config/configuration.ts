@@ -8,17 +8,9 @@ export default (): AppConfig => ({
         refreshExpireTime: '30d',
     },
     cache: {
-        host: process.env['REDIS_HOST'],
-        password: process.env['REDIS_PASSWORD'],
-        username: process.env['REDIS_USERNAME'],
-        port: parseInt(process.env['REDIS_PORT'], 10) || 6379,
-        db: 0,
+        url: process.env['REDIS_URL'],
     },
     database: {
-        name: process.env['DB_NAME'],
-        host: process.env['DB_HOST'],
-        port: parseInt(process.env['DB_PORT'], 10) || 5432,
-        username: process.env['DB_USER'],
-        password: process.env['DB_PASSWORD'] || undefined,
+        url: process.env['DATABASE_URL'],
     },
 })

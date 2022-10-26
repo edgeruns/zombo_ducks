@@ -18,7 +18,10 @@ export class UserSchema {
     @PrimaryGeneratedColumn('uuid')
     id: string
 
-    @OneToOne(() => PlayerSchema)
+    @Column({ unique: true })
+    nearAddress: string
+
+    @OneToOne(() => PlayerSchema, { cascade: true })
     @JoinColumn()
     player: PlayerSchema
 

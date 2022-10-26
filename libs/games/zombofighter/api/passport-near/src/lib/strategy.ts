@@ -1,6 +1,7 @@
 import * as passport from 'passport-strategy'
 import * as near from 'near-api-js'
 import { Request } from 'express'
+import { PublicKey } from 'near-api-js/lib/utils'
 
 export class Strategy extends passport.Strategy {
     public readonly name = 'near'
@@ -24,23 +25,38 @@ export class Strategy extends passport.Strategy {
     }
 
     authenticate(req: Request) {
-        const { accountId } = req.body
+        const { publicKey, signature, timestamp, accountId } = req.body
 
-        if (!accountId) {
+        if (!publicKey || !signature || !timestamp || !accountId) {
             return this.fail({ message: 'Missing credentials' }, 400)
         }
 
+        if (isNaN(+timestamp)) {
+            return this.fail({ message: 'TimeStamp is not a number' }, 400)
+        }
 
-        //
-        // try {
-        //     if (this._passReqToCallback) {
-        //         this._verify(req, recoveredAddress, nonce, this.verified)
-        //     } else {
-        //         this._verify(recoveredAddress, nonce, this.verified)
-        //     }
-        // } catch (ex) {
-        //     return this.error(ex)
-        // }
+        const isVerified = PublicKey.from(publicKey).verify(
+            Buffer.from(timestamp.toString()),
+            Uint8Array.from(Buffer.from(signature, 'base64'))
+        )
+
+        if (!isVerified) {
+            return this.fail({ message: 'Invalid signature' }, 400)
+        }
+
+        try {
+            if (this._passReqToCallback) {
+                this._verify(req, accountId, undefined, (err, user, info) =>
+                    this.verified(err, user, info)
+                )
+            } else {
+                this._verify(accountId, undefined, (err, user, info) =>
+                    this.verified(err, user, info)
+                )
+            }
+        } catch (ex) {
+            return this.error(ex)
+        }
     }
 
     private verified(err, user, info) {

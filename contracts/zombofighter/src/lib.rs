@@ -2,7 +2,7 @@ extern crate near_sdk;
 
 use std::collections::{HashMap};
 use near_sdk::borsh::{self, BorshDeserialize, BorshSerialize};
-use near_sdk::{near_bindgen, env, Promise, Balance, AccountId, BorshStorageKey, json_types::U128};
+use near_sdk::{near_bindgen, env, Promise, Balance, AccountId, BorshStorageKey, json_types::U128, ONE_NEAR};
 use near_sdk::collections::{LookupMap, LookupSet};
 use near_sdk::serde::Serialize;
 
@@ -12,6 +12,8 @@ enum StorageKey {
     Games,
     Referees,
 }
+
+const GAME_FEES: Balance = ONE_NEAR / 10;
 
 
 #[near_bindgen]
@@ -94,6 +96,9 @@ impl ZomboFighter {
         let player1 = self.players.get(&player1).expect("Player not found");
         let player2 = self.players.get(&player2).expect("Player not found");
 
+        assert!(player1.deposit >= GAME_FEES, "Player1 deposit is not enough");
+        assert!(player2.deposit >= GAME_FEES, "Player1 deposit is not enough");
+
         players.insert(player1.id.clone(), player1);
         players.insert(player2.id.clone(), player2);
 
@@ -148,6 +153,7 @@ impl ZomboFighter {
         }
 
         let mut game = self.games.get(&game_id).expect("Game not found");
+        assert_eq!(game.is_finished, false, "Game already finished");
         assert!(game.statements.get(&player_id).is_none(), "Player already accepted the result");
 
         let statement = Statement {
@@ -157,11 +163,21 @@ impl ZomboFighter {
 
         game.statements.insert(player_id, statement);
 
-        if game.statements.len() >= 2 {
-            self.finish_game(&game_id);
+
+        let mut statements: Vec<Statement> = Vec::new();
+
+        for statement in game.statements.values() {
+            statements.push(Statement {
+                owner: statement.owner.clone(),
+                winner: statement.winner.clone(),
+            });
         }
 
         self.games.insert(&game_id, &game);
+
+        if game.statements.len() >= 2 && ZomboFighter::is_consistent_statements(&statements) {
+            self.finish_game(&game_id);
+        }
     }
 
 
@@ -180,14 +196,15 @@ impl ZomboFighter {
             let winner_player = game.players.get_mut(&winner).expect("Player not found");
 
             winner_player.statistic.wins += 1;
-            winner_player.deposit += 1000000000000000000000000 / 2;
+            winner_player.deposit += GAME_FEES * 8 / 10;
 
+            self.players.insert(&winner_player.id, &winner_player);
 
             for player in game.players.values() {
                 if player.id != winner {
                     let mut player = self.players.get(&player.id).expect("Player not found");
                     player.statistic.losses += 1;
-                    player.deposit -= 1000000000000000000000000;
+                    player.deposit -= GAME_FEES;
 
                     self.players.insert(&player.id, &player);
                 }
@@ -199,24 +216,18 @@ impl ZomboFighter {
         self.games.insert(&game_id, &game);
     }
 
-    fn is_draw(statements: &HashMap<AccountId, Statement>) -> bool {
-        for (_, statement) in statements {
-            if statement.winner.is_some() {
-                return false;
-            }
-        }
-
-        return true
-    }
-
     fn get_winner(&mut self, game_id: &String) -> Option<AccountId> {
         let mut winner: HashMap<AccountId, u8> = HashMap::new();
         let game = self.games.get(&game_id).expect("Game not found");
 
         for (_, statement) in game.statements {
             if statement.winner.is_some() {
-                let player = winner.entry(statement.winner.unwrap()).or_insert(0);
-                *player += 1;
+                match [&statement.winner] {
+                    [Some(winner_id)] => {
+                        winner.insert(winner_id.clone(), winner.get(winner_id).unwrap_or(&0) + 1);
+                    }
+                    _ => {}
+                }
             }
         }
 
@@ -226,7 +237,48 @@ impl ZomboFighter {
             }
         }
 
-        return None
+        return None;
+    }
+
+    fn is_consistent_statements(statements: &Vec<Statement>) -> bool {
+        let mut is_consistent = true;
+        let mut equal_statements = 0;
+
+        for (i, statement) in statements.iter().enumerate() {
+            for (j, statement2) in statements.iter().enumerate() {
+                if i == j {
+                    continue;
+                }
+
+                match [&statement.winner, &statement2.winner] {
+                    [Some(winner), Some(winner2)] => {
+                        if winner.as_str() == winner2.as_str() {
+                            equal_statements += 1;
+                        }
+                    }
+                    [None, None] => {
+                        equal_statements += 1;
+                    }
+                    _ => {}
+                }
+            }
+        }
+
+        if equal_statements < 2 {
+            is_consistent = false;
+        }
+
+        is_consistent
+    }
+
+    fn is_draw(statements: &HashMap<AccountId, Statement>) -> bool {
+        for (_, statement) in statements {
+            if statement.winner.is_some() {
+                return false;
+            }
+        }
+
+        return true;
     }
 
 
@@ -360,5 +412,40 @@ mod tests {
         assert!(contract.get_game("game-1".to_string()).is_finished);
         assert_eq!(contract.get_player(accounts(1)).statistic.losses, 1);
         assert_eq!(contract.get_player(accounts(2)).statistic.wins, 1);
+        assert_eq!(contract.get_player(accounts(2)).deposit, ONE_NEAR + GAME_FEES * 8 / 10);
+        assert_eq!(contract.get_player(accounts(1)).deposit, ONE_NEAR - GAME_FEES);
+    }
+
+    #[test]
+    fn is_consistent_statements() {
+        let mut un_consistent_statements: Vec<Statement> = Vec::new();
+
+        un_consistent_statements.push(Statement {
+            winner: Some(accounts(1)),
+            owner: accounts(1),
+        });
+        un_consistent_statements.push(Statement {
+            winner: Some(accounts(2)),
+            owner: accounts(2),
+        });
+
+        assert_eq!(ZomboFighter::is_consistent_statements(&un_consistent_statements), false);
+
+
+        let mut consistent_statements = Vec::new();
+        consistent_statements.push(Statement {
+            owner: accounts(1),
+            winner: Some(accounts(1)),
+        });
+        consistent_statements.push(Statement {
+            owner: accounts(2),
+            winner: Some(accounts(2)),
+        });
+        consistent_statements.push(Statement {
+            owner: accounts(3),
+            winner: Some(accounts(2)),
+        });
+
+        assert!(ZomboFighter::is_consistent_statements(&consistent_statements));
     }
 }
