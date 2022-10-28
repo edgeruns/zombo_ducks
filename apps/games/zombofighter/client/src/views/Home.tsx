@@ -1,16 +1,18 @@
-import { FC, useEffect } from "react";
-
-import { MenuContainer } from '@apps/games/zombofighter/client/features/menu'
-import { StartGameContainer } from '@apps/games/zombofighter/client/features/start-game'
+import { FC, useEffect } from 'react'
+import { useDispatch } from 'react-redux'
 import { HomePlayerContainer } from '@apps/games/zombofighter/client/features/home-player'
-import { useNavigate } from "react-router-dom";
+import { MenuContainer } from '@apps/games/zombofighter/client/features/menu'
+import { getCurrentPlayer } from '@apps/games/zombofighter/client/features/shared/web3'
+import { StartGameContainer } from '@apps/games/zombofighter/client/features/start-game'
+
+import { AppDispatch } from '../store'
 
 export const HomeView: FC = () => {
-    const navigate = useNavigate()
+    const dispatch = useDispatch<AppDispatch>()
 
     useEffect(() => {
-        navigate('/connect')
-    }, [navigate])
+        dispatch(getCurrentPlayer())
+    }, [dispatch])
 
     return (
         <>

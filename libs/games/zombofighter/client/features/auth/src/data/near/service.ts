@@ -1,8 +1,9 @@
-import * as near from 'near-api-js'
 import axios from 'axios'
-import { setTokens, Tokens } from "../storage";
 import { Buffer } from 'buffer'
+import * as near from 'near-api-js'
+import { providers } from 'near-api-js'
 
+import { setTokens, Tokens } from '../storage'
 
 window.Buffer = window.Buffer || Buffer
 
@@ -23,7 +24,9 @@ export class NearAuthService {
             wallet.account().accountId
         )
 
-        const { signature, publicKey } = keyPair.sign(Buffer.from(timestamp.toString()))
+        const { signature, publicKey } = keyPair.sign(
+            Buffer.from(timestamp.toString())
+        )
 
         const tokens = await axios
             .put<Tokens>('/api/auth/near', {
@@ -41,12 +44,37 @@ export class NearAuthService {
         const wallet = await this.getWallet()
         const account = wallet.account()
 
-
         await account.functionCall({
             contractId: 'dev-1666552889577-38323691712830',
             methodName: 'register',
             args: {},
         })
+    }
+
+    public async getPlayer() {
+        const wallet = await this.getWallet()
+        const account = await wallet.account()
+        //
+        // this.connection?.connection.provider.query({
+        //     request_type: 'call_function',
+        //     account_id: account.accountId,
+        //     method_name: 'get_player',
+        //     args_base64: '',
+        // })
+
+        const callResponse = await account.functionCall({
+            contractId: 'dev-1666552889577-38323691712830',
+            methodName: 'get_player',
+            args: {
+                id: account.accountId,
+            },
+        })
+
+        const result = providers.getTransactionLastResult(callResponse)
+
+        console.log(result)
+
+        return result
     }
 
     public async getWallet() {

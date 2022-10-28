@@ -1,7 +1,8 @@
-import { useFeatDispatch, useFeatSelector } from "../data/store.feature";
-import { useEffect } from "react";
-import { getStatus } from "../data/selectors";
-import { checkAuth } from "../data/actions";
+import { useEffect } from 'react'
+
+import { checkAuth } from '../data/actions'
+import { getStatus } from '../data/selectors'
+import { useFeatDispatch, useFeatSelector } from '../data/store.feature'
 
 interface AuthCheckResult {
     checking: boolean
@@ -11,7 +12,6 @@ interface AuthCheckResult {
 export const useAuthCheck = (): AuthCheckResult => {
     const dispatch = useFeatDispatch()
     const status = useFeatSelector(getStatus)
-
 
     useEffect(() => {
         dispatch(checkAuth())

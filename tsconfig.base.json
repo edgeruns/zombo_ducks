@@ -48,6 +48,12 @@
       "@apps/games/zombofighter/api/user": [
         "libs/games/zombofighter/api/user/src/index.ts"
       ],
+      "@apps/games/zombofighter/client/api": [
+        "libs/games/zombofighter/client/api/src/index.ts"
+      ],
+      "@apps/games/zombofighter/client/features/add-deposit": [
+        "libs/games/zombofighter/client/features/add-deposit/src/index.ts"
+      ],
       "@apps/games/zombofighter/client/features/auth": [
         "libs/games/zombofighter/client/features/auth/src/index.ts"
       ],
@@ -69,6 +75,9 @@
       "@apps/games/zombofighter/client/features/shared/user": [
         "libs/games/zombofighter/client/features/shared/user/src/index.ts"
       ],
+      "@apps/games/zombofighter/client/features/shared/web3": [
+        "libs/games/zombofighter/client/features/shared/web3/src/index.ts"
+      ],
       "@apps/games/zombofighter/client/features/single-game": [
         "libs/games/zombofighter/client/features/single-game/src/index.ts"
       ],
@@ -77,6 +86,9 @@
       ],
       "@apps/games/zombofighter/client/features/tutorial": [
         "libs/games/zombofighter/client/features/tutorial/src/index.ts"
+      ],
+      "@apps/games/zombofighter/crypto-api": [
+        "libs/games/zombofighter/crypto-api/src/index.ts"
       ],
       "@apps/games/zombofighter/domain": [
         "libs/games/zombofighter/domain/src/index.ts"

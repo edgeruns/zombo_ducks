@@ -31,6 +31,7 @@ specifiers:
   '@reduxjs/toolkit': 1.8.4
   '@socket.io/redis-adapter': ^7.2.0
   '@testing-library/react': 13.4.0
+  '@types/bn.js': ^5.1.1
   '@types/cache-manager': ^4.0.1
   '@types/express': ^4.17.14
   '@types/jest': 28.1.1
@@ -48,6 +49,7 @@ specifiers:
   axios: ^0.27.2
   babel-jest: 28.1.1
   babel-plugin-styled-components: 1.10.7
+  bn.js: ^5.2.1
   buffer: ^6.0.3
   cache-manager: ^4.1.0
   cache-manager-redis-store: ^2.0.0
@@ -62,6 +64,7 @@ specifiers:
   eslint-plugin-jsx-a11y: 6.6.1
   eslint-plugin-react: 7.31.8
   eslint-plugin-react-hooks: 4.6.0
+  eslint-plugin-simple-import-sort: ^8.0.0
   jest: 28.1.1
   jest-environment-jsdom: 28.1.1
   lodash: ^4.17.21
@@ -116,6 +119,7 @@ dependencies:
   '@reduxjs/toolkit': 1.8.4_kkwg4cbsojnjnupd3btipussee
   '@socket.io/redis-adapter': 7.2.0
   axios: 0.27.2
+  bn.js: 5.2.1
   buffer: 6.0.3
   cache-manager: 4.1.0
   cache-manager-redis-store: 2.0.0
@@ -163,6 +167,7 @@ devDependencies:
   '@nrwl/web': 15.0.0_4smr3apheqousp33pvoouztz2m
   '@nrwl/workspace': 15.0.0_tucv5c4m3cw6bv47rlcnz7vm7i
   '@testing-library/react': 13.4.0_biqbaboplfbrettd7655fr4n2y
+  '@types/bn.js': 5.1.1
   '@types/cache-manager': 4.0.2
   '@types/express': 4.17.14
   '@types/jest': 28.1.1
@@ -187,6 +192,7 @@ devDependencies:
   eslint-plugin-jsx-a11y: 6.6.1_eslint@8.15.0
   eslint-plugin-react: 7.31.8_eslint@8.15.0
   eslint-plugin-react-hooks: 4.6.0_eslint@8.15.0
+  eslint-plugin-simple-import-sort: 8.0.0_eslint@8.15.0
   jest: 28.1.1_6m7kcbkkzjz4ln6z66tlzx44we
   jest-environment-jsdom: 28.1.1
   nx: 15.0.0
@@ -3403,6 +3409,12 @@ packages:
     dependencies:
       '@babel/types': 7.19.3
 
+  /@types/bn.js/5.1.1:
+    resolution: {integrity: sha512-qNrYbZqMx0uJAfKnKclPh+dTwK33KfLHYqtyODwd5HnXOjnkhc4qgn3BrK6RWyGZm5+sIFE7Q7Vz6QQtJB7w7g==}
+    dependencies:
+      '@types/node': 18.7.18
+    dev: true
+
   /@types/body-parser/1.19.2:
     resolution: {integrity: sha512-ALYone6pm6QmwZoAgeyNksccT9Q4AWZQ6PvfwR37GT6r6FWUPguq6sUmNGSMV2Wr761oQoBxwGGa6DR5o1DC9g==}
     dependencies:
@@ -5907,6 +5919,14 @@ packages:
       resolve: 2.0.0-next.4
       semver: 6.3.0
       string.prototype.matchall: 4.0.7
+    dev: true
+
+  /eslint-plugin-simple-import-sort/8.0.0_eslint@8.15.0:
+    resolution: {integrity: sha512-bXgJQ+lqhtQBCuWY/FUWdB27j4+lqcvXv5rUARkzbeWLwea+S5eBZEQrhnO+WgX3ZoJHVj0cn943iyXwByHHQw==}
+    peerDependencies:
+      eslint: '>=5.0.0'
+    dependencies:
+      eslint: 8.15.0
     dev: true
 
   /eslint-scope/5.1.1:
