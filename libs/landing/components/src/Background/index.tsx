@@ -1,5 +1,4 @@
-import React, { FC, useRef, useEffect, useCallback } from 'react'
-
+import React, { FC, useCallback,useEffect, useRef } from 'react'
 import { useBreakpoint } from '@apps/utils'
 
 import styles from './Background.module.scss'

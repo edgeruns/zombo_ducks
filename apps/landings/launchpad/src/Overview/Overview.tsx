@@ -1,12 +1,14 @@
 import React from 'react'
-import styles from './Overview.module.scss'
 import classnames from 'classnames/bind'
+
+import { ReactComponent as WhiteA } from './assets/asteriskBlack.svg'
+import { ReactComponent as BlackA } from './assets/asteriskWhite.svg'
+import { ReactComponent as Pad } from './assets/gamepad.svg'
 import { ReactComponent as LSlice } from './assets/GreenSlice.svg'
 import { ReactComponent as RSlice } from './assets/PurpleSlice.svg'
 import { ReactComponent as Tag } from './assets/TagBox.svg'
-import { ReactComponent as Pad } from './assets/gamepad.svg'
-import { ReactComponent as WhiteA } from './assets/asteriskBlack.svg'
-import { ReactComponent as BlackA } from './assets/asteriskWhite.svg'
+
+import styles from './Overview.module.scss'
 
 const cn = classnames.bind(styles)
 

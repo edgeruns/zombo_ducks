@@ -1,10 +1,9 @@
 import React, {FC, useEffect, useRef, useState} from 'react'
+import { useScrollView } from '@apps/utils'
 import classNames from 'classnames'
 
-import { useScrollView } from '@apps/utils'
-
-import { Section } from '../Section'
 import { Row } from '../Row'
+import { Section } from '../Section'
 
 import styles from './Offer.module.scss'
 

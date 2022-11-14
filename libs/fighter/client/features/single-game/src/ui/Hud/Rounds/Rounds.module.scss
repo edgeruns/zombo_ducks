@@ -1,0 +1,76 @@
+@import 'libs/fighter/client/uikit/src/styles/mixins';
+@import 'libs/fighter/client/uikit/src/styles/vars';
+@import 'libs/fighter/client/uikit/src/styles/anims';
+
+.root {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: pxvw(50);
+    left: 50%;
+    opacity: 0;
+    pointer-events: none;
+    user-select: none;
+    transform: translateX(-50%);
+    transition: opacity 0.2s;
+    z-index: 4;
+
+    &--visible {
+        opacity: 1;
+        animation: fadeIn 0.2s #{$opponent-arrive-time} forwards;
+    }
+}
+
+.text {
+    display: block;
+    color: #fffdf7;
+    font-size: pxvw(12);
+    font-weight: 700;
+    line-height: pxvw(17);
+}
+
+.watch {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    width: pxvw(38);
+    height: pxvw(47);
+    margin-top: pxvw(3);
+    user-select: none;
+
+    &--blinking {
+        animation: 1s watchBlinking infinite forwards;
+    }
+
+    &__icon {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+    }
+
+    &__text {
+        margin-top: pxvw(13);
+        color: #fffdf7;
+        font-size: pxvw(24);
+        font-weight: 700;
+        line-height: pxvw(34);
+    }
+}
+
+@keyframes watchBlinking {
+    from {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    to {
+        transform: scale(1);
+    }
+}

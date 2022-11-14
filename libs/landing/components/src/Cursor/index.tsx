@@ -1,9 +1,8 @@
 import React, { FC, useEffect, useRef } from 'react'
-
 import { useBreakpoint } from '@apps/utils'
+import { rotate } from "next/dist/server/lib/squoosh/impl";
 
 import styles from './Cursor.module.scss'
-import { rotate } from "next/dist/server/lib/squoosh/impl";
 
 export const Cursor: FC = () => {
     const rootRef = useRef<HTMLDivElement>(null)

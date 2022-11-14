@@ -1,10 +1,10 @@
 import React, { FC, useEffect, useRef, useState } from 'react'
+import { useBreakpoint,useScrollView } from '@apps/utils'
 import classNames from 'classnames'
 
-import { useScrollView, useBreakpoint } from '@apps/utils'
-
-import { Section } from '../Section'
 import { Row } from '../Row'
+import { Section } from '../Section'
+
 import { DuckAvatar } from './DuckAvatar'
 
 import styles from './Team.module.scss'

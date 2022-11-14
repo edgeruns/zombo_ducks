@@ -1,7 +1,9 @@
-import React, { useState } from 'react'
-import styles from './LeftButton.module.scss'
+import React from 'react'
 import classnames from 'classnames/bind'
+
 import { ReactComponent as Slice } from './assets/sliceLeft.svg'
+
+import styles from './LeftButton.module.scss'
 
 const cn = classnames.bind(styles)
 

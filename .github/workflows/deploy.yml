@@ -1,0 +1,95 @@
+name: Deploy ${{ github.ref_name }}-${{ github.sha }}
+on:
+  workflow_dispatch:
+    inputs:
+      fighter-api:
+        type: boolean
+        description: app::fighter::api
+        default: false
+      figher-client:
+        type: boolean
+        description: app::fighter::client
+        default: false
+
+jobs:
+  prepare:
+    runs-on: self-hosted
+    name: Prepare workflow
+    outputs:
+      matrix: ${{ steps.calc.outputs.result }}
+      version: ${{ steps.version.outputs.value }}
+    steps:
+      - id: version
+        name: Build version name
+        run: echo "value=${{ github.ref_name }}-${{ github.sha }}" >> $GITHUB_OUTPUT
+
+      - id: calc
+        uses: actions/github-script@v6
+        with:
+          result-encoding: string
+          script: |
+            const projects = []
+            if (${{ github.event.inputs.fighter-api }}) {
+              projects.push('fighter-api')
+            }
+            if (${{ github.event.inputs.figher-client }}) {
+              projects.push('fighter-client')
+            }
+
+            return JSON.stringify(projects)
+
+
+  ci:
+    needs: prepare
+    runs-on: self-hosted
+    name: check and publish artefact
+    strategy:
+      matrix:
+        project: ${{ fromJson(needs.prepare.outputs.matrix) }}
+    environment: production
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Docker build
+        run: |
+          docker build \
+            -f ./apps/fighter/${{ matrix.project }}/Dockerfile \
+            -t registry.digitalocean.com/crypto-animals/${{ matrix.project }}:${{ needs.prepare.outputs.version }} \
+            .
+
+      - name: Docker push
+        run: |
+          docker push registry.digitalocean.com/crypto-animals/${{ matrix.project }}:${{ needs.prepare.outputs.version }}
+
+
+  deploy:
+    needs: [prepare, ci]
+    runs-on: self-hosted
+    name: deploy ${{ matrix.project }}
+    environment: production
+    strategy:
+      matrix:
+        project: ${{ fromJson(needs.prepare.outputs.matrix) }}
+    env:
+      COMMIT_SHA: ${{ github.sha }}
+      BRANCH: ${{ github.ref_name }}
+      DB_HOST: ${{ secrets.DB_HOST }}
+      DB_PORT: ${{ secrets.DB_PORT }}
+      DB_USER: ${{ secrets.DB_USER }}
+      DB_PASS: ${{ secrets.DB_PASS }}
+      REDIS_HOST: ${{ secrets.REDIS_HOST }}
+      REDIS_PORT: ${{ secrets.REDIS_PORT }}
+      REDIS_PASS: ${{ secrets.REDIS_PASS }}
+      REDIS_USER: ${{ secrets.REDIS_USER }}
+      REDIS_FULL: ${{ secrets.REDIS_FULL }}
+      PRIVATE_NEAR_WALLET_KEY: ${{ secrets.PRIVATE_NEAR_WALLET_KEY }}
+
+    steps:
+      - name: Prepare deployment config
+        run: |
+          cd deploy/${{ matrix.project }} && envsubst < deployment.yml | tee tmp.yml &&\
+          mv tmp.yml deployment.yml
+
+      - name: Deploy
+        run: kubectl apply -f deploy/${{ matrix.project }}/

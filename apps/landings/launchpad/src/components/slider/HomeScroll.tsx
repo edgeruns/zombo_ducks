@@ -1,6 +1,7 @@
 import React from 'react'
-import styles from './HomeScroll.module.scss'
 import classnames from 'classnames/bind'
+
+import styles from './HomeScroll.module.scss'
 
 const cn = classnames.bind(styles)
 

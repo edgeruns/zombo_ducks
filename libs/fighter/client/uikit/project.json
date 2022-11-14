@@ -1,0 +1,28 @@
+{
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "name": "fighter-client-uikit",
+  "sourceRoot": "libs/fighter/client/uikit/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "libs/fighter/client/uikit/src/styles/mixins/**/*.{ts,tsx,js,jsx}"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": [
+        "{workspaceRoot}/coverage/libs/fighter/client/uikit/src/styles/mixins"
+      ],
+      "options": {
+        "jestConfig": "libs/fighter/client/uikit/src/styles/mixins/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  }
+}

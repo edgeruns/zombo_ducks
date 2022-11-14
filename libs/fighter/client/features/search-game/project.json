@@ -1,0 +1,28 @@
+{
+  "$schema": "../../../../../node_modules/nx/schemas/project-schema.json",
+  "name": "fighter-client-features-search-game",
+  "sourceRoot": "libs/fighter/client/features/search-game/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "libs/fighter/client/features/search-game/**/*.{ts,tsx,js,jsx}"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": [
+        "{workspaceRoot}/coverage/libs/fighter/client/features/search-game"
+      ],
+      "options": {
+        "jestConfig": "libs/fighter/client/features/search-game/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  }
+}

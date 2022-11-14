@@ -1,0 +1,28 @@
+{
+  "$schema": "../../../../../node_modules/nx/schemas/project-schema.json",
+  "name": "fighter-client-features-single-game",
+  "sourceRoot": "libs/fighter/client/features/single-game/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "libs/fighter/client/features/single-game/**/*.{ts,tsx,js,jsx}"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": [
+        "{workspaceRoot}/coverage/libs/fighter/client/features/single-game"
+      ],
+      "options": {
+        "jestConfig": "libs/fighter/client/features/single-game/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  }
+}

@@ -1,14 +1,17 @@
 import React, { useState } from 'react'
-import styles from './HomePage.module.scss'
 import classnames from 'classnames/bind'
-import { ReactComponent as Near } from './assets/near.svg'
-import { ReactComponent as Twit } from './assets/twitter.svg'
-import { ReactComponent as Disc } from './assets/discord.svg'
-import { ReactComponent as Burger } from './assets/burger.svg'
+
 import { LeftButton } from '../components/buttons/LeftButton'
 import { RightButton } from '../components/buttons/RightButton'
-import { HomeSlider } from '../components/slider/HomeSlider'
 import { HomeScroll } from '../components/slider/HomeScroll'
+import { HomeSlider } from '../components/slider/HomeSlider'
+
+import { ReactComponent as Burger } from './assets/burger.svg'
+import { ReactComponent as Disc } from './assets/discord.svg'
+import { ReactComponent as Near } from './assets/near.svg'
+import { ReactComponent as Twit } from './assets/twitter.svg'
+
+import styles from './HomePage.module.scss'
 
 const cn = classnames.bind(styles)
 

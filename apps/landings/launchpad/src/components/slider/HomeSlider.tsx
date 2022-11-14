@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from 'react'
-
 import classnames from 'classnames/bind'
+
 import styles from './HomeSlider.module.scss'
 
 const cn = classnames.bind(styles)
 
-import 'swiper/css'
-import 'swiper/css/pagination'
-import { Swiper, SwiperSlide } from 'swiper/react'
 import { Pagination } from 'swiper'
+import { Swiper, SwiperSlide } from 'swiper/react'
+
+import 'swiper/css/pagination'
+
+import 'swiper/css'
 
 export const HomeSlider = () => {
     const [isInfinity, setInfinity] = useState(false)

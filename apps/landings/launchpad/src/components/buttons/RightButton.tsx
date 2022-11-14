@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
-import styles from './RightButton.module.scss'
 import classnames from 'classnames/bind'
+
 import { ReactComponent as Slice } from './assets/sliceRight.svg'
+
+import styles from './RightButton.module.scss'
 
 const cn = classnames.bind(styles)
 

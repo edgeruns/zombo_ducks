@@ -1,8 +1,11 @@
 import React from 'react'
-import styles from './WhyUs.module.scss'
 import classnames from 'classnames/bind'
-import { GetAccessButton } from './components/GetAccessButton'
+
 import { WhyUsSlider } from '../components/slider/WhyUsSlider'
+
+import { GetAccessButton } from './components/GetAccessButton'
+
+import styles from './WhyUs.module.scss'
 
 const cn = classnames.bind(styles)
 

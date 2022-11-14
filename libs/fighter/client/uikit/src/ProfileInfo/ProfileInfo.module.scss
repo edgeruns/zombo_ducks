@@ -1,0 +1,24 @@
+@import 'libs/fighter/client/uikit/src/styles/mixins';
+
+.root {
+    display: flex;
+    align-items: center;
+}
+
+.avatar {
+    width: pxvw(24);
+    height: pxvw(24);
+    margin-right: pxvw(8);
+    border: pxvw(1) solid #062c34;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.nickname {
+    display: block;
+    color: #fffdf7;
+    font-size: pxvw(12);
+    font-weight: 700;
+    line-height: pxvw(17);
+}

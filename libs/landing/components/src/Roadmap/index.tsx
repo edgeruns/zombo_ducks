@@ -1,9 +1,10 @@
 import React, { FC } from 'react'
 
-import { Section } from '../Section'
 import { Row } from '../Row'
-import { Phase } from './Phase'
+import { Section } from '../Section'
+
 import { PHASES } from './constants'
+import { Phase } from './Phase'
 
 import styles from './Roadmap.module.scss'
 

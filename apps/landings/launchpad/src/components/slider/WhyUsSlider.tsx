@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import classnames from 'classnames/bind'
-import styles from './WhyUsSlider.module.scss'
-import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation } from 'swiper'
+import { Swiper, SwiperSlide } from 'swiper/react'
+
+import styles from './WhyUsSlider.module.scss'
 
 const cn = classnames.bind(styles)
 
-import 'swiper/css'
 import 'swiper/css/navigation'
+
+import 'swiper/css'
 
 export const WhyUsSlider = () => {
     const [isInfinity, setInfinity] = useState(false)

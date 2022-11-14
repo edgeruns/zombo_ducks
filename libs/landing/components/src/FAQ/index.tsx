@@ -1,9 +1,10 @@
 import React, { FC } from 'react'
 
-import { Section } from '../Section'
 import { Row } from '../Row'
-import { Question } from './Question'
+import { Section } from '../Section'
+
 import { QUESTIONS } from './constants'
+import { Question } from './Question'
 
 import styles from './FAQ.module.scss'
 

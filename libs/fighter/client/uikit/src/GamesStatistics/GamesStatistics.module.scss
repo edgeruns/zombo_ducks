@@ -1,0 +1,19 @@
+@import 'libs/fighter/client/uikit/src/styles/mixins';
+
+.root {
+    display: flex;
+    align-items: center;
+}
+
+.icon {
+    width: pxvw(18);
+    height: pxvw(16);
+    margin-right: pxvw(8);
+}
+
+.text {
+    color: #fffdf7;
+    font-size: pxvw(12);
+    font-weight: 700;
+    line-height: pxvw(17);
+}

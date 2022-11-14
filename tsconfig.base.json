@@ -15,84 +15,55 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@apps/games-zombofighter-client-components": [
-        "libs/games/zombofighter/client/components/src/index.ts"
+      "@apps/fighter/api/auth": ["libs/fighter/api/auth/src/index.ts"],
+      "@apps/fighter/api/cache": ["libs/fighter/api/cache/src/index.ts"],
+      "@apps/fighter/api/config": ["libs/fighter/api/config/src/index.ts"],
+      "@apps/fighter/api/passport-near": [
+        "libs/fighter/api/passport-near/src/index.ts"
       ],
-      "@apps/games-zombofighter-client-data": [
-        "libs/games/zombofighter/client/data/src/index.ts"
+      "@apps/fighter/api/schemas": ["libs/fighter/api/schemas/src/index.ts"],
+      "@apps/fighter/api/user": ["libs/fighter/api/user/src/index.ts"],
+      "@apps/fighter/client/api": ["libs/fighter/client/api/src/index.ts"],
+      "@apps/fighter/client/features/add-deposit": [
+        "libs/fighter/client/features/add-deposit/src/index.ts"
       ],
-      "@apps/games-zombofighter-client-styles": [
-        "libs/games/zombofighter/client/styles/src/*"
+      "@apps/fighter/client/features/auth": [
+        "libs/fighter/client/features/auth/src/index.ts"
       ],
-      "@apps/games-zombofighter-client-uikit": [
-        "libs/games/zombofighter/client/uikit/src/index.ts"
+      "@apps/fighter/client/features/home-player": [
+        "libs/fighter/client/features/home-player/src/index.ts"
       ],
-      "@apps/games-zombofighter-client-utils": [
-        "libs/games/zombofighter/client/utils/src/index.ts"
+      "@apps/fighter/client/features/menu": [
+        "libs/fighter/client/features/menu/src/index.ts"
       ],
-      "@apps/games/zombofighter/api/auth": [
-        "libs/games/zombofighter/api/auth/src/index.ts"
+      "@apps/fighter/client/features/result": [
+        "libs/fighter/client/features/result/src/index.ts"
       ],
-      "@apps/games/zombofighter/api/cache": [
-        "libs/games/zombofighter/api/cache/src/index.ts"
+      "@apps/fighter/client/features/search-game": [
+        "libs/fighter/client/features/search-game/src/index.ts"
       ],
-      "@apps/games/zombofighter/api/config": [
-        "libs/games/zombofighter/api/config/src/index.ts"
+      "@apps/fighter/client/features/shared/sounds": [
+        "libs/fighter/client/features/shared/sounds/src/index.ts"
       ],
-      "@apps/games/zombofighter/api/passport-near": [
-        "libs/games/zombofighter/api/passport-near/src/index.ts"
+      "@apps/fighter/client/features/shared/user": [
+        "libs/fighter/client/features/shared/user/src/index.ts"
       ],
-      "@apps/games/zombofighter/api/schemas": [
-        "libs/games/zombofighter/api/schemas/src/index.ts"
+      "@apps/fighter/client/features/shared/web3": [
+        "libs/fighter/client/features/shared/web3/src/index.ts"
       ],
-      "@apps/games/zombofighter/api/user": [
-        "libs/games/zombofighter/api/user/src/index.ts"
+      "@apps/fighter/client/features/single-game": [
+        "libs/fighter/client/features/single-game/src/index.ts"
       ],
-      "@apps/games/zombofighter/client/api": [
-        "libs/games/zombofighter/client/api/src/index.ts"
+      "@apps/fighter/client/features/start-game": [
+        "libs/fighter/client/features/start-game/src/index.ts"
       ],
-      "@apps/games/zombofighter/client/features/add-deposit": [
-        "libs/games/zombofighter/client/features/add-deposit/src/index.ts"
+      "@apps/fighter/client/features/tutorial": [
+        "libs/fighter/client/features/tutorial/src/index.ts"
       ],
-      "@apps/games/zombofighter/client/features/auth": [
-        "libs/games/zombofighter/client/features/auth/src/index.ts"
-      ],
-      "@apps/games/zombofighter/client/features/home-player": [
-        "libs/games/zombofighter/client/features/home-player/src/index.ts"
-      ],
-      "@apps/games/zombofighter/client/features/menu": [
-        "libs/games/zombofighter/client/features/menu/src/index.ts"
-      ],
-      "@apps/games/zombofighter/client/features/result": [
-        "libs/games/zombofighter/client/features/result/src/index.ts"
-      ],
-      "@apps/games/zombofighter/client/features/search-game": [
-        "libs/games/zombofighter/client/features/search-game/src/index.ts"
-      ],
-      "@apps/games/zombofighter/client/features/shared/sounds": [
-        "libs/games/zombofighter/client/features/shared/sounds/src/index.ts"
-      ],
-      "@apps/games/zombofighter/client/features/shared/user": [
-        "libs/games/zombofighter/client/features/shared/user/src/index.ts"
-      ],
-      "@apps/games/zombofighter/client/features/shared/web3": [
-        "libs/games/zombofighter/client/features/shared/web3/src/index.ts"
-      ],
-      "@apps/games/zombofighter/client/features/single-game": [
-        "libs/games/zombofighter/client/features/single-game/src/index.ts"
-      ],
-      "@apps/games/zombofighter/client/features/start-game": [
-        "libs/games/zombofighter/client/features/start-game/src/index.ts"
-      ],
-      "@apps/games/zombofighter/client/features/tutorial": [
-        "libs/games/zombofighter/client/features/tutorial/src/index.ts"
-      ],
-      "@apps/games/zombofighter/crypto-api": [
-        "libs/games/zombofighter/crypto-api/src/index.ts"
-      ],
-      "@apps/games/zombofighter/domain": [
-        "libs/games/zombofighter/domain/src/index.ts"
-      ],
+      "@apps/fighter/client/uikit": ["libs/fighter/client/uikit/src/index.ts"],
+      "@apps/fighter/client/utils": ["libs/fighter/client/utils/src/index.ts"],
+      "@apps/fighter/crypto-api": ["libs/fighter/crypto-api/src/index.ts"],
+      "@apps/fighter/domain": ["libs/fighter/domain/src/index.ts"],
       "@apps/home-layout": ["libs/home/layout/src/index.ts"],
       "@apps/home/layout": ["libs/home/layout/src/index.ts"],
       "@apps/home/main": ["libs/home/main/src/index.ts"],

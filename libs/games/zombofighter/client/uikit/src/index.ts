@@ -1,8 +1,0 @@
-export * from './Button'
-export * from './Duck'
-export * from './ProgressBar'
-export * from './GamesStatistics'
-export * from './BodyPart'
-export { BodyParts } from './BodyPart/types'
-export * from './ProfileInfo'
-export * from './CrossButton'

@@ -1,0 +1,110 @@
+@import 'libs/fighter/client/uikit/src/styles/mixins';
+@import 'libs/fighter/client/uikit/src/styles/vars';
+@import 'libs/fighter/client/uikit/src/styles/anims';
+
+.root {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    pointer-events: none;
+    user-select: none;
+    transition: opacity 0.2s;
+
+    &--visible {
+        opacity: 1;
+        pointer-events: auto;
+        user-select: auto;
+        animation: fadeIn 0.2s #{$opponent-arrive-time} forwards;
+    }
+}
+
+.arrows {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+    user-select: none;
+    transition: opacity 0.2s;
+
+    &--first {
+        top: pxvw(46);
+        left: calc(50% + pxvw(40));
+    }
+
+    &--second {
+        display: flex;
+        justify-content: space-between;
+        bottom: pxvw(45);
+        left: pxvw(126);
+        right: pxvw(126);
+
+        .left,
+        .right {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: pxvw(200);
+            z-index: 2;
+        }
+
+        .right {
+            .arrow {
+                transform: rotateY(180deg);
+            }
+        }
+    }
+
+    &--visible {
+        opacity: 1;
+    }
+}
+
+.arrow {
+    width: pxvw(58);
+    height: pxvw(56);
+}
+
+.hint {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    left: 50%;
+    bottom: pxvw(8);
+    width: pxvw(416);
+    height: pxvw(66);
+    padding: pxvw(16) pxvw(40) pxvw(16) pxvw(19);
+    opacity: 0;
+    pointer-events: none;
+    border: pxvw(1.5) solid var(--dark-blue);
+    border-radius: pxvw(8);
+    background-color: var(--gray-blue);
+    box-shadow: inset 0 pxvw(4) 0 #91bece, inset 0 pxvw(-4) 0 #d0e8f0;
+    transition: opacity 0.2s;
+    transform: translateX(-50%);
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    &--visible {
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    &__text {
+        margin-right: pxvw(20);
+        color: #fffdf7;
+        font-size: pxvw(12);
+        font-weight: 700;
+        line-height: pxvw(17);
+        white-space: pre-wrap;
+    }
+
+    &__arrow {
+        margin-top: auto;
+        width: pxvw(15);
+        height: pxvw(14);
+    }
+}

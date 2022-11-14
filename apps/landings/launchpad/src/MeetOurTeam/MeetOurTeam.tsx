@@ -1,10 +1,12 @@
 import React from 'react'
-import styles from './MeetOurTeam.module.scss'
 import classnames from 'classnames/bind'
-import { ReactComponent as VecLeft } from './assets/vecLeft.svg'
+
 import { ReactComponent as VecCenter1 } from './assets/vecCenter1.svg'
 import { ReactComponent as VecCenter2 } from './assets/vecCenter2.svg'
+import { ReactComponent as VecLeft } from './assets/vecLeft.svg'
 import { ReactComponent as VecRight } from './assets/vecRight.svg'
+
+import styles from './MeetOurTeam.module.scss'
 
 const cn = classnames.bind(styles)
 

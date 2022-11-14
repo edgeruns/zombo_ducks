@@ -1,0 +1,18 @@
+@import 'libs/fighter/client/uikit/src/styles/mixins';
+
+.root {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: pxvw(14);
+    left: pxvw(54);
+    transition: opacity 0.2s;
+}
+
+.item {
+    margin-right: pxvw(32);
+
+    &:last-of-type {
+        margin-right: 0;
+    }
+}

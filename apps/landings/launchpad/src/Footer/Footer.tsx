@@ -1,10 +1,12 @@
 import React from 'react'
-import styles from './Footer.module.scss'
 import classnames from 'classnames/bind'
+
+import { ReactComponent as Disc } from './assets/discord.svg'
 import { ReactComponent as Near } from './assets/near.svg'
 import { ReactComponent as Twit } from './assets/twitter.svg'
-import { ReactComponent as Disc } from './assets/discord.svg'
 import { ReactComponent as Up } from './assets/up.svg'
+
+import styles from './Footer.module.scss'
 
 const cn = classnames.bind(styles)
 

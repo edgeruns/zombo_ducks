@@ -1,8 +1,8 @@
-import { RefObject, useState, useEffect } from 'react'
+import { RefObject, useEffect,useState } from 'react'
 
 export function useScrollView(
     containerRef: RefObject<HTMLElement>,
-    stop: boolean = false
+    stop = false
 ) {
     const [proportion, setProportion] = useState(-1);
 

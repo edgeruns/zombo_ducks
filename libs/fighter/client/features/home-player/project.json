@@ -1,0 +1,28 @@
+{
+  "$schema": "../../../../../node_modules/nx/schemas/project-schema.json",
+  "name": "fighter-client-features-home-player",
+  "sourceRoot": "libs/fighter/client/features/home-player/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "libs/fighter/client/features/home-player/**/*.{ts,tsx,js,jsx}"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": [
+        "{workspaceRoot}/coverage/libs/fighter/client/features/home-player"
+      ],
+      "options": {
+        "jestConfig": "libs/fighter/client/features/home-player/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  }
+}

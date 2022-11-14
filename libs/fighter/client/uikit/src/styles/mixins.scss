@@ -1,0 +1,15 @@
+@use 'sass:math';
+
+@function pxvw($px, $factor: 400) {
+    @return math.div($px, $factor) * 100vmin;
+}
+
+@mixin webpBg($path, $ext) {
+    :global(:root[data-webp='true']) & {
+        background-image: url($path + '.webp');
+    }
+
+    :global(:root[data-webp='false']) & {
+        background-image: url($path + '.' + $ext);
+    }
+}

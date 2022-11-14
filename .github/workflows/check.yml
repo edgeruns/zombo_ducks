@@ -1,0 +1,36 @@
+name: check commit
+
+on: [push]
+
+jobs:
+  main:
+    runs-on: [self-hosted, Linux, X64]
+    env:
+      NX_BASE: origin/${{ github.ref_name }}~1
+      NX_HEAD: origin/${{ github.ref_name }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 6.32.9
+
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: 'pnpm'
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Check linters
+        run: pnpm nx affected --target=lint --plain
+
+      - name: Check buildability
+        run: pnpm nx affected --target=build --plain
+
+
+
